@@ -102,7 +102,7 @@
                             <i class="iconfont">&#xe642;</i>
                         </a>
                         <ul class="sider-nav-s">
-                           <li><a href="#" onclick="open1('iotMap');">设备地图</a></li>
+                           <li><a href="#">设备地图</a></li>
                            <li><a href="#">设备列表</a></li>
                            <li><a href="#">实时数据</a></li>
                            <li><a href="#">历史数据</a></li>
@@ -143,32 +143,25 @@
             </div>
 
             <div id="pf-page">
-<!--                 <div id="p" class="easyui-panel" title="" style="width:100%;height:100%;padding:10px;">
-                  <iframe class="page-iframe" src="workbench.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                </div> -->
-<!--                 <div id="p" class="easyui-panel" title="" style="width:100%;height:100%;padding:10px;">
-                  <iframe class="page-iframe" src="iotMap.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                </div> -->
-
-                <div id="tt" class="easyui-tabs1" style="width:100%;height:100%;">               
-                  <div title="首页" style="padding:10px 5px 5px 10px;" data-options="closable:false">
+                <div id="tt" class="easyui-tabs1" style="width:100%;height:100%;">       
+                  <div title="首页" style="padding:10px 5px 5px 10px;">
                     <iframe class="page-iframe" src="workbench.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
                   </div>
-              <!--     <div title="采购组织" style="padding:10px 5px 5px 10px;" data-options="closable:true">
-                    <iframe class="page-iframe" src="index.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                    </div>
-                  <div title="基本信息" data-options="closable:true" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="basic_info.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                  <div title="供应商" data-options="closable:true" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="providers.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                  <div title="业务流程" data-options="closable:true" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="process.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                  <div title="表单管理" data-options="closable:true" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="providers1.html" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div> -->
+                  <div title="设备地图" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                    <iframe class="page-iframe" src="iotMap.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                  </div>       
+                  <div title="设备列表" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                    <iframe class="page-iframe" src="iotThingList.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                  </div> 
+                  <div title="实时数据" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                    <iframe class="page-iframe" src="iotRealTimeData.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                  </div>  
+                  <div title="历史数据" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                    <iframe class="page-iframe" src="iotHistoryData.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                  </div>    
+                  <div title="文件审批" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                    <iframe class="page-iframe" src="oaFileApproval.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                  </div>                      
                 </div>
             </div>
         </div>
@@ -254,7 +247,7 @@
     </script>
 </body> 
 </html>
-<script type="text/javascript">
+    <script type="text/javascript">
       // $(function(){
       //   $('#tt').tabs({
       //     onLoad:function(panel){
@@ -290,14 +283,14 @@
             title:plugin,
             href:plugin+'.jsp',
             closable:true,
-            bodyCls:'content-doc',
-            extractor:function(data){
+            bodyCls:'content-doc'//,
+            // extractor:function(data){
               // data = $.fn.panel.defaults.extractor(data);
               // var tmp = $('<div></div>').jsp(data);
               // data = tmp.find('#content').jsp();
               // tmp.remove();
               // return data;
-            }
+            // }
           });
         }
       }

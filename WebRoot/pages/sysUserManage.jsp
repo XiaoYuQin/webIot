@@ -9,52 +9,36 @@
 <head> 
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>设备列表</title> 
+    <title>供应商列表</title> 
 
 <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
 <link rel="stylesheet" href="css/providers.css">
-<!-- <link href="css/basic_info.css" rel="stylesheet"> -->
-<style type="text/css">
-  /*  .container.left-tree{width:20%;height: 750px}
-    .container.content{width:80%;height: 750px}*/
-    .container{position:relative;padding-left:168px}
-    .container .left-tree{position:absolute;left:0;top:0;bottom:0;padding:0px;width:20%;border:0px solid #bfbfbf}
-    .container .content{width: 87%;padding-left:180px;min-height:740px}
-/*    .container .content .basic-info{padding:10px}
-    .container .content .tabs-header{background-color:#fff;border-width:0}
-    .container .content .tabs li{border-top:1px solid #bfbfbf;border-radius:3px 3px 0 0}
-    .container .content .tabs li.tabs-selected{border-top:2px solid #1da02b}
-    .container .content .tabs li.tabs-selected a.tabs-inner{color:#000;background-color:#fff}
-    .container .content .tabs li a.tabs-inner{color:#000;background-color:#e3e3e3}
-    .container .content .tabs li a.tabs-inner .tabs-title{font-size:14px}
-    .container .content .column{position:relative;height:23px;border-bottom:1px solid #d4d4d4;margin-bottom:10px}
-    .container .content .column span.current{position:relative;top:0px;display:inline-block;color:#1da02b;font-size:12px;font-weight:bold;height:22px;line-height:22px;border-bottom:2px solid #ff9d02}
-    .container .content table.yes-not.kv-table td.kv-label{width:130px}
-    .container .content table.kv-table{margin-bottom:20px}
-    .container .content table.kv-table td.kv-label{height:26px;font-size:12px}
-    .container .content table.kv-table td.kv-content{height:26px;font-size:12px}
-    .container .content table.kv-table td.kv-content a{color:#1da02b;text-decoration:none}
-    .container .content table.kv-table td.kv-content a:hover{text-decoration:underline}
-*/
-</style>
-
-<script type="text/javascript" src="../custom/jquery.min.js"></script>
-<script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SP7yzbUEjZyftws3bxA2eBuhlT03b0cn"></script>
-<style type="text/css">
-    #allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
-</style>
-
 </head> 
 <body>
+	<div id="dlg" class="easyui-dialog" title="新建申请" data-options="closed:true" style="width:700px;height:490px;padding:10px;">
+		<div class="conditions">
+            <span class="con-span">用户名</span><input class="easyui-textbox" type="text" name="code" style="width:80px;height:35px;line-height:35px;"></input>           
+			<!-- <span class="con-span">审批人: </span><select class="easyui-combobox" name="language" style="height:35px;width:80px;"><option>领导1</option><option>领导2</option></select>            
+			<span class="con-span">选择文件: </span><input class="easyui-filebox" name="file1" buttonText="选择文件" data-options="prompt:'选择文件'" style="width:166px;height:35px;">
+			<span class="con-span">日期: </span><input class="easyui-textbox" type="text" name="code" style="width:120px;height:35px;line-height:35px;" prompt="2016/11/26 10:13"></input>            -->
+        </div>        
+        <div class="conditions" style="margin-top: 30px">
+        	<div class="con-span">审批描述: </div>
+        	<div class="con-span" style="margin-top: 10px"></div>
+        	<div id="editor-state" class="editor-state"></div>	        		
+        </div>   
+        <div class="conditions" style="margin-top: 30px">
+	        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">确定</a>
+	        <a href="#" class="easyui-linkbutton" iconCls="icon-reload">取消</a>       		
+        </div>  					
+	</div>
+
     <div class="container">
-        <div class="left-tree">
-             <table id="dg" style="height:740px" title="设备列表" data-options="
-                rownumbers:false,
-                singleSelect:true,
+       <table id="dg" style="width:100%;height:554px" title="全体供应商列表" data-options="
+                rownumbers:true,
+                singleSelect:false,
                 autoRowHeight:false,
                 pagination:true,
                 fitColumns:true,
@@ -63,26 +47,31 @@
                 selectOnCheck:false,
                 collapsible:true,
                 toolbar:'#tb',
-                pageSize:20">
-                <thead>
-                    <tr>
-                        <th field="code" width="110">设备编码</th>
-                    </tr>
-                </thead>
-            </table>
-            <div id="tb" style="padding:0 0px;">
-                设备编码查询: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-                <!-- 供应商名称: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input> -->
-                <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true" style="width: 20%">查询</a>
-                <!-- <a href="#" class="easyui-linkbutton" iconCls="icon-reload" style="width: 50%">重置</a> -->
-            </div>
-        </div>
-        <div class="content">
-            <div id="allmap" style="height:740px">
-        </div>
+                pageSize:10">
+            <thead>
+                <tr>
+                    <th field="userName" width="110">账户名</th>
+                    <th field="trueName" width="110">实际姓名</th>
+                    <th field="section" width="110">所在部门</th>
+					<th field="position" width="110">职位</th>                    
+                    <th field="mail" width="226">邮箱</th>
+                    <!-- <th field="secrety" width="112">密码</th> -->
+                    <th field="sigupDate" width="170">注册时间</th>
+                    <th field="status" width="130">状态</th>
+                    <!-- <th field="deal" width="136">操作</th> -->
+                </tr>
+            </thead>
+        </table>
+      <div id="tb" style="padding:0 30px;">
+        实际姓名: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+        所在部门: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+      </div>
     </div>
-
-
+    <script type="text/javascript" src="../custom/jquery.min.js"></script>
+    <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 
 
     
@@ -191,33 +180,64 @@
             })
         })(jQuery);
 
-        function getData(){
-            var rows = [];
-            for(var i=1; i<=800; i++){
-                rows.push({
-                    code: '10695'//,
-                    // name: '南京天泽星网股份有限公司',
-                    // level: '正式',
-                    // provide: '光纤通信设备配件',
-                    // full: '√',
-                    // issubmit: '√',
-                    // status:'已审核',
-                    // note: '-'
-                });
-            }
-            return rows;
-        }
-        
+
+		function getData(){
+		    var rows = [];
+			rows.push({
+		        userName: 'xiaming',
+		        trueName: '夏明',
+		        section: '售后部',
+		        position: '技术员',
+		        mail: 'xiaming@xxx.com',
+		        sigupDate: '2013-09-09 15:05',
+		        status: '正常'
+		    });
+			rows.push({
+		        userName: 'zhangmo',
+		        trueName: '张默',
+		        section: '售后部',
+		        position: '技术员',
+		        mail: 'zhangmo@xxx.com',
+		        sigupDate: '2013-09-09 15:05',
+		        status: '正常'
+		    });
+			rows.push({
+		        userName: 'lili',
+		        trueName: '李丽',
+		        section: '研发部',
+		        position: '硬件工程师',
+		        mail: 'lili@xxx.com',
+		        sigupDate: '2013-09-09 15:05',
+		        status: '正常'
+		    });
+			rows.push({
+		        userName: 'lidesheng',
+		        trueName: '李德生',
+		        section: '研发部',
+		        position: '软件工程师',
+		        mail: 'lidesheng@xxx.com',
+		        sigupDate: '2013-09-09 15:05',
+		        status: '正常'
+		    });                           
+		    return rows;
+		}
+	    $('#dg').datagrid({  
+		    // url: 'Handler.ashx',  
+		    method:'get',  
+		    striped: true,  
+		    title: "文件审批",  
+		    onClickRow: function (rowIndex)  
+		    {  
+		        var row = $('#dg').datagrid('getSelected');  
+		        if (row) {  
+		            // alert('code:' + row.code + "\n LoginID:" + row.name);  
+		            $('#dlg').dialog('open');
+		        }  
+		    }  
+		})
         $(function(){
             $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
         });        
     </script>
 </body> 
 </html>
-<script type="text/javascript">               
-    // 百度地图API功能
-    var map = new BMap.Map("allmap");
-    var point = new BMap.Point(113.820265,36.0604873333333);
-    map.centerAndZoom(point, 12);
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-</script>

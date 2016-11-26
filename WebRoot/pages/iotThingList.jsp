@@ -14,47 +14,13 @@
 <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
-<link rel="stylesheet" href="css/providers.css">
-<!-- <link href="css/basic_info.css" rel="stylesheet"> -->
-<style type="text/css">
-  /*  .container.left-tree{width:20%;height: 750px}
-    .container.content{width:80%;height: 750px}*/
-    .container{position:relative;padding-left:168px}
-    .container .left-tree{position:absolute;left:0;top:0;bottom:0;padding:0px;width:20%;border:0px solid #bfbfbf}
-    .container .content{width: 87%;padding-left:180px;min-height:740px}
-/*    .container .content .basic-info{padding:10px}
-    .container .content .tabs-header{background-color:#fff;border-width:0}
-    .container .content .tabs li{border-top:1px solid #bfbfbf;border-radius:3px 3px 0 0}
-    .container .content .tabs li.tabs-selected{border-top:2px solid #1da02b}
-    .container .content .tabs li.tabs-selected a.tabs-inner{color:#000;background-color:#fff}
-    .container .content .tabs li a.tabs-inner{color:#000;background-color:#e3e3e3}
-    .container .content .tabs li a.tabs-inner .tabs-title{font-size:14px}
-    .container .content .column{position:relative;height:23px;border-bottom:1px solid #d4d4d4;margin-bottom:10px}
-    .container .content .column span.current{position:relative;top:0px;display:inline-block;color:#1da02b;font-size:12px;font-weight:bold;height:22px;line-height:22px;border-bottom:2px solid #ff9d02}
-    .container .content table.yes-not.kv-table td.kv-label{width:130px}
-    .container .content table.kv-table{margin-bottom:20px}
-    .container .content table.kv-table td.kv-label{height:26px;font-size:12px}
-    .container .content table.kv-table td.kv-content{height:26px;font-size:12px}
-    .container .content table.kv-table td.kv-content a{color:#1da02b;text-decoration:none}
-    .container .content table.kv-table td.kv-content a:hover{text-decoration:underline}
-*/
-</style>
-
-<script type="text/javascript" src="../custom/jquery.min.js"></script>
-<script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SP7yzbUEjZyftws3bxA2eBuhlT03b0cn"></script>
-<style type="text/css">
-    #allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
-</style>
-
+<link rel="stylesheet" href="css/providers1.css">
 </head> 
 <body>
     <div class="container">
-        <div class="left-tree">
-             <table id="dg" style="height:740px" title="设备列表" data-options="
-                rownumbers:false,
-                singleSelect:true,
+       <table id="dg" style="width:100%;height:529px" title="全体设备列表" data-options="
+                rownumbers:true,
+                singleSelect:false,
                 autoRowHeight:false,
                 pagination:true,
                 fitColumns:true,
@@ -63,26 +29,52 @@
                 selectOnCheck:false,
                 collapsible:true,
                 toolbar:'#tb',
-                pageSize:20">
-                <thead>
-                    <tr>
-                        <th field="code" width="110">设备编码</th>
-                    </tr>
-                </thead>
-            </table>
-            <div id="tb" style="padding:0 0px;">
-                设备编码查询: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-                <!-- 供应商名称: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input> -->
-                <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true" style="width: 20%">查询</a>
-                <!-- <a href="#" class="easyui-linkbutton" iconCls="icon-reload" style="width: 50%">重置</a> -->
-            </div>
+                pageSize:10">
+            <thead>
+                <tr href="#">
+                    <th field="code" width="110">设备编码</th>
+                    <th field="name" width="226">设备名称</th>
+                    <th field="level" width="112">设备类型</th>
+                    <th field="provide" width="170">所属部门</th>
+                    <th field="full" width="130">所在地区</th>
+                    <th field="issubmit" width="136">使用状况</th>
+                    <th field="status" width="120">责任人</th>
+                    <th field="note" width="105">备注</th>
+                </tr>
+            </thead>
+        </table>
+      <div id="tb" style="padding:0 30px;">
+        <div class="conditions">
+            <span class="con-span">设备编码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">设备名称: </span><input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+            <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
         </div>
-        <div class="content">
-            <div id="allmap" style="height:740px">
+        <div class="conditions hide">
+            <span class="con-span">责任人: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">所在地区: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
+            <span class="con-span">使用状况: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>正常</option><option>维护</option><option>维修</option></select>
+            <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
         </div>
+<!--         <div class="conditions hide">
+            <span class="con-span">公司代码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">公司名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>公司名称</option></select>
+            <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
+            <span class="con-span">合同状态: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+        </div> -->
+        <div class="opt-buttons">
+            <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
+            <!-- <a href="#" class="easyui-linkbutton">发布</a>
+            <a href="#" class="easyui-linkbutton">取消发布</a>
+            <a href="#" class="easyui-linkbutton">标记为执行完毕</a> -->
+            <a href="#" class="easyui-linkbutton">导出</a>
+        </div>
+      </div>
     </div>
-
-
+    <script type="text/javascript" src="../custom/jquery.min.js"></script>
+    <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 
 
     
@@ -195,14 +187,14 @@
             var rows = [];
             for(var i=1; i<=800; i++){
                 rows.push({
-                    code: '10695'//,
-                    // name: '南京天泽星网股份有限公司',
-                    // level: '正式',
-                    // provide: '光纤通信设备配件',
-                    // full: '√',
-                    // issubmit: '√',
-                    // status:'已审核',
-                    // note: '-'
+                    code: '10695',
+                    name: '充电试验台',
+                    level: '检测设备',
+                    provide: '研发部',
+                    full: '北京',
+                    issubmit: '正常使用',
+                    status:'张一',
+                    note: '-'
                 });
             }
             return rows;
@@ -210,14 +202,12 @@
         
         $(function(){
             $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
-        });        
+        });    
+
+
+        $(".more").click(function(){
+            $(this).closest(".conditions").siblings().toggleClass("hide");
+        });
     </script>
 </body> 
 </html>
-<script type="text/javascript">               
-    // 百度地图API功能
-    var map = new BMap.Map("allmap");
-    var point = new BMap.Point(113.820265,36.0604873333333);
-    map.centerAndZoom(point, 12);
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-</script>
