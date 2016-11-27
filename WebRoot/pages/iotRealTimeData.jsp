@@ -22,13 +22,18 @@
 <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 
+<style type="text/css">
+    html, body{ margin:0; height:100%;width: 100%}
+</style>
+
+
 </head> 
 <body>
 	<div id="dlg" class="easyui-dialog" title="设备数据" data-options="" closed="true" style="width:850px;height:380px;padding:10px;">		
 		<div id="echarttest" style="width:800px;height:300px"></div>
 	</div>
-    <div class="container">
-       <table id="dg" style="width:100%;height:529px" title="全体设备列表" data-options="
+    <div class="container" style="width: 100%;height: 100%">
+       <table id="dg" style="width:100%;height:100%" title="全体设备列表" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,

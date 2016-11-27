@@ -23,7 +23,7 @@
             <div class="pf-nav-wrap">
               <div class="pf-nav-ww">
                 <ul class="pf-nav">
-                  <li class="pf-nav-item manger current" data-menu="pur-source">
+                  <li class="pf-nav-item manger current" data-menu="pur-source" onclick="addTabs('工作台','workbench.jsp')">
                       <a href="javascript:;">
                           <span class="iconfont">&#xe64b;</span>
                           <span class="pf-nav-title">工作台</span>
@@ -102,10 +102,10 @@
                             <i class="iconfont">&#xe642;</i>
                         </a>
                         <ul class="sider-nav-s">
-                           <li><a href="#">设备地图</a></li>
-                           <li><a href="#">设备列表</a></li>
-                           <li><a href="#">实时数据</a></li>
-                           <li><a href="#">历史数据</a></li>
+                           <li><a href="#" onclick="addTabs('设备地图','iotMap.jsp')">设备地图</a></li>
+                           <li><a href="#" onclick="addTabs('设备列表','iotThingList.jsp')">设备列表</a></li>
+                           <li><a href="#" onclick="addTabs('实时数据','iotRealTimeData.jsp')">实时数据</a></li>
+                           <li><a href="#" onclick="addTabs('历史数据','iotHistoryData.jsp')">历史数据</a></li>
                         </ul>
                      </li>
                      <li>
@@ -115,7 +115,7 @@
                             <i class="iconfont">&#xe642;</i>
                         </a>
                         <ul class="sider-nav-s">
-                           <li ><a href="#">文件审批</a></li>
+                           <li ><a href="#" onclick="addTabs('文件审批','oaFileApproval.jsp')">文件审批</a></li>
                         </ul>
                      </li>
                      <li>
@@ -125,8 +125,8 @@
                             <i class="iconfont">&#xe642;</i>
                         </a>
                         <ul class="sider-nav-s">
-                           <li ><a href="#">用户管理</a></li>
-                           <li><a href="#">职位管理</a></li>
+                           <li ><a href="#" onclick="addTabs('用户管理','sysUserManage.jsp')">用户管理</a></li>
+                           <li><a href="#" onclick="addTabs('职位管理','iotHistoryData.jsp')">职位管理</a></li>
                         </ul>
                      </li>
                      <li>
@@ -143,11 +143,11 @@
             </div>
 
             <div id="pf-page">
-                <div id="tt" class="easyui-tabs1" style="width:100%;height:100%;">       
-                  <div title="首页" style="padding:10px 5px 5px 10px;">
+                <div id="tt" class="easyui-tabs1"  fit="true" border="false" plain="true" style="width:100%;height:100%;">       
+                  <div title="工作台" style="padding:10px 5px 5px 10px;">
                     <iframe class="page-iframe" src="workbench.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
                   </div>
-                  <div title="设备地图" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                 <!--  <div title="设备地图" data-options="closable:false" style="padding:10px 5px 5px 10px;">
                     <iframe class="page-iframe" src="iotMap.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
                   </div>       
                   <div title="设备列表" data-options="closable:false" style="padding:10px 5px 5px 10px;">
@@ -161,7 +161,10 @@
                   </div>    
                   <div title="文件审批" data-options="closable:false" style="padding:10px 5px 5px 10px;">
                     <iframe class="page-iframe" src="oaFileApproval.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>                      
+                  </div>   
+                  <div title="用户管理" data-options="closable:false" style="padding:10px 5px 5px 10px;">
+                    <iframe class="page-iframe" src="sysUserManage.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
+                  </div>    -->                                 
                 </div>
             </div>
         </div>
@@ -294,4 +297,37 @@
           });
         }
       }
-    </script>
+
+
+    function addTabs(title,href)
+    {
+      // $('#tt').tabs('add',{
+      //     title:'New Tab',
+      //     // content:'Tab Body',
+      //     href:"iotThingList.jsp",
+      //     closable:true,
+      //     tools:[{
+      //         iconCls:'icon-mini-refresh',
+      //         handler:function(){
+      //             alert('refresh');
+      //         }
+      //     }]
+      // });     
+
+      
+        var jq = top.jQuery;    
+    
+        if (jq("#tt").tabs('exists', title)){    
+            jq("#tt").tabs('select', title);    
+        } else {  
+              var content = '<iframe scrolling="auto" frameborder="0"  src="'+href+'" style="width:100%;height:100%;"></iframe>';     
+               jq("#tt").tabs('add',{    
+                                  title:title,    
+                                  content:content,    
+                                  closable:true    
+                                });    
+         }    
+
+    }
+</script>
+

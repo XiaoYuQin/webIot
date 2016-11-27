@@ -17,42 +17,23 @@
 <link rel="stylesheet" href="css/providers.css">
 <!-- <link href="css/basic_info.css" rel="stylesheet"> -->
 <style type="text/css">
-  /*  .container.left-tree{width:20%;height: 750px}
-    .container.content{width:80%;height: 750px}*/
-    .container{position:relative;padding-left:168px}
-    .container .left-tree{position:absolute;left:0;top:0;bottom:0;padding:0px;width:20%;border:0px solid #bfbfbf}
-    .container .content{width: 87%;padding-left:180px;min-height:740px}
-/*    .container .content .basic-info{padding:10px}
-    .container .content .tabs-header{background-color:#fff;border-width:0}
-    .container .content .tabs li{border-top:1px solid #bfbfbf;border-radius:3px 3px 0 0}
-    .container .content .tabs li.tabs-selected{border-top:2px solid #1da02b}
-    .container .content .tabs li.tabs-selected a.tabs-inner{color:#000;background-color:#fff}
-    .container .content .tabs li a.tabs-inner{color:#000;background-color:#e3e3e3}
-    .container .content .tabs li a.tabs-inner .tabs-title{font-size:14px}
-    .container .content .column{position:relative;height:23px;border-bottom:1px solid #d4d4d4;margin-bottom:10px}
-    .container .content .column span.current{position:relative;top:0px;display:inline-block;color:#1da02b;font-size:12px;font-weight:bold;height:22px;line-height:22px;border-bottom:2px solid #ff9d02}
-    .container .content table.yes-not.kv-table td.kv-label{width:130px}
-    .container .content table.kv-table{margin-bottom:20px}
-    .container .content table.kv-table td.kv-label{height:26px;font-size:12px}
-    .container .content table.kv-table td.kv-content{height:26px;font-size:12px}
-    .container .content table.kv-table td.kv-content a{color:#1da02b;text-decoration:none}
-    .container .content table.kv-table td.kv-content a:hover{text-decoration:underline}
-*/
+    html, body{ margin:0; height:100%; }
 </style>
+
 
 <script type="text/javascript" src="../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SP7yzbUEjZyftws3bxA2eBuhlT03b0cn"></script>
-<style type="text/css">
+<!-- <style type="text/css">
     #allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
-</style>
+</style> -->
 
 </head> 
 <body>
-    <div class="container">
-        <div class="left-tree">
-             <table id="dg" style="height:740px" title="设备列表" data-options="
+    <div class="container" style="width: 100%;height: 100%">
+        <div class="left-tree" style="height: 100%;width: 20%;position:relative" >
+             <table id="dg" style="height:100%;width: 100%" title="设备列表" data-options="
                 rownumbers:false,
                 singleSelect:true,
                 autoRowHeight:false,
@@ -71,24 +52,17 @@
                 </thead>
             </table>
             <div id="tb" style="padding:0 0px;">
-                设备编码查询: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+                设备编码查询: <input class="easyui-textbox" type="text" name="code" style="width:130px;height:35px;line-height:35px;"></input>
                 <!-- 供应商名称: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input> -->
-                <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true" style="width: 20%">查询</a>
+                <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true" style="width: 20%"></a>
                 <!-- <a href="#" class="easyui-linkbutton" iconCls="icon-reload" style="width: 50%">重置</a> -->
             </div>
         </div>
-        <div class="content">
-            <div id="allmap" style="height:740px">
+        <div class="content" style="position:absolute;left:20%;top: 0;width: 80%;height: 100%">
+            <div id="allmap" style="height:100%;width: 100%">
         </div>
     </div>
 
-
-
-
-    
-  
-
-    
     <script type="text/javascript">
             (function($){
             function pagerFilter(data){

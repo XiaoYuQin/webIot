@@ -15,10 +15,15 @@
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
 <link rel="stylesheet" href="css/providers1.css">
+
+<style type="text/css">
+    html, body{ margin:0; height:100%; }
+</style>
+
 </head> 
 <body>
-    <div class="container">
-       <table id="dg" style="width:100%;height:529px" title="全体设备列表" data-options="
+    <div class="container" style="width: 100%;height: 100%">
+       <table id="dg" style="width:100%;height:100%" title="全体设备列表" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,

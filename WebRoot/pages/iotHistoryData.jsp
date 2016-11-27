@@ -16,6 +16,9 @@
 <link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
 <link rel="stylesheet" href="css/providers1.css">
 
+<style type="text/css">
+    html, body{ margin:0; height:100%;width: 100%}
+</style>
 
 <script type="text/javascript" src="../custom/jquery.min.js"></script>
 <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
@@ -27,8 +30,8 @@
 	<div id="dlg" class="easyui-dialog" title="设备数据" data-options="" closed="true" style="width:850px;height:380px;padding:10px;">		
 		<div id="echarttest" style="width:800px;height:300px"></div>
 	</div>
-    <div class="container">
-       <table id="dg" style="width:100%;height:529px" title="全体设备列表" data-options="
+    <div class="container" style="height: 100%;width: 100%">
+       <table id="dg" style="width:100%;height:100%" title="全体设备列表" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,

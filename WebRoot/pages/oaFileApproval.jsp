@@ -22,12 +22,12 @@
     <script type="text/javascript" charset="utf-8" src="js/umeditor/umeditor.min.js"></script>
     <script type="text/javascript" src="js/umeditor/lang/zh-cn/zh-cn.js"></script>
 
+	<style type="text/css">
+	    html, body{ margin:0; height:100%; }
+	</style>
 </head> 
 <body>
-	<div class="opt-buttons">
-		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-list'" onclick="$('#newApprovalDialog').dialog('open')">新建申请</a>
-		<a href="#" class="easyui-linkbutton" data-options="" onclick="">刷新</a>
-	</div>
+
 	<div id="newApprovalDialog" class="easyui-dialog" title="新建申请" data-options="closed:true" style="width:700px;height:490px;padding:10px;">
 		<div class="conditions">
             <span class="con-span">申请人: </span><input class="easyui-textbox" type="text" name="code" style="width:80px;height:35px;line-height:35px;"></input>           
@@ -150,8 +150,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="easyui-panel">
-		<table id="dg" style="width:100%;height:554px" title="全体供应商列表" data-options="
+	<!-- <div id="tt">
+		<a href="javascript:void(0)" class="icon-add" ></a>
+	</div>		 -->
+	<div class="easyui-panel" style="width: 100%;height:100%">
+		<table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
 		        rownumbers:true,
 		        singleSelect:false,
 		        autoRowHeight:false,
@@ -182,8 +185,14 @@
 			申请人: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
 			<a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
 			<a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+
+			<div class="opt-buttons">
+				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-list'" onclick="$('#newApprovalDialog').dialog('open')">新建申请</a>
+				<a href="#" class="easyui-linkbutton" data-options="" onclick="">刷新</a>
+			</div>
 		</div>
 	</div>
+
 </body> 
 </html>
     

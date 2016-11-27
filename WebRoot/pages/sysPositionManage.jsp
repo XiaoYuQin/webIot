@@ -9,7 +9,7 @@
 <head> 
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>用户列表</title> 
+    <title>职位列表</title> 
 
 <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
@@ -52,7 +52,7 @@
 	</div>
 
     <div class="container" style="width: 100%;height:100%">
-       <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
+   <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,
