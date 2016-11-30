@@ -35,7 +35,7 @@
                           <span class="pf-nav-title">系统管理</span>
                       </a>
                   </li>
-                  <li class="pf-nav-item manger" data-menu="contract-mange">
+                  <li class="pf-nav-item manger" data-menu="contract-mange" onclick="addTabs('文件管理','oaFileManage.jsp')">
                       <a href="javascript:;">
                           <span class="iconfont">&#xe60c;</span>
                           <span class="pf-nav-title">文件管理</span>
