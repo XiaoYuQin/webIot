@@ -368,7 +368,7 @@
 	    // url: 'Handler.ashx',  
 	    method:'get',  
 	    striped: true,  
-	    title: "文件审批",  
+	    title: "",  
 	    onClickRow: function (rowIndex)  
 	    {  
 	        var row = $('#dg').datagrid('getSelected');  

@@ -22,73 +22,101 @@
 
 <style type="text/css">
     html, body{ margin:0; height:100%; }
+    .con-span{font-size: 15px}
 </style>
 </head> 
 <body>
     <script type="text/javascript">
         $('.panel-header').css({ "background-color": "#FFFFFF" }).css({"filter":"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF,endColorstr=#FFFFFF,GradientType=0)"});
     </script>
-	<div id="dlg" class="easyui-dialog" title="用户设置" data-options="closed:true" style="width:480px;height:350px;padding:10px;">
+	<div id="dlgCreat" class="easyui-dialog" title="用户设置" data-options="closed:true,buttons:'#dlg-buttons'" style="width:380px;height:250px;padding:10px;">
         <div class="conditions">
-            <div style="font-size: 30px">用户名：xiaming</div>                    
+			<a class="con-span">姓名：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
+            <a class="con-span">电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  			
+        </div>  		                 
+        <div class="conditions" style="margin-top: 10px">
+            <a class="con-span">部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
+            <a class="con-span">职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
+        </div>                					
+        <div class="conditions" style="margin-top: 10px">
+            <a class="con-span">状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
+        </div>          
+	</div>
+	<div id="dlg-buttons">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td>
+					<!-- <img src="email.gif"/> -->
+				</td>
+				<td style="text-align:right">
+					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">保存</a>
+					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="dlgModify" class="easyui-dialog" title="用户设置" data-options="closed:true" style="width:450px;height:350px;padding:10px;">
+        <div class="conditions">
+            <a class="con-span">用户名：</a><a id="dlgModifyName" style="font-size: 15px">夏明</a>                    
         </div>  		
         <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">修改密码：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
-            <a class="con-span">确认密码：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
-            <a href="#" class="easyui-linkbutton">修改密码</a>                     
-        </div>     
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">修改姓名：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
-            <a href="#" class="easyui-linkbutton">修改姓名</a>                     
-        </div>
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">修改电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
+            <a class="con-span">电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
             <a href="#" class="easyui-linkbutton">修改电话</a>                     
         </div>                     
         <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">修改部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
-            <a class="con-span">修改职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
+            <a class="con-span">部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
+            <a class="con-span">职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
             <a href="#" class="easyui-linkbutton">修改职位</a>                     
-        </div>                					
+        </div>      
+		<div class="conditions" style="margin-top: 10px">
+            <a class="con-span">邮箱：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
+            <a href="#" class="easyui-linkbutton">修改邮箱</a>                     
+        </div>  
         <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">修改状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
-            <a href="#" class="easyui-linkbutton">修改职位</a>                     
+            <a class="con-span">状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
+            <a href="#" class="easyui-linkbutton">修改状态</a>                     
         </div>   
+        <div class="conditions" style="margin-top: 30px;width: 100%">
+          <a id="btnModifySave" href="#" class="easyui-linkbutton" style="margin-left: 100px">保存联系人</a>
+          <a id="btnModifyDelete" href="#" class="easyui-linkbutton">删除联系人</a>             
+        </div>          
 	</div>
+
 
     <div class="container" style="width: 100%;height:100%">
        <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
                 rownumbers:true,
-                singleSelect:false,
+                singleSelect:true,
                 autoRowHeight:false,
                 pagination:true,
                 fitColumns:true,
                 striped:true,
-                checkOnSelect:false,
-                selectOnCheck:false,
+                checkOnSelect:true,
+                selectOnCheck:true,
                 collapsible:true,
                 toolbar:'#tb',
                 pageSize:10">
             <thead>
                 <tr>
-                    <th field="userName" width="100">用户名</th>
-                    <th field="trueName" width="100">实际姓名</th>
-                    <th field="section" width="100">所在部门</th>
-					<th field="position" width="100">职位</th>                    
-                    <th field="mail" width="100">邮箱</th>
-                    <th field="call" width="100">电话</th>
-                    <th field="sigupDate" width="100">注册时间</th>
-                    <th field="status" width="100">状态</th>
-                    <!-- <th field="deal" width="136">操作</th> -->
+                	<th field="ck" data-options="checkbox:true"></th>                
+                    <th field="name" width="10%">姓名</th>
+                    <th field="section" width="10%">所在部门</th>
+					<th field="position" width="10%">职位</th>                    
+                    <th field="mail" width="35%">邮箱</th>
+                    <th field="call" width="34%">电话</th>
                 </tr>
             </thead>
         </table>
-      <div id="tb" style="padding:0 30px;">
-        实际姓名: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-        所在部门: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
-      </div>
+		<div id="tb" style="padding:0 30px;">
+			实际姓名: <input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>
+			所在部门: <input class="easyui-textbox" type="text" name="name" style="width:100px;height:35px;line-height:35px;"></input>
+			<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a> -->
+			<a id="search" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" >查询</a>    			
+			<a id="clear" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-clear',plain:true" >重置</a>    						
+			<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a> -->
+			<a id="creat" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" >新增</a>                                
+			<a id="modify" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >修改</a>                                			
+		</div>
     </div>
 
     <script type="text/javascript">
@@ -196,45 +224,34 @@
 
 		function getData(){
 		    var rows = [];
+
 			rows.push({
-		        userName: 'xiaming',
-		        trueName: '夏明',
+		        name: '夏明',
 		        section: '售后部',
 		        position: '技术员',
 		        mail: 'xiaming@xxx.com',
-                call:'13889888888',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+                call:'13889888888;&#12288;15221112222;&#12288;010-25121254'
 		    });
 			rows.push({
-		        userName: 'zhangmo',
-		        trueName: '张默',
+				name: '张默',
 		        section: '售后部',
 		        position: '技术员',
 		        mail: 'zhangmo@xxx.com',
-                call:'13889777777',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+                call:'13889888888'		        
 		    });
 			rows.push({
-		        userName: 'lili',
-		        trueName: '李丽',
-		        section: '研发部',
-		        position: '硬件工程师',
+		        name: '李丽',
+		        section: '售后部',
+		        position: '技术员',
 		        mail: 'lili@xxx.com',
-                call:'13889666666',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+                call:'13889888888'
 		    });
 			rows.push({
-		        userName: 'lidesheng',
-		        trueName: '李德生',
-		        section: '研发部',
-		        position: '软件工程师',
+		        name: '李德生',
+		        section: '售后部',
+		        position: '技术员',
 		        mail: 'lidesheng@xxx.com',
-                call:'13889555555',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+                call:'13889888888'
 		    });                           
 		    return rows;
 		}
@@ -242,19 +259,68 @@
 		    // url: 'Handler.ashx',  
 		    method:'get',  
 		    striped: true,  
-		    title: "文件审批",  
-		    onClickRow: function (rowIndex)  
-		    {  
-		        var row = $('#dg').datagrid('getSelected');  
-		        if (row) {  
-		            // alert('code:' + row.code + "\n LoginID:" + row.name);  
-		            $('#dlg').dialog('open');
-		        }  
-		    }  
+		    title: ""
 		})
         $(function(){
             $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
-        });        
+        });
+
+
+
+        $('#modify').click(function(){
+        	console.info("modify click");
+        	var checkedItems = $('#dg').datagrid('getChecked');
+        	var name;
+        	$.each(checkedItems,function(index,item)
+        	{
+        		console.info(item.name);
+        		name=item.name;
+        	});
+			// console.info("checkedItems len = "+checkedItems.length);
+        	if(checkedItems.length > 0)
+        	{
+        		$('#dlgModifyName').text(name);
+				$('#dlgModify').dialog('open');
+        	}
+        	else
+        	{
+				$.messager.alert('提醒',"<font size='4px'>你必须选择一个项目!</font>",'info');
+        	}
+
+        	
+        });     
+        $('#creat').click(function(){
+        	$('#dlgCreat').dialog('open');
+        });            
+        $('#btnModifyDelete').click(function(){
+        	$.messager.alert('提醒',"<font size='4px'>你确定要删除该联系人?</font>",'warning');
+        });
+
+        $('#btnModifySave').click(function(){
+
+			$.messager.show({
+				title:'保存',
+				msg:'修改联系人保存成功',
+				timeout:3000,
+				showType:'slide'
+			});	
+
+			$('#dlgModify').dialog('close');
+        }); 
+		$('#btnCreatSave').click(function(){
+
+			$.messager.show({
+				title:'创建',
+				msg:'创建联系人成功',
+				timeout:3000,
+				showType:'slide'
+			});	
+
+			$('#dlgCreat').dialog('close');
+			$('#dg').datagrid('reload');
+        }); 
+
+
     </script>
 </body> 
 </html>

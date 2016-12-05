@@ -33,88 +33,90 @@
 </head> 
 <body>
     <div class="container" style="width: 100%;height: 100%">
-        <div class="left-tree" style="height: 100%;width: 15%;position:relative" >
-			<ul id="tt" class="easyui-tree" style="width: 100%;height: 100%">
-				<li>
-					<span>总库</span>
-					<ul>
-						<li data-options="state:'closed'">
-							<span >华东区</span>
-							<ul>
-								<li>
-									<span>山东</span>
-								</li>
-								<li>
-									<span>江苏</span>
-								</li>
-								<li>
-									<span>安徽</span>
-								</li>
-							</ul>
-						</li>
-						<li data-options="state:'closed'">
-							<span>华中区</span>
-							<ul>
-								<li>河南</li>
-								<li>湖北</li>
-								<li>湖南 </li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
-        </div>
-        <div class="content" style="position:absolute;left:15%;top: 0;width: 85%;height: 100%">
-			<div class="easyui-panel" title="" style="width: 100%;height: 100%">
-				<table id="dg" style="width:100%;height:100%" title="" data-options="
-				        rownumbers:true,
-				        singleSelect:false,
-				        autoRowHeight:false,
-				        pagination:true,
-				        fitColumns:true,
-				        striped:true,
-				        checkOnSelect:false,
-				        selectOnCheck:false,
-				        collapsible:true,
-				        toolbar:'#tb',
-				        pageSize:10">
-				    <thead>
-				        <tr href="#">
-				            <th field="code" width="5%">日期</th>
-				            <th field="name" width="5%">客户名称</th>
-				            <th field="level" width="5%">项目名称</th>
-				            <th field="provide" width="5%">报修人</th>
-				            <th field="full" width="10%">电话</th>
-				            <th field="issubmit" width="10%">产品编号</th>
-				            <th field="status" width="25%">故障描述</th>
-				            <th field="dealDate" width="5%">处理时间</th>
-				            <th field="dealPeople" width="5%">受理人</th>
-				            <th field="note" width="24%">备注</th>
-				        </tr>
-				    </thead>
-				</table>
-				<div id="tb" style="padding:0 30px;">
-					<div class="conditions">
-						<span class="con-span">填写时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">        
-					    <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>           
-					    <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
-					    <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
-					    <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
-					</div>
-					<div class="conditions hide">
-					    <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-					    <span class="con-span">项目名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
-					</div>
-					<div class="opt-buttons">
-					    <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
-					    <a href="#" class="easyui-linkbutton">导出</a>
-						<a href="#" class="easyui-linkbutton" onclick="printPreView()">打印预览</a>
-						<a href="#" class="easyui-linkbutton" onclick="printIt()">打印</a>
-						<a href="#" class="easyui-linkbutton" onclick="printSetup()">打印设置</a>
+        <div class="easyui-panel" style="width: 100%;height:100%">
+            <div class="left-tree" style="height: 100%;width: 15%;position:relative" >
+    			<ul id="tt" class="easyui-tree" style="width: 100%;height: 100%">
+    				<li>
+    					<span>总库</span>
+    					<ul>
+    						<li data-options="state:'closed'">
+    							<span >华东区</span>
+    							<ul>
+    								<li>
+    									<span>山东</span>
+    								</li>
+    								<li>
+    									<span>江苏</span>
+    								</li>
+    								<li>
+    									<span>安徽</span>
+    								</li>
+    							</ul>
+    						</li>
+    						<li data-options="state:'closed'">
+    							<span>华中区</span>
+    							<ul>
+    								<li>河南</li>
+    								<li>湖北</li>
+    								<li>湖南 </li>
+    							</ul>
+    						</li>
+    					</ul>
+    				</li>
+    			</ul>
+            </div>
+            <div class="content" style="position:absolute;left:15%;top: 0;width: 85%;height: 100%">
+    			<div class="easyui-panel" title="" style="width: 100%;height: 100%">
+    				<table id="dg" style="width:100%;height:100%" title="" data-options="
+    				        rownumbers:true,
+    				        singleSelect:false,
+    				        autoRowHeight:false,
+    				        pagination:true,
+    				        fitColumns:true,
+    				        striped:true,
+    				        checkOnSelect:false,
+    				        selectOnCheck:false,
+    				        collapsible:true,
+    				        toolbar:'#tb',
+    				        pageSize:10">
+    				    <thead>
+    				        <tr href="#">
+    				            <th field="code" width="5%">日期</th>
+    				            <th field="name" width="5%">客户名称</th>
+    				            <th field="level" width="5%">项目名称</th>
+    				            <th field="provide" width="5%">报修人</th>
+    				            <th field="full" width="10%">电话</th>
+    				            <th field="issubmit" width="10%">产品编号</th>
+    				            <th field="status" width="25%">故障描述</th>
+    				            <th field="dealDate" width="5%">处理时间</th>
+    				            <th field="dealPeople" width="5%">受理人</th>
+    				            <th field="note" width="24%">备注</th>
+    				        </tr>
+    				    </thead>
+    				</table>
+    				<div id="tb" style="padding:0 30px;">
+    					<div class="conditions">
+    						<span class="con-span">填写时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">        
+    					    <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>           
+    					    <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
+    					    <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+    					    <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
+    					</div>
+    					<div class="conditions hide">
+    					    <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+    					    <span class="con-span">项目名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
+    					</div>
+    					<div class="opt-buttons">
+    					    <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
+    					    <a href="#" class="easyui-linkbutton">导出</a>
+    						<a href="#" class="easyui-linkbutton" onclick="printPreView()">打印预览</a>
+    						<a href="#" class="easyui-linkbutton" onclick="printIt()">打印</a>
+    						<a href="#" class="easyui-linkbutton" onclick="printSetup()">打印设置</a>
 
-					</div>
-				</div>   				
-			</div><!-- easyui-panel -->			     	 
+    					</div>
+    				</div>   				
+    			</div><!-- easyui-panel -->			     	 
+            </div>
         </div>
     </div>
 

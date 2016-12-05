@@ -124,21 +124,21 @@
                         </ul>
                      </li>
                     <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;" onclick="addTabs('客户档案','oaFileApproval.jsp')">
                         <span class="iconfont sider-nav-icon">&#xe60e;</span>
                         <span class="sider-nav-title">客户档案</span>
                         <i class="iconfont">&#xe619;</i>
                       </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a href="javascript:;" onclick="addTabs('用户管理','oaFileApproval.jsp')">
                             <span class="iconfont sider-nav-icon">&#xe65f;</span>
                             <span class="sider-nav-title">用户管理</span>
                             <i class="iconfont">&#xe619;</i>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a href="javascript:;" onclick="addTabs('维修派工','oaFileApproval.jsp')">
                             <span class="iconfont sider-nav-icon">&#xe610;</span>
                             <span class="sider-nav-title">维修派工</span>
                             <i class="iconfont">&#xe619;</i>
@@ -152,8 +152,8 @@
                       </a>
                       <ul class="sider-nav-s">
                         <li ><a href="#" onclick="addTabs('通讯录','<%=basePath%>/pages/module/Office/contacts.jsp')">通讯录</a></li>
-                        <li ><a href="#" onclick="addTabs('文件审批','oaFileApproval.jsp')">文件审批</a></li>
-                        <li ><a href="#" onclick="addTabs('知识管理','oaFileApproval.jsp')">知识管理</a></li>
+                        <li ><a href="#" onclick="addTabs('文件审批','<%=basePath%>/pages/module/Office/fileApproval.jsp')">文件审批</a></li>
+                        <li ><a href="#" onclick="addTabs('知识管理','<%=basePath%>/pages/module/Office/knowledgeManage.jsp')">知识管理</a></li>
                         <li ><a href="#" onclick="addTabs('工作日报','oaFileApproval.jsp')">工作日报</a></li>
                         <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱</a></li>
                       </ul>
