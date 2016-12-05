@@ -11,10 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>工作台</title> 
 
-<link href="css/base.css" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 <link rel="stylesheet" href="css/workbench.css">
 <!-- <link rel="stylesheet" href="css/basic_info.css" > -->
+
 </head> 
 <body>
     <div class="container">
@@ -149,7 +150,7 @@
                                 <a href="javascript:;" class="ellipsis">用户管理信息文件同步</a>
                             </li>
                         </ul>
-                    </div>
+                    </div>     
                 </div>
                 <div class="center-part">
                     <div class="center-items todo">
@@ -160,7 +161,7 @@
                             <li>
                                 <div class="work-inner">
                                     <div class="work-item green">
-                                        <i class="iconfont">&#xe61f;</i>
+                                        <i class="iconfont">&#xe63c;</i>
                                         <span class="num">2&nbsp;<span class="unit">个</span></span>
                                         <label>待审批文件</label>
                                     </div>
@@ -169,7 +170,7 @@
                             <li>
                                 <div class="work-inner">
                                     <div class="work-item red">
-                                         <i class="iconfont">&#xe622;</i>
+                                         <i class="iconfont">&#xe9b9;</i>
                                         <span class="num">6&nbsp;<span class="unit">条</span></span>
                                         <label>预警信息未读</label>
                                     </div>
@@ -178,7 +179,7 @@
                             <li>
                                 <div class="work-inner">
                                     <div class="work-item yellow">
-                                         <i class="iconfont">&#xe61d;</i>
+                                         <i class="iconfont">&#xe60f;</i>
                                         <span class="num">9&nbsp;<span class="unit">封</span></span>
                                         <label>邮件未读</label>
                                     </div>
@@ -187,7 +188,7 @@
                             <li>
                                 <div class="work-inner">
                                     <div class="work-item blue">
-                                         <i class="iconfont">&#xe60d;</i>
+                                         <i class="iconfont">&#xe64e;</i>
                                         <span title="2000,00万" class="num">3&nbsp;<span class="unit">个</span></span>
                                         <label>新入职员工</label>
                                     </div>
@@ -196,7 +197,7 @@
                             <li>
                                 <div class="work-inner">
                                     <div class="work-item purple">
-                                         <i class="iconfont">&#xe61e;</i>
+                                         <i class="iconfont">&#xe76e;</i>
                                         <span title="2000,00万" class="num">2&nbsp;<span class="unit">个</span></span>
                                         <label>待进行试验</label>
                                     </div>
@@ -205,7 +206,7 @@
                             <li>
                                 <div class="work-inner">
                                     <div class="work-item gray">
-                                         <i class="iconfont">&#xe67d;</i>
+                                         <i class="iconfont">&#xe618;</i>
                                         <span class="num">10&nbsp;<span class="unit">个</span></span>
                                         <label>新接入设备</label>
                                     </div>

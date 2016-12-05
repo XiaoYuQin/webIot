@@ -2,7 +2,7 @@
 <%@ page language="java" import="java.util.*"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 %>
 <!DOCTYPE html> 
 <html lang="en"> 
@@ -13,6 +13,7 @@
 <link href="css/base.css" rel="stylesheet">
 <link href="css/platform.css" rel="stylesheet">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
+
 </head> 
 <body>
     <div class="container">
@@ -25,22 +26,22 @@
                 <ul class="pf-nav">
                   <li class="pf-nav-item manger current" data-menu="pur-source" onclick="addTabs('工作台','workbench.jsp')">
                       <a href="javascript:;">
-                          <span class="iconfont">&#xe64b;</span>
+                          <span class="iconfont">&#xe611;</span>
                           <span class="pf-nav-title">工作台</span>
                       </a>
                   </li>
-                  <li class="pf-nav-item home" data-menu="sys-manage">
+<!--                   <li class="pf-nav-item home" data-menu="sys-manage">
                       <a href="javascript:;">
                           <span class="iconfont">&#xe63f;</span>
                           <span class="pf-nav-title">系统管理</span>
                       </a>
-                  </li>
+                  </li>                                      
                   <li class="pf-nav-item manger" data-menu="contract-mange" onclick="addTabs('文件管理','oaFileManage.jsp')">
                       <a href="javascript:;">
                           <span class="iconfont">&#xe60c;</span>
                           <span class="pf-nav-title">文件管理</span>
                       </a>
-                  </li>
+                  </li> -->
 
                 </ul>
               </div>
@@ -58,25 +59,25 @@
                     out.println(request.getSession().getAttribute("username")+"");
                   %>
                 </h4>
-                <i class="iconfont xiala">&#xe607;</i>
+                <i class="iconfont xiala">&#xe616;</i>
 
                 <div class="pf-user-panel">
                     <ul class="pf-user-opt">
                         <li>
                             <a href="javascript:;">
-                                <i class="iconfont">&#xe60d;</i>
+                                <i class="iconfont">&#xe617;</i>
                                 <span class="pf-opt-name">用户信息</span>
                             </a>
                         </li>
                         <li class="pf-modify-pwd">
                             <a href="http://www.uimaker.com">
-                                <i class="iconfont">&#xe634;</i>
+                                <i class="iconfont">&#xe636;</i>
                                 <span class="pf-opt-name">修改密码</span>
                             </a>
                         </li>
                         <li class="pf-logout">
                             <a href="login.html">
-                                <i class="iconfont">&#xe60e;</i>
+                                <i class="iconfont">&#xe601;</i>
                                 <span class="pf-opt-name">退出</span>
                             </a>
                         </li>
@@ -89,17 +90,17 @@
         <div id="pf-bd">
             <div id="pf-sider">
                 <h2 class="pf-model-name">
-                    <span class="iconfont">&#xe64a;</span>
-                    <span class="pf-name">子业务</span>
+                    <!-- <span class="iconfont">&#xe64a;</span> -->
+                    <span class="pf-name">业务</span>
                     <span class="toggle-icon"></span>
                 </h2>
 
                 <ul class="sider-nav">
-                     <li>
+   <!--                   <li>
                         <a href="javascript:;">
                             <span class="iconfont sider-nav-icon">&#xe620;</span>
                             <span class="sider-nav-title">物联网</span>
-                            <i class="iconfont">&#xe642;</i>
+                            <i class="iconfont">&#xe619;</i>
                         </a>
                         <ul class="sider-nav-s">
                            <li><a href="#" onclick="addTabs('设备地图','iotMap.jsp')">设备地图</a></li>
@@ -107,12 +108,106 @@
                            <li><a href="#" onclick="addTabs('实时数据','iotRealTimeData.jsp')">实时数据</a></li>
                            <li><a href="#" onclick="addTabs('历史数据','iotHistoryData.jsp')">历史数据</a></li>
                         </ul>
+                     </li> -->
+                    <li>
+                        <a href="javascript:;">
+                            <span class="iconfont sider-nav-icon">&#xe641;</span>
+                            <span class="sider-nav-title">远程监控</span>
+                            <i class="iconfont">&#xe619;</i>
+                        </a>
+                        <ul class="sider-nav-s">
+                           <li><a href="#" onclick="addTabs('设备地图','iotMap.jsp')">设备地图</a></li>
+                           <li><a href="#" onclick="addTabs('设备列表','iotThingList.jsp')">设备列表</a></li>
+                           <li><a href="#" onclick="addTabs('实时数据','iotRealTimeData.jsp')">实时数据</a></li>
+                           <li><a href="#" onclick="addTabs('历史数据','iotHistoryData.jsp')">历史数据</a></li>
+                           <li><a href="#" onclick="addTabs('报警设置','iotHistoryData.jsp')">报警设置</a></li>
+                        </ul>
                      </li>
-                     <li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="iconfont sider-nav-icon">&#xe60e;</span>
+                        <span class="sider-nav-title">客户档案</span>
+                        <i class="iconfont">&#xe619;</i>
+                      </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span class="iconfont sider-nav-icon">&#xe65f;</span>
+                            <span class="sider-nav-title">用户管理</span>
+                            <i class="iconfont">&#xe619;</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span class="iconfont sider-nav-icon">&#xe610;</span>
+                            <span class="sider-nav-title">维修派工</span>
+                            <i class="iconfont">&#xe619;</i>
+                        </a>
+                    </li>                    
+                    <li>
+                      <a href="javascript:;">
+                        <span class="iconfont sider-nav-icon">&#xe693;</span>
+                        <span class="sider-nav-title">办公</span>
+                        <i class="iconfont">&#xe619;</i>
+                      </a>
+                      <ul class="sider-nav-s">
+                        <li ><a href="#" onclick="addTabs('通讯录','<%=basePath%>/pages/module/Office/contacts.jsp')">通讯录</a></li>
+                        <li ><a href="#" onclick="addTabs('文件审批','oaFileApproval.jsp')">文件审批</a></li>
+                        <li ><a href="#" onclick="addTabs('知识管理','oaFileApproval.jsp')">知识管理</a></li>
+                        <li ><a href="#" onclick="addTabs('工作日报','oaFileApproval.jsp')">工作日报</a></li>
+                        <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱</a></li>
+                      </ul>
+                    </li>    
+                    <li>
+                      <a href="javascript:;">
+                        <span class="iconfont sider-nav-icon">&#xe600;</span>
+                        <span class="sider-nav-title">备件管理</span>
+                        <i class="iconfont">&#xe619;</i>
+                      </a>
+                      <ul class="sider-nav-s">
+                        <li ><a href="#" onclick="addTabs('备件仓库','<%=basePath%>/pages/module/Inventory/InventoryMange.jsp')">备件仓库</a></li>
+                        <li ><a href="#" onclick="addTabs('备件申请','oaFileApproval.jsp')">备件申请</a></li>
+                        <li ><a href="#" onclick="addTabs('备件补充','oaFileApproval.jsp')">备件补充</a></li>
+                        <li ><a href="#" onclick="addTabs('备件计划','oaFileApproval.jsp')">备件计划</a></li>
+                        <li ><a href="#" onclick="addTabs('运单管理','oaFileApproval.jsp')">运单管理</a></li>
+                        <li ><a href="#" onclick="addTabs('计划发货','oaFileApproval.jsp')">计划发货</a></li>
+                        <li ><a href="#" onclick="addTabs('备件盘点','oaFileApproval.jsp')">备件盘点</a></li>
+                        <li ><a href="#" onclick="addTabs('工具盘点','oaFileApproval.jsp')">工具盘点</a></li>
+                        <li ><a href="#" onclick="addTabs('工具管理','oaFileApproval.jsp')">工具管理</a></li>
+                        <li ><a href="#" onclick="addTabs('备件列表','oaFileApproval.jsp')">备件列表</a></li>
+                      </ul>
+                    </li>    
+                    <li>
+                      <a href="javascript:;">
+                        <span class="iconfont sider-nav-icon">&#xe683;</span>
+                        <span class="sider-nav-title">统计结算</span>
+                        <i class="iconfont">&#xe619;</i>
+                      </a>
+                      <ul class="sider-nav-s">
+                        <li ><a href="#" onclick="addTabs('质量统计','<%=basePath%>/pages/module/StatisicalSettlement/qualityStatistics.jsp')">质量统计</a></li>
+                        <li ><a href="#" onclick="addTabs('费用统计','oaFileApproval.jsp')">费用统计</a></li>
+                        <li ><a href="#" onclick="addTabs('供应商质量问题反索赔','oaFileApproval.jsp')">供应商质量问题反索赔</a></li>
+                        <li ><a href="#" onclick="addTabs('服务器费用结算','<%=basePath%>/pages/module/StatisicalSettlement/serverStationCostSettlement.jsp')">服务站费用结算</a></li>
+                        <li ><a href="#" onclick="addTabs('服务人员费用结算','oaFileApproval.jsp')">服务人员费用结算</a></li>
+                      </ul>
+                    </li>   
+                    <li>
+                      <a href="javascript:;">
+                        <span class="iconfont sider-nav-icon">&#xe61c;</span>
+                        <span class="sider-nav-title">系统管理</span>
+                        <i class="iconfont">&#xe619;</i>
+                      </a>
+                      <ul class="sider-nav-s">
+                        <li ><a href="#" onclick="addTabs('系统用户','<%=basePath%>/pages/module/System/sysUserManage.jsp')">系统用户</a></li>
+                        <li ><a href="#" onclick="addTabs('数据字典','<%=basePath%>/pages/module/DatebaseDictionary/databaseDictionary.jsp')">数据字典</a></li>
+                        <li ><a href="#" onclick="addTabs('权限管理','<%=basePath%>/pages/module/DatebaseDictionary/databaseDictionary.jsp')">权限管理</a></li>                      
+                      </ul>
+                    </li>                                                                          
+                    <!--  <li>
                         <a href="javascript:;">
                             <span class="iconfont sider-nav-icon">&#xe611;</span>
                             <span class="sider-nav-title">办公</span>
-                            <i class="iconfont">&#xe642;</i>
+                            <i class="iconfont">&#xe619;</i>
                         </a>
                         <ul class="sider-nav-s">
                            <li ><a href="#" onclick="addTabs('文件审批','oaFileApproval.jsp')">文件审批</a></li>
@@ -122,7 +217,7 @@
                         <a href="javascript:;">
                             <span class="iconfont sider-nav-icon">&#xe6e6;</span>
                             <span class="sider-nav-title">组织管理</span>
-                            <i class="iconfont">&#xe642;</i>
+                            <i class="iconfont">&#xe619;</i>
                         </a>
                         <ul class="sider-nav-s">
                            <li ><a href="#" onclick="addTabs('用户管理','sysUserManage.jsp')">用户管理</a></li>
@@ -133,12 +228,12 @@
                         <a href="javascript:;">
                             <span class="iconfont sider-nav-icon">&#xe6bb;</span>
                             <span class="sider-nav-title">数据管理</span>
-                            <i class="iconfont">&#xe642;</i>
+                            <i class="iconfont">&#xe619;</i>
                         </a>
                         <ul class="sider-nav-s">
                            <li ><a href="#">数据字典</a></li>
                         </ul>
-                     </li>
+                     </li> -->
                  </ul> 
             </div>
 

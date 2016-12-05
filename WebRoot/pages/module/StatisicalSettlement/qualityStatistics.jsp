@@ -2,7 +2,7 @@
 <%@ page language="java" import="java.util.*"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 %>
 <!DOCTYPE html> 
 <html lang="en"> 
@@ -11,10 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>职位列表</title> 
 
-<link href="css/base.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers.css">
+
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+
+
+<!-- <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
-<link rel="stylesheet" href="css/providers.css">
+<link rel="stylesheet" href="css/providers.css"> -->
+
+<!-- 
+<script type="text/javascript" src="../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script> -->
+
 <style type="text/css">
     html, body{ margin:0; height:100%; }
 </style>
@@ -23,7 +39,8 @@
     <script type="text/javascript">
         $('.panel-header').css({ "background-color": "#FFFFFF" }).css({"filter":"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF,endColorstr=#FFFFFF,GradientType=0)"});
     </script>
-	<div id="dlg" class="easyui-dialog" title="用户设置" data-options="closed:true" style="width:480px;height:350px;padding:10px;">
+    <!-- 查看点击的质量信息记录 -->
+	<div id="dlgView" class="easyui-dialog" title="用户设置" data-options="closed:true" style="width:480px;height:350px;padding:10px;">
         <div class="conditions">
             <div style="font-size: 30px">用户名：xiaming</div>                    
         </div>  		
@@ -50,50 +67,75 @@
             <a href="#" class="easyui-linkbutton">修改职位</a>                     
         </div>   
 	</div>
+	<!-- 新增新的售后质量信息 -->
+	<div id="dlgCreate" class="easyui-dialog" title="新增售后质量信息" data-options="closed:true" style="width:500px;height:350px;padding:10px;">		
+        <div class="conditions" style="margin-top: 10px">
+        	<span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">            
+        	<span class="con-span">客户项目: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>        	
+        </div>   
+        <div class="conditions" style="margin-top: 10px">
+			<span class="con-span">运营地&#12288;: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>        
+        </div>
+	</div>
+
+
+
 
     <div class="container" style="width: 100%;height:100%">
-   <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
-                rownumbers:true,
-                singleSelect:false,
-                autoRowHeight:false,
-                pagination:true,
-                fitColumns:true,
-                striped:true,
-                checkOnSelect:false,
-                selectOnCheck:false,
-                collapsible:true,
-                toolbar:'#tb',
-                pageSize:10">
-            <thead>
-                <tr>
-                    <th field="userName" width="100">用户名</th>
-                    <th field="trueName" width="100">实际姓名</th>
-                    <th field="section" width="100">所在部门</th>
-					<th field="position" width="100">职位</th>                    
-                    <th field="mail" width="100">邮箱</th>
-                    <th field="call" width="100">电话</th>
-                    <th field="sigupDate" width="100">注册时间</th>
-                    <th field="status" width="100">状态</th>
-                    <!-- <th field="deal" width="136">操作</th> -->
-                </tr>
-            </thead>
-        </table>
-      <div id="tb" style="padding:0 30px;">
-        实际姓名: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-        所在部门: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
-      </div>
+		<table id="dg" title="" class="easyui-datagrid" style="width:100%;height:100%"  
+		        singleSelect="true" 
+		        iconCls="icon-save" 
+		        rownumbers="true"
+		        toolbar='#tb'
+				pagination="true"
+				fitColumns="true"
+				striped="true"
+		        >  
+		    <thead>  
+		        <tr>  
+		            <th colspan="19" width="95%" ><font size="3">售后质量信息台账</font></th>             
+		        </tr>  
+		        <tr>  
+		            <th rowspan="2" field="date" width="5%" align="center">日期</th>  
+		            <th rowspan="2" field="project" width="5%" align="center">客户项目</th>  		 
+		            <th rowspan="2" field="location" width="5%" align="center">运营地</th>  
+		            <th rowspan="2" field="vin" width="5%" align="center">车辆VIN码</th>  	
+					<th rowspan="2" field="id" width="5%" align="center">车牌号码</th>  
+					<th rowspan="2" field="productId" width="5%" align="center">产品编号</th>  	
+					<th rowspan="2" field="run" width="5%" align="center" nowrap="false">当前里程数<br>（Km）</th>  
+
+					<th colspan="4">故障分类</th>  
+
+		            <th rowspan="2" field="faultDescription" width="7%" align="center">故障描述</th>  
+		            <th rowspan="2" field="faultCause" width="7%" align="center">故障原因</th>  	
+					<th rowspan="2" field="picDescription" width="7%" align="center">图片说明</th>  
+					<th rowspan="2" field="repairMethod" width="7%" align="center">维修方法</th>  	
+					<th rowspan="2" field="isCustormRepairs" width="4%" align="center">是否<br>客户报修</th>  				
+					<th rowspan="2" field="leader" width="3%" align="center">负责人</th>  				
+					<th rowspan="2" field="note" width="7%" align="center">备注</th>  						
+					<th rowspan="2" field="level" width="3%" align="center">等级</th>  											
+
+		        </tr>  
+		        <tr>
+					<th field="cell" width="3%" >电芯</th>  
+					<th field="electric" width="9%" align="center">电气<br>(BMS、线束、电器件)</th>  
+					<th field="pack" width="3%" align="center">PACK</th>  
+					<th field="appearance" width="4%" align="center">产品外观</th>  
+		        </tr>
+		    </thead>  
+		</table> 
+		<div id="tb" style="padding:0 30px;">
+			客户项目: <input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
+			运营地: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+			故障分类: <select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>电芯</option><option>电气</option><option>PACK</option><option>产品外观</option></select>			
+			负责人: <input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>						
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="addQualityStatistics()">新增</a>
+<!-- 			<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除</a>			 -->
+		</div>
     </div>
-    <script type="text/javascript" src="../custom/jquery.min.js"></script>
-    <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 
-
-    
-  
-
-    
     <script type="text/javascript">
             (function($){
             function pagerFilter(data){
@@ -200,58 +242,102 @@
 		function getData(){
 		    var rows = [];
 			rows.push({
-		        userName: 'xiaming',
-		        trueName: '夏明',
-		        section: '售后部',
-		        position: '技术员',
-		        mail: 'xiaming@xxx.com',
-                call:'13889888888',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+		        date: '2016/12/3',
+		        project: '酷开3',
+		        location: '南京',
+		        vin: 'smv12346513216546',
+		        id: '123456789',
+                productId:'13889888888',
+		        run: '385',
+		        faultDescription: '电芯故障',
+		        faultCause: '破损',
+		        picDescription: '无',
+		        repairMethod: '更换',
+		        isCustormRepairs: '是',
+		        leader: '张一',
+		        note: '无',
+		        level: '1',
+		        cell: '是',
+		        electric: '是',
+		        pack: '是',
+		        appearance: '是'
 		    });
 			rows.push({
-		        userName: 'zhangmo',
-		        trueName: '张默',
-		        section: '售后部',
-		        position: '技术员',
-		        mail: 'zhangmo@xxx.com',
-                call:'13889777777',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+		        date: '2016/12/3',
+		        project: '酷开3',
+		        location: '南京',
+		        vin: 'smv12346513216546',
+		        id: '123456789',
+                productId:'13889888888',
+		        run: '385',
+		        faultDescription: '电芯故障',
+		        faultCause: '破损',
+		        picDescription: '无',
+		        repairMethod: '更换',
+		        isCustormRepairs: '是',
+		        leader: '张一',
+		        note: '无',
+		        level: '1',
+		        cell: '是',
+		        electric: '是',
+		        pack: '是',
+		        appearance: '是'
 		    });
 			rows.push({
-		        userName: 'lili',
-		        trueName: '李丽',
-		        section: '研发部',
-		        position: '硬件工程师',
-		        mail: 'lili@xxx.com',
-                call:'13889666666',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+		        date: '2016/12/3',
+		        project: '酷开3',
+		        location: '南京',
+		        vin: 'smv12346513216546',
+		        id: '123456789',
+                productId:'13889888888',
+		        run: '385',
+		        faultDescription: '电芯故障',
+		        faultCause: '破损',
+		        picDescription: '无',
+		        repairMethod: '更换',
+		        isCustormRepairs: '是',
+		        leader: '张一',
+		        note: '无',
+		        level: '1',
+		        cell: '是',
+		        electric: '是',
+		        pack: '是',
+		        appearance: '是'
 		    });
 			rows.push({
-		        userName: 'lidesheng',
-		        trueName: '李德生',
-		        section: '研发部',
-		        position: '软件工程师',
-		        mail: 'lidesheng@xxx.com',
-                call:'13889555555',
-		        sigupDate: '2013-09-09 15:05',
-		        status: '正常'
+		        date: '2016/12/3',
+		        project: '酷开3',
+		        location: '南京',
+		        vin: 'smv12346513216546',
+		        id: '123456789',
+                productId:'13889888888',
+		        run: '385',
+		        faultDescription: '电芯故障',
+		        faultCause: '破损',
+		        picDescription: '无',
+		        repairMethod: '更换',
+		        isCustormRepairs: '是',
+		        leader: '张一',
+		        note: '无',
+		        level: '1',
+		        cell: '是',
+		        electric: '是',
+		        pack: '是',
+		        appearance: '是'
 		    });                           
 		    return rows;
 		}
 	    $('#dg').datagrid({  
 		    // url: 'Handler.ashx',  
-		    method:'get',  
+		    // method:'get',  
 		    striped: true,  
-		    title: "文件审批",  
+		    title: "",  
 		    onClickRow: function (rowIndex)  
 		    {  
 		        var row = $('#dg').datagrid('getSelected');  
 		        if (row) {  
 		            // alert('code:' + row.code + "\n LoginID:" + row.name);  
-		            $('#dlg').dialog('open');
+		            $('#dlgView').dialog('open');
 		        }  
 		    }  
 		})
@@ -259,5 +345,12 @@
             $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
         });        
     </script>
+
+<script type="text/javascript">
+	function addQualityStatistics()
+	{
+ 		$('#dlgCreate').dialog('open');
+	}
+</script>
 </body> 
 </html>

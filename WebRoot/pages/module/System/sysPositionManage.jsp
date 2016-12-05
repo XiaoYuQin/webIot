@@ -2,19 +2,35 @@
 <%@ page language="java" import="java.util.*"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 %>
 <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>用户列表</title> 
+    <title>职位列表</title> 
 
-<link href="css/base.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers.css">
+
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+
+
+<!-- <link href="css/base.css" rel="stylesheet">
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
-<link rel="stylesheet" href="css/providers.css">
+<link rel="stylesheet" href="css/providers.css"> -->
+
+<!-- 
+<script type="text/javascript" src="../custom/jquery.min.js"></script>
+<script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script> -->
+
 <style type="text/css">
     html, body{ margin:0; height:100%; }
 </style>
@@ -52,7 +68,7 @@
 	</div>
 
     <div class="container" style="width: 100%;height:100%">
-       <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
+   <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,
@@ -85,15 +101,7 @@
         <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
       </div>
     </div>
-    <script type="text/javascript" src="../custom/jquery.min.js"></script>
-    <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 
-
-    
-  
-
-    
     <script type="text/javascript">
             (function($){
             function pagerFilter(data){
