@@ -41,14 +41,46 @@
     <script type="text/javascript">
         $('.panel-header').css({ "background-color": "#FFFFFF" }).css({"filter":"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF,endColorstr=#FFFFFF,GradientType=0)"});
     </script>
-    
-    <div id="dlgCreate" class="easyui-dialog" title="用户设置" data-options="closed:true,buttons:'#dlg-buttons'" style="width:1000px;height:800px;padding:10px;">
+    <div id="dlgNew" class="easyui-dialog" title="添加备件" data-options="closed:true,buttons:'#dlg-button'" style="width:550px;height:280px;padding:10px;">
+	    <div class="conditions" style="margin-top: 10px">
+			<a class="con-span">物料编码:</a>
+			<input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
+	        <a class="con-span">物料名称:</a>
+	        <input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
+	      	
+	    </div>  
+	    <div class="conditions" style="margin-top: 10px">
+	    	<a class="con-span">&#12288;&#12288;单位:</a>
+	      	<input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
+	        <a class="con-span">申请数量:</a>
+	        <input class="easyui-textbox" style="width:160px;height:35px;">	    
+	    </div>
+	    <div class="conditions" style="margin-top: 10px">	    	
+	        <a class="con-span">实发数量:</a>
+			<input class="easyui-textbox" style="width:160px;height:35px;">	    
+	        <a class="con-span">主单位:</a>
+	        <input class="easyui-textbox"  style="width:160px;height:35px;">	    
+	    </div>	    
+    </div>
+
+    <div id="dlgCreate" class="easyui-dialog" title="备件申请" data-options="closed:true,buttons:'#dlg-buttons'" style="width:1100px;height:600px;padding:10px;">
 	    <div class="conditions">
-			<a class="con-span">库存组织:</a><input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
+			<a class="con-span">库存组织:</a>
+			<input  id="btnInventoryOrganization" class="easyui-textbox"  style="width:160px;height:35px;"
+				 data-options="
+					buttonText:'',
+					icons: [{
+						iconCls:'icon-list',
+						handler: function(e){
+							console.info('btnInventoryOrganization');
+						}
+					}],
+					prompt:''
+			">	    
 			<!--<input class="easyui-textbox" type="text" name="code" style="width:160px;height:35px;line-height:35px;"></input>           -->
 	        <a class="con-span">&#12288;&#12288;仓库:</a><input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
 	      	<a class="con-span">申请类型:</a><input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
-	        <a class="con-span">申请单号:</a><select class="easyui-combobox" name="language" style="height:35px;width:160px;"><option>软件工程师</option><option>硬件工程师</option></select>
+	        <a class="con-span">申请单号:</a><input class="easyui-textbox" style="width:160px;height:35px;">	    
 	    </div>  		                 
 	    <div class="conditions" style="margin-top: 10px">
 
@@ -61,15 +93,16 @@
 	    </div>   
 	    <div class="conditions" style="margin-top: 10px">
 	        <a class="con-span">&#12288;总数量:</a><input class="easyui-textbox" type="text" name="code" style="width:160px;height:35px;line-height:35px;"></input>  
+	       	<a class="con-span">&#12288;审批人:</a><input class="easyui-textbox" data-options="buttonText:'',buttonIcon:'icon-list',prompt:''" style="width:160px;height:35px;">	    
 	    </div>  
 	    <div class="conditions" style="margin-top: 10px">
 	        <a class="con-span">&#12288;&#12288;备注:</a><input class="easyui-textbox" data-options="multiline:true" value="" style="width:50%;height:100px">
 	   	</div>  
 	   	<div class="conditions" style="margin-top: 10px">
-			<a class="con-span">&#12288;&#12288;客户:</a>
+			<a class="con-span">&#12288;&#12288;备件:</a>
 	    </div>  
    		<div class="conditions" style="margin-top: 10px;height: 230px;margin-left: 70px">
-	        <a class="easyui-panel" style="width: 95%;height: 200px;">
+	        <a class="easyui-panel" style="width: 90%;height: 200px;">
 				<table id="te" style="width:100%;height:100% ;"
 						data-options="
 		                checkOnSelect:true,
@@ -90,15 +123,22 @@
 					</thead>
 				</table>
 			</a>
-		</div>
-		
-
-</body>
-</html>
-
-	    </div>  	    	           
+		</div>	    	           
 	</div>
 	<div id="dlg-buttons">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td>
+					<!-- <img src="email.gif"/> -->
+				</td>
+				<td style="text-align:right">
+					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">保存</a>
+					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="dlg-button">
 		<table cellpadding="0" cellspacing="0" style="width:100%">
 			<tr>
 				<td>
@@ -114,7 +154,6 @@
 
 
 
-
     <div class="container" style="width: 100%;height:100%">
 		<table id="dg" title="" class="easyui-datagrid" style="width:100%;height:100%"  
 		        singleSelect="true" 
@@ -127,16 +166,18 @@
 		        >  
 		    <thead>  
 		        <tr href="#">
-		            <th field="tr1" width="10%">库存组织</th>
-		            <th field="tr2" width="10%">仓库</th>
-		            <th field="tr3" width="10%">申请类型</th>
-		            <th field="tr4" width="10%">申请单号</th>
-		            <th field="tr5" width="10%">申请日期</th>
-		            <th field="tr6" width="10%">申请人</th>
-		            <th field="tr7" width="10%">申请部门</th>
-		            <th field="tr8" width="10%">客户</th>
-		            <th field="tr9" width="10%">备注</th>
-		            <th field="tr10" width="9%">总数量</th>
+		            <th field="tr1" width="8%">库存组织</th>
+		            <th field="tr2" width="8%">仓库</th>
+		            <th field="tr3" width="8%">申请类型</th>
+		            <th field="tr4" width="8%">申请单号</th>
+		            <th field="tr5" width="8%">申请日期</th>
+		            <th field="tr6" width="8%">申请人</th>
+		            <th field="tr7" width="8%">申请部门</th>
+		            <th field="tr8" width="8%">客户</th>
+		            <th field="tr9" width="22%">备注</th>
+		            <th field="tr10" width="4%">总数量</th>
+		            <th field="tr11" width="4%">审批人</th>
+		            <th field="tr12" width="4%">状态</th>		            
 	            </tr>		    
 		    </thead>  
 		</table> 
@@ -263,90 +304,49 @@
 
 		function getData(){
 		    var rows = [];
+
+		            // <th field="tr1" width="8%">库存组织</th>
+		            // <th field="tr2" width="8%">仓库</th>
+		            // <th field="tr3" width="8%">申请类型</th>
+		            // <th field="tr4" width="8%">申请单号</th>
+		            // <th field="tr5" width="8%">申请日期</th>
+		            // <th field="tr6" width="8%">申请人</th>
+		            // <th field="tr7" width="8%">申请部门</th>
+		            // <th field="tr8" width="8%">客户</th>
+		            // <th field="tr9" width="22%">备注</th>
+		            // <th field="tr10" width="4%">总数量</th>
+		            // <th field="tr11" width="4%">审批人</th>
+		            // <th field="tr12" width="4%">状态</th>	
+
 			rows.push({
-		        date: '2016/12/3',
-		        project: '酷开3',
-		        location: '南京',
-		        vin: 'smv12346513216546',
-		        id: '123456789',
-                productId:'13889888888',
-		        run: '385',
-		        faultDescription: '电芯故障',
-		        faultCause: '破损',
-		        picDescription: '无',
-		        repairMethod: '更换',
-		        isCustormRepairs: '是',
-		        leader: '张一',
-		        note: '无',
-		        level: '1',
-		        cell: '是',
-		        electric: '是',
-		        pack: '是',
-		        appearance: '是'
+		        tr1: '北京国能电池科技有限公司',
+		        tr2: '北京国能电池科技有限公司',
+		        tr3: '紧急出库',
+		        tr4: 'SA160829000005',
+		        tr5: '2016-08-29',
+                tr6: 'xyz',
+		        tr7: '售后部',
+		        tr8: '金龙',
+		        tr9: '',
+		        tr10: '100',
+		        tr11: 'mnq',
+		        tr12: '已审批'
 		    });
 			rows.push({
-		        date: '2016/12/3',
-		        project: '酷开3',
-		        location: '南京',
-		        vin: 'smv12346513216546',
-		        id: '123456789',
-                productId:'13889888888',
-		        run: '385',
-		        faultDescription: '电芯故障',
-		        faultCause: '破损',
-		        picDescription: '无',
-		        repairMethod: '更换',
-		        isCustormRepairs: '是',
-		        leader: '张一',
-		        note: '无',
-		        level: '1',
-		        cell: '是',
-		        electric: '是',
-		        pack: '是',
-		        appearance: '是'
+		        tr1: '北京国能电池科技有限公司',
+		        tr2: '北京国能电池科技有限公司',
+		        tr3: '紧急出库',
+		        tr4: 'SA160829000005',
+		        tr5: '2016-08-29',
+                tr6: 'xyz',
+		        tr7: '售后部',
+		        tr8: '金龙',
+		        tr9: '',
+		        tr10: '100',
+		        tr11: 'mnq',
+		        tr12: '已审批'
 		    });
-			rows.push({
-		        date: '2016/12/3',
-		        project: '酷开3',
-		        location: '南京',
-		        vin: 'smv12346513216546',
-		        id: '123456789',
-                productId:'13889888888',
-		        run: '385',
-		        faultDescription: '电芯故障',
-		        faultCause: '破损',
-		        picDescription: '无',
-		        repairMethod: '更换',
-		        isCustormRepairs: '是',
-		        leader: '张一',
-		        note: '无',
-		        level: '1',
-		        cell: '是',
-		        electric: '是',
-		        pack: '是',
-		        appearance: '是'
-		    });
-			rows.push({
-		        date: '2016/12/3',
-		        project: '酷开3',
-		        location: '南京',
-		        vin: 'smv12346513216546',
-		        id: '123456789',
-                productId:'13889888888',
-		        run: '385',
-		        faultDescription: '电芯故障',
-		        faultCause: '破损',
-		        picDescription: '无',
-		        repairMethod: '更换',
-		        isCustormRepairs: '是',
-		        leader: '张一',
-		        note: '无',
-		        level: '1',
-		        cell: '是',
-		        electric: '是',
-		        pack: '是',
-		        appearance: '是'
-		    });                           
+		                          
 		    return rows;
 		}
 	    $('#dg').datagrid({  
@@ -394,17 +394,20 @@
 				text:'添加',
 				iconCls:'icon-add',
 				handler:function(){
-					$('#te').datagrid('endEdit', lastIndex);
-					$('#te').datagrid('appendRow',{
-						itemid:'',
-						productid:'',
-						listprice:'',
-						unitprice:'',
-						attr1:''
-					});
-					lastIndex = $('#te').datagrid('getRows').length-1;
-					$('#te').datagrid('selectRow', lastIndex);
-					$('#te').datagrid('beginEdit', lastIndex);
+					// $('#te').datagrid('endEdit', lastIndex);
+					// $('#te').datagrid('appendRow',{
+					// 	itemid:'',
+					// 	productid:'',
+					// 	listprice:'',
+					// 	unitprice:'',
+					// 	attr1:''
+					// });
+					// lastIndex = $('#te').datagrid('getRows').length-1;
+					// $('#te').datagrid('selectRow', lastIndex);
+					// $('#te').datagrid('beginEdit', lastIndex);
+					$('#dlgNew').dialog('open');
+
+
 				}
 			},'-',{
 				text:'删除',
@@ -415,18 +418,6 @@
 						var index = $('#te').datagrid('getRowIndex', row);
 						$('#te').datagrid('deleteRow', index);
 					}
-				}
-			},'-',{
-				text:'提交',
-				iconCls:'icon-save',
-				handler:function(){
-					$('#te').datagrid('acceptChanges');
-				}
-			},'-',{
-				text:'取消',
-				iconCls:'icon-undo',
-				handler:function(){
-					$('#te').datagrid('rejectChanges');
 				}
 			}],
 			onBeforeLoad:function(){
@@ -441,4 +432,10 @@
 			}
 		});
 	});
+</script>
+<script type="text/javascript">
+	$('#btnInventoryOrganization').click(function(){
+		console.info("btnInventoryOrganization");		
+	});
+
 </script>
