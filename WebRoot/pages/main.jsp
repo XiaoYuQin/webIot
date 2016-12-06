@@ -154,7 +154,7 @@
                         <li ><a href="#" onclick="addTabs('通讯录','<%=basePath%>/pages/module/Office/contacts.jsp')">通讯录</a></li>
                         <li ><a href="#" onclick="addTabs('文件审批','<%=basePath%>/pages/module/Office/fileApproval.jsp')">文件审批</a></li>
                         <li ><a href="#" onclick="addTabs('知识管理','<%=basePath%>/pages/module/Office/knowledgeManage.jsp')">知识管理</a></li>
-                        <li ><a href="#" onclick="addTabs('工作日报','oaFileApproval.jsp')">工作日报</a></li>
+                        <li ><a href="#" onclick="addTabs('工作日报','<%=basePath%>/pages/module/Office/dailyWorkReport.jsp')">工作日报</a></li>
                         <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱</a></li>
                       </ul>
                     </li>    

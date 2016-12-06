@@ -21,68 +21,11 @@
 <script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
 
 <style type="text/css">
-    html, body{ margin:0; height:100%; }
+    html, body{ margin:0; height:100%; width: 100%}
     .con-span{font-size: 15px}
 </style>
 </head> 
 <body>
-    <script type="text/javascript">
-        $('.panel-header').css({ "background-color": "#FFFFFF" }).css({"filter":"progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF,endColorstr=#FFFFFF,GradientType=0)"});
-    </script>
-	<div id="dlgCreat" class="easyui-dialog" title="用户设置" data-options="closed:true,buttons:'#dlg-buttons'" style="width:380px;height:250px;padding:10px;">
-        <div class="conditions">
-			<a class="con-span">姓名：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
-            <a class="con-span">电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  			
-        </div>  		                 
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
-            <a class="con-span">职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
-        </div>                					
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
-        </div>          
-	</div>
-	<div id="dlg-buttons">
-		<table cellpadding="0" cellspacing="0" style="width:100%">
-			<tr>
-				<td>
-					<!-- <img src="email.gif"/> -->
-				</td>
-				<td style="text-align:right">
-					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">保存</a>
-					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div id="dlgModify" class="easyui-dialog" title="用户设置" data-options="closed:true" style="width:450px;height:350px;padding:10px;">
-        <div class="conditions">
-            <a class="con-span">用户名：</a><a id="dlgModifyName" style="font-size: 15px">夏明</a>                    
-        </div>  		
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
-            <a href="#" class="easyui-linkbutton">修改电话</a>                     
-        </div>                     
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
-            <a class="con-span">职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
-            <a href="#" class="easyui-linkbutton">修改职位</a>                     
-        </div>      
-		<div class="conditions" style="margin-top: 10px">
-            <a class="con-span">邮箱：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
-            <a href="#" class="easyui-linkbutton">修改邮箱</a>                     
-        </div>  
-        <div class="conditions" style="margin-top: 10px">
-            <a class="con-span">状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
-            <a href="#" class="easyui-linkbutton">修改状态</a>                     
-        </div>   
-        <div class="conditions" style="margin-top: 30px;width: 100%">
-          <a id="btnModifySave" href="#" class="easyui-linkbutton" style="margin-left: 100px">保存联系人</a>
-          <a id="btnModifyDelete" href="#" class="easyui-linkbutton">删除联系人</a>             
-        </div>          
-	</div>
-
-
     <div class="container" style="width: 100%;height:100%">
        <table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
                 rownumbers:true,
@@ -102,7 +45,7 @@
                     <th field="name" width="10%">姓名</th>
                     <th field="section" width="10%">所在部门</th>
 					<th field="position" width="10%">职位</th>                    
-                    <th field="mail" width="35%">邮箱</th>
+                    <th field="mail" width="33%">邮箱</th>
                     <th field="call" width="34%">电话</th>
                 </tr>
             </thead>
@@ -118,7 +61,58 @@
 			<a id="modify" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" >修改</a>                                			
 		</div>
     </div>
-
+	<div id="dlgCreat" class="easyui-dialog" title="用户设置" data-options="closed:true,buttons:'#dlg-buttons'" style="width:380px;height:250px;padding:10px;">
+	    <div class="conditions">
+			<a class="con-span">姓名：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
+	        <a class="con-span">电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  			
+	    </div>  		                 
+	    <div class="conditions" style="margin-top: 10px">
+	        <a class="con-span">部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
+	        <a class="con-span">职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
+	    </div>                					
+	    <div class="conditions" style="margin-top: 10px">
+	        <a class="con-span">状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
+	    </div>          
+	</div>
+	<div id="dlg-buttons">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td>
+					<!-- <img src="email.gif"/> -->
+				</td>
+				<td style="text-align:right">
+					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">保存</a>
+					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="dlgModify" class="easyui-dialog" title="用户设置" data-options="closed:true" style="width:450px;height:350px;padding:10px;">
+	    <div class="conditions">
+	        <a class="con-span">用户名：</a><a id="dlgModifyName" style="font-size: 15px">夏明</a>                    
+	    </div>  		
+	    <div class="conditions" style="margin-top: 10px">
+	        <a class="con-span">电话：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
+	        <a href="#" class="easyui-linkbutton">修改电话</a>                     
+	    </div>                     
+	    <div class="conditions" style="margin-top: 10px">
+	        <a class="con-span">部门：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>研发部</option><option>售后部</option></select>
+	        <a class="con-span">职位：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>软件工程师</option><option>硬件工程师</option></select>
+	        <a href="#" class="easyui-linkbutton">修改职位</a>                     
+	    </div>      
+		<div class="conditions" style="margin-top: 10px">
+	        <a class="con-span">邮箱：</a><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>  
+	        <a href="#" class="easyui-linkbutton">修改邮箱</a>                     
+	    </div>  
+	    <div class="conditions" style="margin-top: 10px">
+	        <a class="con-span">状态：</a><select class="easyui-combobox" name="language" style="height:35px;width:100px;"><option>离职</option><option>正常</option><option>暂停</option></select>            
+	        <a href="#" class="easyui-linkbutton">修改状态</a>                     
+	    </div>   
+	    <div class="conditions" style="margin-top: 30px;width: 100%">
+	      <a id="btnModifySave" href="#" class="easyui-linkbutton" style="margin-left: 100px">保存联系人</a>
+	      <a id="btnModifyDelete" href="#" class="easyui-linkbutton">删除联系人</a>             
+	    </div>          
+	</div>
     <script type="text/javascript">
             (function($){
             function pagerFilter(data){

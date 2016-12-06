@@ -81,17 +81,18 @@
     				        pageSize:10">
     				    <thead>
     				        <tr href="#">
-    				            <th field="code" width="5%">日期</th>
-    				            <th field="name" width="5%">客户名称</th>
-    				            <th field="level" width="5%">项目名称</th>
-    				            <th field="provide" width="5%">报修人</th>
-    				            <th field="full" width="10%">电话</th>
-    				            <th field="issubmit" width="10%">产品编号</th>
-    				            <th field="status" width="25%">故障描述</th>
-    				            <th field="dealDate" width="5%">处理时间</th>
-    				            <th field="dealPeople" width="5%">受理人</th>
-    				            <th field="note" width="24%">备注</th>
-    				        </tr>
+    				            <th field="code" width="5%">库存组织</th>
+    				            <th field="name" width="5%">仓库</th>
+    				            <th field="level" width="5%">物料编码</th>
+    				            <th field="provide" width="5%">物料名称</th>
+    				            <th field="full" width="10%">规格</th>
+    				            <th field="issubmit" width="10%">型号</th>
+    				            <th field="status" width="25%">主单位</th>
+    				            <th field="dealDate" width="5%">结存主数量</th>
+    				            <th field="dealPeople" width="5%">预留主数量</th>
+    				            <th field="note" width="24%">冻结主数量</th>
+                                <th field="note" width="24%">供应商物权结存主数量</th>
+                            </tr>
     				    </thead>
     				</table>
     				<div id="tb" style="padding:0 30px;">
