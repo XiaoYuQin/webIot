@@ -166,15 +166,17 @@
                       </a>
                       <ul class="sider-nav-s">
                         <li ><a href="#" onclick="addTabs('备件仓库','<%=basePath%>/pages/module/Inventory/InventoryMange.jsp')">备件仓库</a></li>
-                        <li ><a href="#" onclick="addTabs('备件申请','oaFileApproval.jsp')">备件申请</a></li>
+                        <li ><a href="#" onclick="addTabs('备件申请','<%=basePath%>/pages/module/Inventory/spareApplication.jsp')">备件申请</a></li>
                         <li ><a href="#" onclick="addTabs('备件补充','oaFileApproval.jsp')">备件补充</a></li>
                         <li ><a href="#" onclick="addTabs('备件计划','oaFileApproval.jsp')">备件计划</a></li>
                         <li ><a href="#" onclick="addTabs('运单管理','oaFileApproval.jsp')">运单管理</a></li>
                         <li ><a href="#" onclick="addTabs('计划发货','oaFileApproval.jsp')">计划发货</a></li>
+                        <li ><a href="#" onclick="addTabs('投运通知单','oaFileApproval.jsp')">投运通知单</a></li>                        
                         <li ><a href="#" onclick="addTabs('备件盘点','oaFileApproval.jsp')">备件盘点</a></li>
                         <li ><a href="#" onclick="addTabs('工具盘点','oaFileApproval.jsp')">工具盘点</a></li>
                         <li ><a href="#" onclick="addTabs('工具管理','oaFileApproval.jsp')">工具管理</a></li>
                         <li ><a href="#" onclick="addTabs('备件列表','oaFileApproval.jsp')">备件列表</a></li>
+                        <li ><a href="#" onclick="addTabs('差异申报','oaFileApproval.jsp')">差异申报</a></li>
                       </ul>
                     </li>    
                     <li>

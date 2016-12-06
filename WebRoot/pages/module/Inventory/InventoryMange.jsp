@@ -78,43 +78,46 @@
     				        selectOnCheck:false,
     				        collapsible:true,
     				        toolbar:'#tb',
-    				        pageSize:10">
+    				        pageSize:20">
     				    <thead>
     				        <tr href="#">
-    				            <th field="code" width="5%">库存组织</th>
-    				            <th field="name" width="5%">仓库</th>
-    				            <th field="level" width="5%">物料编码</th>
-    				            <th field="provide" width="5%">物料名称</th>
-    				            <th field="full" width="10%">规格</th>
-    				            <th field="issubmit" width="10%">型号</th>
-    				            <th field="status" width="25%">主单位</th>
-    				            <th field="dealDate" width="5%">结存主数量</th>
-    				            <th field="dealPeople" width="5%">预留主数量</th>
-    				            <th field="note" width="24%">冻结主数量</th>
-                                <th field="note" width="24%">供应商物权结存主数量</th>
+    				            <th field="organization" width="12%">库存组织</th>
+    				            <th field="warehouse" width="12%">仓库</th>
+    				            <th field="materialCode" width="12%">物料编码</th>
+    				            <th field="materialName" width="12%">物料名称</th>
+    				            <th field="specs" width="12%">规格</th>
+    				            <th field="model" width="10%">型号</th>
+    				            <th field="primaryUnit" width="5%">主单位</th>
+    				            <th field="retainNumber" width="5%">结存主数量</th>
+    				            <th field="reservedNumber" width="5%">预留主数量</th>
+    				            <th field="frezzeNumber" width="5%">冻结主数量</th>
+                                <th field="supplierRetainNumber" width="5%">供应商物权<br>结存主数量</th>
                             </tr>
     				    </thead>
     				</table>
     				<div id="tb" style="padding:0 30px;">
     					<div class="conditions">
-    						<span class="con-span">填写时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">        
-    					    <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>           
+    						<span class="con-span">物料名称: </span><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
+    					    <span class="con-span">规格: </span><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
+                            <span class="con-span">物料编码: </span><input class="easyui-textbox" type="text" name="code" style="width:100px;height:35px;line-height:35px;"></input>           
     					    <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
     					    <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
-    					    <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
+    					    <!--<a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>-->
     					</div>
     					<div class="conditions hide">
     					    <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
     					    <span class="con-span">项目名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
     					</div>
-    					<div class="opt-buttons">
+    					
+                        <!--
+                        <div class="opt-buttons">
     					    <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
     					    <a href="#" class="easyui-linkbutton">导出</a>
     						<a href="#" class="easyui-linkbutton" onclick="printPreView()">打印预览</a>
     						<a href="#" class="easyui-linkbutton" onclick="printIt()">打印</a>
     						<a href="#" class="easyui-linkbutton" onclick="printSetup()">打印设置</a>
-
     					</div>
+                        -->
     				</div>   				
     			</div><!-- easyui-panel -->			     	 
             </div>
@@ -226,22 +229,163 @@
     })
 })(jQuery);
 
-function getData(){
+
+function getData()
+{
     var rows = [];
-    for(var i=1; i<=800; i++){
-        rows.push({
-            code: '10695',
-            name: '充电试验台',
-            level: '检测设备',
-            provide: '研发部',
-            full: '北京',
-            issubmit: '正常使用',
-            status:'张一',
-            note: '-'
-        });
-    }
-    return rows;
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '售后材料库',
+        materialCode: 'A0200101001',
+        materialName: '继电器',
+        specs: 'LEV100-24V',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '35',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '售后材料库',
+        materialCode: 'A0200508002',
+        materialName: '硅胶垫2',
+        specs: 'GN-AK8.1EV-2107517',
+        model: '',
+        primaryUnit:'件',
+        retainNumber: '500',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '售后材料库',
+        materialCode: 'A0200101001',
+        materialName: '继电器',
+        specs: 'AEV19024',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '6',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '售后材料库',
+        materialCode: 'A0200306006',
+        materialName: '弹垫',
+        specs: 'M10  镀锌',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '1250',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '售后材料库',
+        materialCode: 'A0200302046',
+        materialName: '外六角螺栓',
+        specs: 'M6*12  不锈钢',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '1100',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });
+    return rows; 
 }
+function getShandongData()
+{
+    var rows = [];
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '山东售后材料库',
+        materialCode: 'A0200404006',
+        materialName: '护套',
+        specs: 'DJ33541',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '2000',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '山东售后材料库',
+        materialCode: 'A0200406008',
+        materialName: '绝缘支柱',
+        specs: 'SM7110',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '50',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });        
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '山东售后材料库',
+        materialCode: 'A0200407204',
+        materialName: '扎带',
+        specs: '3*100',
+        model: '',
+        primaryUnit:'包',
+        retainNumber: '10000',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });        
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '山东售后材料库',
+        materialCode: 'A0200507183',
+        materialName: '2并绝缘板',
+        specs: 'GN-LZ-2107500',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '167',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });        
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '山东售后材料库',
+        materialCode: 'A0200102007',
+        materialName: '熔断器',
+        specs: 'A70QS400-4',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '70',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });        
+    rows.push({
+        organization: '北京国能电池科技有限公司',
+        warehouse: '山东售后材料库',
+        materialCode: 'A0200302011',
+        materialName: '六角螺栓',
+        specs: 'M6*16   镀锌',
+        model: '',
+        primaryUnit:'个',
+        retainNumber: '750',
+        reservedNumber: '0',
+        frezzeNumber: '0',
+        supplierRetainNumber: '0'
+    });        
+    return rows; 
+}
+
+
+
 
 $(function(){
     $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
@@ -276,8 +420,18 @@ var windowClose = function(){
 <script type="text/javascript">               
 	$('#tt').tree({
 	    onClick: function(node){
-	        alert(node.text);  // alert node text property when clicked
-	        addTabs(node.text,"123.jsp");
+	        //alert(node.text);  // alert node text property when clicked
+	        //addTabs(node.text,"123.jsp");
+            if(node.text=="总库")
+            {
+                console.info(node.text);
+                $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
+            }            
+            if(node.text=="山东")
+            {
+                console.info(node.text);
+                $('#dg').datagrid({data:getShandongData()}).datagrid('clientPaging');
+            }
 	    }
 	});
 	// function addTabs(title,href)
