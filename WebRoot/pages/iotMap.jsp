@@ -33,7 +33,7 @@
 <body>
     <div class="container" style="width: 100%;height: 100%">
         <div class="left-tree" style="height: 100%;width: 20%;position:relative" >
-             <table id="dg" style="height:100%;width: 100%" title="设备列表" data-options="
+             <table id="dg" style="height:100%;width: 100%" title="" data-options="
                 rownumbers:false,
                 singleSelect:true,
                 autoRowHeight:false,

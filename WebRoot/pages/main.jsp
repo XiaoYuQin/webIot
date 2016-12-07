@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="../custom/uimaker/easyui.css">
 
 </head> 
-<body>
+<body style="overflow: hidden;">
     <div class="container">
         <div id="pf-hd">
             <div class="pf-logo">
@@ -124,9 +124,9 @@
                         </ul>
                      </li>
                     <li>
-                      <a href="javascript:;" onclick="addTabs('客户档案','oaFileApproval.jsp')">
+                      <a href="javascript:;" onclick="addTabs('客户档案','<%=basePath%>/pages/module/Account/accountManage.jsp')">
                         <span class="iconfont sider-nav-icon">&#xe60e;</span>
-                        <span class="sider-nav-title">客户档案(x)</span>
+                        <span class="sider-nav-title">客户档案</span>
                         <i class="iconfont">&#xe619;</i>
                       </a>
                     </li>
@@ -156,6 +156,7 @@
                         <li ><a href="#" onclick="addTabs('知识管理','<%=basePath%>/pages/module/Office/knowledgeManage.jsp')">知识管理</a></li>
                         <li ><a href="#" onclick="addTabs('工作日报','<%=basePath%>/pages/module/Office/dailyWorkReport.jsp')">工作日报</a></li>
                         <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱(x)</a></li>
+                        <li ><a href="#" onclick="addTabs('公告发布','oaFileApproval.jsp')">公告发布(x)</a></li>                        
                       </ul>
                     </li>    
                     <li>
@@ -190,7 +191,7 @@
                         <i class="iconfont">&#xe619;</i>
                       </a>
                       <ul class="sider-nav-s">
-                        <li ><a href="#" onclick="addTabs('工具仓库','<%=basePath%>/pages/module/Inventory/toolMange.jsp')">工具仓库(x)</a></li>                      
+                        <li ><a href="#" onclick="addTabs('工具仓库','<%=basePath%>/pages/module/Inventory/toolMange.jsp')">工具仓库</a></li>                      
                         <li ><a href="#" onclick="addTabs('工具盘点','<%=basePath%>/pages/module/Inventory/toolInventory.jsp')">工具盘点</a></li>
                         <li ><a href="#" onclick="addTabs('工具差异申报','oaFileApproval.jsp')">工具差异申报(x)</a></li>
                       </ul>

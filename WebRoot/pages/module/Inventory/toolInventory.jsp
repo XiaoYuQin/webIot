@@ -31,7 +31,7 @@
 </style> -->
 
 </head> 
-<body>
+<body style="overflow: hidden;">
 
 	<div id="dlg" class="easyui-dialog" title="工具盘点" data-options="closed:true,buttons:'#dlg-buttons'" style="width:1000px;height:500px;padding:10px;">
 		<table id="te" style="width:100%;height:100% ;"
