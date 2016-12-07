@@ -57,6 +57,20 @@
 							<li>角色权限</li>
 						</ul>				
 					</li>			
+					<li data-options="state:'closed'">					
+						<span>工具字典</span>
+						<ul>
+							<li>字段设置</li>
+							<li>角色权限</li>
+						</ul>				
+					</li>	
+					<li data-options="state:'closed'">					
+						<span>备件字典</span>
+						<ul>
+							<li>字段设置</li>
+							<li>角色权限</li>
+						</ul>				
+					</li>													
 				</ul>
 			</div>		
         </div>

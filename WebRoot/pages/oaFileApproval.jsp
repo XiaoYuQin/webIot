@@ -80,12 +80,7 @@
 							<div>
 								<span class="name"></span>
 								<label>文件名:</label>
-								<span class="status">《关于建立企业文化的规定》</span>
-							</div>	
-							<div>
-								<span class="name"></span>
-								<label>描述&nbsp;&nbsp;&nbsp;:</label>
-								<span class="status">《关于建立企业文化的规定》：对于企业文化规定的2016年修订版。</span>
+								<span class="status">《GWN0202016122114维修》</span>
 							</div>																						
 						</div>
 					</div>
@@ -320,7 +315,7 @@
 	    var rows = [];
 		rows.push({
             id: '20160908',
-            fileName: '《关于建立企业文化的规定》',
+            fileName: '《GWN0202016122112维修》',
             sponsor: '李默',
             leader: '夏明',
             status: '待审',
@@ -328,7 +323,7 @@
         });
 		rows.push({
             id: '20130907',
-            fileName: '《质检部2016年制度章程》',
+            fileName: '《GWN0202016122115维修》',
             sponsor: '王琦',
             leader: '夏明',
             status: '待审',
@@ -336,7 +331,7 @@
         });
 		rows.push({
             id: '20130906',
-            fileName: '《研发部2016值班表》',
+            fileName: '《GWN0202016122114维修》',
             sponsor: '王琦',
             leader: '刘洋',
             status: '待审',
@@ -344,7 +339,7 @@
         });
 		rows.push({
             id: '20130905',
-            fileName: '《研发部2016年制度章程》',
+            fileName: '《GWN0202016122113维修》',
             sponsor: '夏明',
             leader: '李默',
             status: '待审',
@@ -352,7 +347,7 @@
         });
 		rows.push({
             id: '20130904',
-            fileName: '《公司出入库流程规章》',
+            fileName: '《GWN0202016122116维修》',
             sponsor: '张扬',
             leader: '李默',
             status: '待审',
@@ -365,7 +360,6 @@
 	    // url: 'Handler.ashx',  
 	    method:'get',  
 	    striped: true,  
-	    title: "文件审批",  
 	    onClickRow: function (rowIndex)  
 	    {  
 	        var row = $('#dg').datagrid('getSelected');  

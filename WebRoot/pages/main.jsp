@@ -126,21 +126,21 @@
                     <li>
                       <a href="javascript:;" onclick="addTabs('客户档案','oaFileApproval.jsp')">
                         <span class="iconfont sider-nav-icon">&#xe60e;</span>
-                        <span class="sider-nav-title">客户档案</span>
+                        <span class="sider-nav-title">客户档案(x)</span>
                         <i class="iconfont">&#xe619;</i>
                       </a>
                     </li>
                     <li>
                         <a href="javascript:;" onclick="addTabs('用户管理','oaFileApproval.jsp')">
                             <span class="iconfont sider-nav-icon">&#xe65f;</span>
-                            <span class="sider-nav-title">用户管理</span>
+                            <span class="sider-nav-title">用户管理(x)</span>
                             <i class="iconfont">&#xe619;</i>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:;" onclick="addTabs('维修派工','oaFileApproval.jsp')">
                             <span class="iconfont sider-nav-icon">&#xe610;</span>
-                            <span class="sider-nav-title">维修派工</span>
+                            <span class="sider-nav-title">维修派工(x)</span>
                             <i class="iconfont">&#xe619;</i>
                         </a>
                     </li>                    
@@ -155,7 +155,7 @@
                         <li ><a href="#" onclick="addTabs('文件审批','<%=basePath%>/pages/module/Office/fileApproval.jsp')">文件审批</a></li>
                         <li ><a href="#" onclick="addTabs('知识管理','<%=basePath%>/pages/module/Office/knowledgeManage.jsp')">知识管理</a></li>
                         <li ><a href="#" onclick="addTabs('工作日报','<%=basePath%>/pages/module/Office/dailyWorkReport.jsp')">工作日报</a></li>
-                        <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱</a></li>
+                        <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱(x)</a></li>
                       </ul>
                     </li>    
                     <li>
@@ -168,17 +168,33 @@
                         <li ><a href="#" onclick="addTabs('备件仓库','<%=basePath%>/pages/module/Inventory/InventoryMange.jsp')">备件仓库</a></li>
                         <li ><a href="#" onclick="addTabs('备件申请','<%=basePath%>/pages/module/Inventory/spareApplication.jsp')">备件申请</a></li>
                         <li ><a href="#" onclick="addTabs('备件补充','<%=basePath%>/pages/module/Inventory/spareSupplement.jsp')">备件补充</a></li>
-                        <li ><a href="#" onclick="addTabs('备件计划','oaFileApproval.jsp')">备件计划</a></li>                      
+                        <li ><a href="#" onclick="addTabs('备件计划','oaFileApproval.jsp')">备件计划(x)</a></li>                      
                         <li ><a href="#" onclick="addTabs('运单管理','<%=basePath%>/pages/module/Inventory/waybillnMange.jsp')">运单管理</a></li>
-                        <li ><a href="#" onclick="addTabs('计划发货','oaFileApproval.jsp')">计划发货</a></li>
-                        <li ><a href="#" onclick="addTabs('投运通知单','oaFileApproval.jsp')">投运通知单</a></li>                        
-                        <li ><a href="#" onclick="addTabs('备件盘点','oaFileApproval.jsp')">备件盘点</a></li>
-                        <li ><a href="#" onclick="addTabs('工具盘点','oaFileApproval.jsp')">工具盘点</a></li>
-                        <li ><a href="#" onclick="addTabs('工具管理','oaFileApproval.jsp')">工具管理</a></li>
-                        <li ><a href="#" onclick="addTabs('备件列表','oaFileApproval.jsp')">备件列表</a></li>
-                        <li ><a href="#" onclick="addTabs('差异申报','oaFileApproval.jsp')">差异申报</a></li>
+                        <li ><a href="#" onclick="addTabs('计划发货','oaFileApproval.jsp')">计划发货(x)</a></li>
+                        <li ><a href="#" onclick="addTabs('投运通知单','oaFileApproval.jsp')">投运通知单(x)</a></li>                        
+                        <li ><a href="#" onclick="addTabs('备件盘点','<%=basePath%>/pages/module/Inventory/spareInventory.jsp')">备件盘点</a></li>
+                        <li ><a href="#" onclick="addTabs('备件差异申报','oaFileApproval.jsp')">备件差异申报(x)</a></li>
                       </ul>
                     </li>    
+                    <li>
+                        <a href="javascript:;" onclick="addTabs('运单管理','<%=basePath%>/pages/module/Inventory/waybillnMange.jsp')">
+                            <span class="iconfont sider-nav-icon">&#xe602;</span>
+                            <span class="sider-nav-title">运单管理</span>
+                            <i class="iconfont">&#xe619;</i>
+                        </a>
+                    </li>   
+                    <li>
+                      <a href="javascript:;">
+                        <span class="iconfont sider-nav-icon">&#xe626;</span>
+                        <span class="sider-nav-title">工具管理</span>
+                        <i class="iconfont">&#xe619;</i>
+                      </a>
+                      <ul class="sider-nav-s">
+                        <li ><a href="#" onclick="addTabs('工具仓库','<%=basePath%>/pages/module/Inventory/toolMange.jsp')">工具仓库(x)</a></li>                      
+                        <li ><a href="#" onclick="addTabs('工具盘点','<%=basePath%>/pages/module/Inventory/toolInventory.jsp')">工具盘点</a></li>
+                        <li ><a href="#" onclick="addTabs('工具差异申报','oaFileApproval.jsp')">工具差异申报(x)</a></li>
+                      </ul>
+                    </li>                        
                     <li>
                       <a href="javascript:;">
                         <span class="iconfont sider-nav-icon">&#xe683;</span>
@@ -187,8 +203,8 @@
                       </a>
                       <ul class="sider-nav-s">
                         <li ><a href="#" onclick="addTabs('质量统计','<%=basePath%>/pages/module/StatisicalSettlement/qualityStatistics.jsp')">质量统计</a></li>
-                        <li ><a href="#" onclick="addTabs('费用统计','oaFileApproval.jsp')">费用统计</a></li>
-                        <li ><a href="#" onclick="addTabs('供应商质量问题反索赔','oaFileApproval.jsp')">供应商质量问题反索赔</a></li>
+                        <li ><a href="#" onclick="addTabs('费用统计','oaFileApproval.jsp')">费用统计(x)</a></li>
+                        <li ><a href="#" onclick="addTabs('供应商质量问题反索赔','oaFileApproval.jsp')">供应商质量问题反索赔(x)</a></li>
                         <li ><a href="#" onclick="addTabs('服务器费用结算','<%=basePath%>/pages/module/StatisicalSettlement/serverStationCostSettlement.jsp')">服务站费用结算</a></li>
                         <li ><a href="#" onclick="addTabs('服务人员费用结算','oaFileApproval.jsp')">服务人员费用结算</a></li>
                       </ul>
