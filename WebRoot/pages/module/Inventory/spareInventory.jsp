@@ -32,6 +32,54 @@
 
 </head> 
 <body>
+
+	<div id="dlg" class="easyui-dialog" title="备件盘点" data-options="closed:true,buttons:'#dlg-buttons'" style="width:1000px;height:500px;padding:10px;">
+		<table id="te" style="width:100%;height:100% ;"
+				data-options="
+			        rownumbers:true,
+			        singleSelect:false,
+			        autoRowHeight:false,
+			        pagination:true,
+			        fitColumns:true,
+			        striped:true,
+			        checkOnSelect:false,
+			        selectOnCheck:false,
+			        collapsible:true,
+			        pageSize:20
+				">
+			<thead>
+				<tr>
+			            <th field="organization" width="12%">库存组织</th>
+			            <th field="warehouse" width="12%">仓库</th>
+			            <th field="materialCode" width="12%">物料编码</th>
+			            <th field="materialName" width="12%">物料名称</th>
+			            <th field="specs" width="12%">规格</th>
+			            <th field="model" width="10%">型号</th>
+			            <th field="primaryUnit" width="5%">主单位</th>
+			            <th field="retainNumber" width="6%">结存主数量</th>
+			            <th field="reservedNumber" width="6%">预留主数量</th>
+			            <th field="frezzeNumber" width="6%">冻结主数量</th>
+                        <th field="supplierRetainNumber" width="6%">供应商物权<br>结存主数量</th>					
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div id="dlg-buttons">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td>
+					<!-- <img src="email.gif"/> -->
+				</td>
+				<td style="text-align:right">
+					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">导出Excel</a>
+					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+
     <div class="container" style="width: 100%;height: 100%">
         <div class="easyui-panel" style="width: 100%;height:100%">
             <div class="left-tree" style="height: 100%;width: 15%;position:relative" >
@@ -313,6 +361,21 @@ $(function(){
     $('#dg').datagrid({data:getData()}).datagrid('clientPaging');
 });    
 
+ $('#dg').datagrid({  
+    // url: 'Handler.ashx',  
+    // method:'get',  
+    striped: true,  
+    // title: "文件审批",  
+    onClickRow: function (rowIndex)  
+    {  
+        var row = $('#dg').datagrid('getSelected');  
+        if (row) {  
+            // alert('code:' + row.t1 + "\n LoginID:" + row.t3);  
+            $('#dlg').dialog({title:row.t3});
+            $('#dlg').dialog('open');
+        }  
+    }  
+})
 
 $(".more").click(function(){
     $(this).closest(".conditions").siblings().toggleClass("hide");
@@ -372,4 +435,124 @@ var windowClose = function(){
  //         }    
 
  //    }	
+</script>
+<script>
+	var products = [
+	    {productid:'FI-SW-01',name:'房山'},
+	    {productid:'K9-DL-01',name:'天津'}
+	];
+	function productFormatter(value){
+		for(var i=0; i<products.length; i++){
+			if (products[i].productid == value) return products[i].name;
+		}
+		return value;
+	}
+	$(function(){
+		var lastIndex;
+		$('#te').datagrid({			
+			onBeforeLoad:function(){
+				$(this).datagrid('rejectChanges');
+			},
+			onClickRow:function(rowIndex){
+				// if (lastIndex != rowIndex){
+				// 	$('#te').datagrid('endEdit', lastIndex);
+				// 	$('#te').datagrid('beginEdit', rowIndex);
+				// }
+				// lastIndex = rowIndex;
+			}
+		});
+	});
+function getSpareInventoryData()
+{
+    var rows = [];
+    for(var i=0; i<5; i++){
+	    rows.push({
+	        organization: '北京国能电池科技有限公司',
+	        warehouse: '售后材料库',
+	        materialCode: 'A0200101001',
+	        materialName: '继电器',
+	        specs: 'LEV100-24V',
+	        model: '',
+	        primaryUnit:'个',
+	        retainNumber: '35',
+	        reservedNumber: '0',
+	        frezzeNumber: '0',
+	        supplierRetainNumber: '0'
+	    });
+	    rows.push({
+	        organization: '北京国能电池科技有限公司',
+	        warehouse: '售后材料库',
+	        materialCode: 'A0200508002',
+	        materialName: '硅胶垫2',
+	        specs: 'GN-AK8.1EV-2107517',
+	        model: '',
+	        primaryUnit:'件',
+	        retainNumber: '500',
+	        reservedNumber: '0',
+	        frezzeNumber: '0',
+	        supplierRetainNumber: '0'
+	    });
+	    rows.push({
+	        organization: '北京国能电池科技有限公司',
+	        warehouse: '售后材料库',
+	        materialCode: 'A0200101001',
+	        materialName: '继电器',
+	        specs: 'AEV19024',
+	        model: '',
+	        primaryUnit:'个',
+	        retainNumber: '6',
+	        reservedNumber: '0',
+	        frezzeNumber: '0',
+	        supplierRetainNumber: '0'
+	    });
+	    rows.push({
+	        organization: '北京国能电池科技有限公司',
+	        warehouse: '售后材料库',
+	        materialCode: 'A0200306006',
+	        materialName: '弹垫',
+	        specs: 'M10  镀锌',
+	        model: '',
+	        primaryUnit:'个',
+	        retainNumber: '1250',
+	        reservedNumber: '0',
+	        frezzeNumber: '0',
+	        supplierRetainNumber: '0'
+	    });
+	    rows.push({
+	        organization: '北京国能电池科技有限公司',
+	        warehouse: '售后材料库',
+	        materialCode: 'A0200302046',
+	        materialName: '外六角螺栓',
+	        specs: 'M6*12  不锈钢',
+	        model: '',
+	        primaryUnit:'个',
+	        retainNumber: '1100',
+	        reservedNumber: '0',
+	        frezzeNumber: '0',
+	        supplierRetainNumber: '0'
+	    });
+	}
+    return rows; 
+}
+
+$(function(){
+    $('#te').datagrid({data:getSpareInventoryData()}).datagrid('clientPaging');
+});    
+
+
+
+</script>
+<script type="text/javascript">
+	$('#btnInventoryOrganization').click(function(){
+		console.info("btnInventoryOrganization");		
+	});
+	$('#btnCreatSave').click(function(){
+		// console.info("btnInventoryOrganization");		
+		$('#dlg').dialog('close');
+	});
+	$('#btnCreatCancel').click(function(){
+		// console.info("btnInventoryOrganization");		
+		$('#dlg').dialog('close');
+	});
+	
 </script>

@@ -78,7 +78,8 @@
     				        selectOnCheck:false,
     				        collapsible:true,
     				        toolbar:'#tb',
-    				        pageSize:20">
+    				        pageSize:20
+                        ">
     				    <thead>
     				        <tr href="#">
     				            <th field="organization" width="12%">库存组织</th>
