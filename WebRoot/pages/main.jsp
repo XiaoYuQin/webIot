@@ -131,18 +131,27 @@
                       </a>
                     </li>
                     <li>
-                        <a href="javascript:;" onclick="addTabs('用户管理','oaFileApproval.jsp')">
+                        <a href="javascript:;" onclick="addTabs('用户管理','<%=basePath%>/pages/module/FinalUser/userManage.jsp')">
                             <span class="iconfont sider-nav-icon">&#xe65f;</span>
-                            <span class="sider-nav-title">用户管理(x)</span>
+                            <span class="sider-nav-title">用户管理</span>
                             <i class="iconfont">&#xe619;</i>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" onclick="addTabs('维修派工','oaFileApproval.jsp')">
+                        <a href="javascript:;">
                             <span class="iconfont sider-nav-icon">&#xe610;</span>
-                            <span class="sider-nav-title">维修派工(x)</span>
+                            <span class="sider-nav-title">维修派工</span>
                             <i class="iconfont">&#xe619;</i>
-                        </a>
+                        </a>                        
+                        <ul class="sider-nav-s">
+                          <li ><a href="#" onclick="addTabs('报修','<%=basePath%>/pages/module/Maintenance/repairs.jsp')">报修</a></li>
+                          <li ><a href="#" onclick="addTabs('任务指派','<%=basePath%>/pages/module/Maintenance/taskAssign.jsp')">任务指派</a></li>
+                          <li ><a href="#" onclick="addTabs('现场勘查','<%=basePath%>/pages/module/Maintenance/sceneExploration.jsp')">现场勘查</a></li>
+                          <li ><a href="#" onclick="addTabs('勘查审批','<%=basePath%>/pages/module/Maintenance/explorationApproval.jsp')">勘查审批</a></li>                        
+                          <li ><a href="#" >维修(x)</a></li>
+                          <li ><a href="#" >维修审批(x)</a></li>
+                          <li ><a href="#" >维修单(x)</a></li>                        
+                        </ul>                        
                     </li>                    
                     <li>
                       <a href="javascript:;">
