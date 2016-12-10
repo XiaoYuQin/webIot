@@ -9,23 +9,20 @@
 <head> 
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>维修</title> 
+    <title>报修</title> 
 
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
-<!-- <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers.css"> -->
-<!-- <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers1.css"> -->
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/process.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/js/umeditor/themes/default/css/umeditor.css">
-<!-- <link href="js/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet"> -->
 
 <script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+
 <script type="text/javascript" src="<%=basePath%>/pages/js/umeditor/umeditor.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/pages/js/umeditor/umeditor.config.js"></script>
-
 
 <style type="text/css">
     html, body{ margin:0; height:100%; }
@@ -35,33 +32,36 @@
 <body style="overflow: hidden;">
 
 	<div class="easyui-panel" title="" style="width: 100%;height: 100%;">
-
-		<table id="dg" title="" class="easyui-datagrid" style="width:100%;height:100%"  
-		        singleSelect="true" 
-		        iconCls="icon-save" 
-		        rownumbers="true"
-		        toolbar='#tb'
-				pagination="true"
-				fitColumns="true"
-				striped="true"
-				pageSize=20
-		        >  
-		    <thead>  
-		   
-				<th data-options="field:'t1',align:'center',editor:'text'" style="width: 6%">勘查审批日期</th>
-				<th data-options="field:'t2',align:'center',editor:'text'" style="width: 6%">维修起始日期</th>		
-				<th data-options="field:'t3',align:'center',editor:'text'" style="width: 6%">维修结束日期</th>
-				<th data-options="field:'t4',align:'center',editor:'text'" style="width: 8%">维修单号</th>				
-				<th data-options="field:'t5',align:'center',editor:'text'" style="width: 10%">维修人员</th>	
-				<th data-options="field:'t6',align:'center',editor:'text'" style="width: 10%">故障描述</th>			
-				<th data-options="field:'t7',align:'center',editor:'text'" style="width: 10%">故障原因</th>	
-				<th data-options="field:'t8',align:'center',editor:'text'" style="width: 10%">维修方法</th>		
-				<th data-options="field:'t9',align:'center',editor:'text'" style="width: 24%">维修结果</th>
-				<th data-options="field:'t10',align:'center',editor:'text'" style="width: 4%">备件明细</th>
-				<th data-options="field:'t11',align:'center',editor:'text'" style="width: 4%">操作</th>				
+  		<table id="dg" style="width:100%;height:100%" title="" data-options="
+                rownumbers:true,
+                singleSelect:true,
+                autoRowHeight:false,
+                pagination:true,
+                fitColumns:true,
+                striped:true,
+                checkOnSelect:true,
+                selectOnCheck:true,
+                collapsible:true,
+                toolbar:'#tb',
+                pageSize:20">
+            <thead> 
+		        <tr href="#">      
+		            <th field="t1" width="5%" data-options="align:'center',editor:'text'">维修开始日期</th>
+		            <th field="t2" width="5%" data-options="align:'center',editor:'text'">维修结束日期</th>
+					<th field="t3" width="10%" data-options="align:'center',editor:'text'">维修单号</th>
+		            <th field="t4" width="6%" data-options="align:'center',editor:'text'">客户名称</th>
+		            <th field="t5" width="12%" data-options="align:'center',editor:'text'">项目名称</th>
+		            <th field="t6" width="4%" data-options="align:'center',editor:'text'">报修人</th>
+		            <th field="t7" width="9%" data-options="align:'center',editor:'text'">产品编号</th>
+		            <th field="t8" width="20%" data-options="align:'center',editor:'text'">故障描述</th>
+					<th field="t9" width="20%" data-options="align:'center',editor:'text'">故障原因</th>
+		            <th field="t10" width="20%" data-options="align:'center',editor:'text'">维修结果</th>
+		            <th field="t11" width="4%" data-options="align:'center',editor:'text'">维修人员</th>
+		            <th field="t12" width="18%" data-options="align:'center',editor:'text'">备注</th>
+					<th field="t13" width="4%" data-options="align:'center',editor:'text'">审批</th>		            	          		            
+		        </tr>		    
 		    </thead>  
 		</table> 
-
 		<div id="tb">
 			<div class="conditions">
 				<ul class="process clearfix" style="width: 100%;margin-top: 3px">
@@ -93,7 +93,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="item curr-pre">
+						<div class="item passed">
 							<div  id="kanchashengpi" class="step">
 								<i>4</i>
 								<label>勘查审批</label>
@@ -102,7 +102,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="item current">
+						<div class="item curr-pre">
 							<div id="weihu" class="step">
 								<i>5</i>
 								<label>维修</label>
@@ -111,7 +111,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="item last">
+						<div class="item current">
 							<div id="weixiushengpi" class="step">
 								<i>6</i>
 								<label>维修审批</label>
@@ -134,9 +134,13 @@
        
 			    <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
 			    <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
+			    <!--<a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>-->
 			</div>	
 		</div>   			
+
+
 	</div>
+
 	<!-- 审批窗口 -->
 	<div id="newApprovalDialog" class="easyui-dialog" title="勘查审批" data-options="closed:true,closed:true,buttons:'#dlg-buttons'" 
 		style="width:600px;height:490px;padding:10px;overflow: hidden;" >
@@ -164,92 +168,9 @@
 			</tr>
 		</table>
 	</div>
+   
 
-	<!-- 备件查看 -->
-	<div id="dlgSpareView" class="easyui-dialog" title="备件使用明细" data-options="closed:true,closed:true" 
-		style="width:800px;height:600px;padding:10px;overflow: hidden;" >
-        <div class="conditions" style="width: 100%;height: 100%">
-			<!-- <div style="width: 500px;height: 150px;margin-left:150px" id="editor-state" class="editor-state"></div>	         -->
-			<table id="tf" style="width:100%;height:100% ;"
-					data-options="
-			        checkOnSelect:true,
-			        selectOnCheck:true,
-					idField:'itemid',
-					url:'datagrid_data2.json',
-					rownumbers:true,
-					pageSize:1000
-					">
-				<thead>
-					<tr>  
-						<th data-options="field:'x1',align:'center',editor:'text'" style="width: 200px">物料编码</th>
-						<th data-options="field:'x2',align:'center',editor:'text'" style="width: 170px">物料名称</th>		
-						<th data-options="field:'x3',align:'center',editor:'text'" style="width: 200px">规格</th>	
-						<th data-options="field:'x4',align:'center',editor:'text'" style="width: 80px">数量</th>			
-						<th data-options="field:'x5',align:'center',editor:'text'" style="width: 80px">单位</th>							
-					</tr>
-				</thead>
-			</table>			
-		</div>
-	</div>
-	<div id="dlg-button">
-		<table cellpadding="0" cellspacing="0" style="width:100%">
-			<tr>
-				<td style="text-align:right">
-					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">提交</a>
-					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-				</td>
-			</tr>
-		</table>
-	</div>
-
-
-	<div id="dlgCreate" class="easyui-dialog" title="勘查信息登记" data-options="closed:true,buttons:'#dlg-buttons'" style="width:650px;height:500px;padding:10px;">			
-		<div class="conditions" style="margin-top: 10px;">
-			<span class="con-span">维修结果: </span>
-			<input class="easyui-textbox" data-options="multiline:true" value="" style="width:525px;height:70px">	        
-		</div>	
-		<div class="conditions" style="margin-top: 10px;">
-			<span class="con-span">备件列表: </span>
-		</div>			
-		<div class="conditions" style="margin-top: 10px;height: 230px;margin-left: 68px">
-	        <a class="easyui-panel" style="width: 530px;height: 230px;">
-				<table id="te" style="width:100%;height:100% ;"
-						data-options="
-		                checkOnSelect:true,
-		                selectOnCheck:true,
-						idField:'itemid',
-						url:'datagrid_data2.json',
-						rownumbers:true">
-					<thead>
-						<tr>
-							<th field="ck" data-options="checkbox:true"></th>      
-							<th data-options="field:'x1',align:'center',editor:'text'">物料编码</th>
-							<th data-options="field:'x2',align:'center',editor:'text'">物料名称</th>		
-							<th data-options="field:'x3',align:'center',editor:'text'">规格</th>	
-							<th data-options="field:'x4',align:'center',editor:'text'">数量</th>			
-							<th data-options="field:'x5',align:'center',editor:'text'">单位</th>								
-						</tr>
-					</thead>
-				</table>
-			</a>
-		</div>	    	     
-
-	</div>
-	<div id="dlg-buttons">
-		<table cellpadding="0" cellspacing="0" style="width:100%">
-			<tr>
-				<td style="text-align:left;">
-					<a id="btnSubimt" href="#" class="easyui-linkbutton">提交</a>
-				</td>
-				<td style="text-align:right">
-					<a id="btnCreatSave" href="#" class="easyui-linkbutton" iconCls="icon-save">保存</a>
-					<a id="btnCreatCancel" href="#" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
-				</td>
-			</tr>
-		</table>
-	</div>
-
-
+    
 </body> 
 </html>
 <script type="text/javascript">
@@ -385,26 +306,23 @@
         })(jQuery);
 
 
-		function getData()
-		{
+		function getData(){
 		    var rows = [];
-
-			for(var i=0; i<3; i++)
-		    {
-				rows.push({
-			        t1: '2016/12/6',
-			        t2: '2016/12/7',
-			        t3: '',
-			        t4: 'GN-WXD-20160314-001',
-			        t5: '张玉山',
-			        t6: '不能正常充电',
-			        t7: '外壳破损导致的接触不良',
-			        t8: '替换第三组电池',
-			        t9: "",
-			        t10: "<a href='#' onclick='chakan()'>查看</a>",
-					t11: "<a href='#' onclick='createOrModify()'>填写/修改</a>"
-			    });		
-		    }	
+			rows.push({
+		        t1: '2016/12/6',
+		        t2: '2016/12/8',
+				t3: 'GN-WXD-20160314-001',
+		        t4: '北京公交公司',
+		        t5: '金龙9',
+		        t6: '李德生',
+	            t7: '1256487532',
+		        t8: '无法充电',
+		        t9: '电池损耗',
+		        t10:'已维修',    
+		        t11:'郭淑琴',
+		        t12:'-',
+		        t13:"<a href='#' onclick='shenpi()'>审批</a>"
+		    });				
 		    return rows;
 		}
 	    $('#dg').datagrid({  
@@ -462,8 +380,8 @@
 		$('#btnCreatSave').click(function(){
 
 			$.messager.show({
-				title:'提交',
-				msg:'勘查审批通过',
+				title:'创建',
+				msg:'创建联系人成功',
 				timeout:3000,
 				showType:'slide'
 			});	
@@ -472,28 +390,30 @@
 			$('#dg').datagrid('reload');
         }); 
 		$('#btnCreatCancel').click(function(){
-			// $.messager.show({
-			// 	title:'提交',
-			// 	msg:'勘查审批驳回',
-			// 	timeout:3000,
-			// 	showType:'slide'
-			// });	
 			$('#newApprovalDialog').dialog('close');
         }); 
 
 
-		// $('#dg').datagrid({  
-		//     method:'get',  
-		//     striped: true,  
-		//     title: "",  
-		//     onClickRow: function (rowIndex)  
-		//     {  
-		//         var row = $('#dg').datagrid('getSelected');  
-		//         if (row) {  
-		//         	$('#newApprovalDialog').dialog('open');
-		//         }  
-		//     }  
-		// })
+		$('#dg').datagrid({  
+		    // url: 'Handler.ashx',  
+		    method:'get',  
+		    striped: true,  
+		    title: "",  
+		    onClickRow: function (rowIndex)  
+		    {  
+		        var row = $('#dg').datagrid('getSelected');  
+		        if (row) {  
+		        	$('#dlgModify').dialog('open');
+		            // alert('code:' + row.t1 + "\n LoginID:" + row.t2);  
+		            // $('#dlg').dialog('open');
+		        }  
+		    }  
+		})
+
+		function shenpi()
+		{
+			$('#newApprovalDialog').dialog('open');
+		}
 
     </script>
     <script type="text/javascript">
@@ -507,264 +427,4 @@
     	}
     	$('#cc').combotree('loadData', [{ id: 1, text: 'Languages', children: [{ id: 11, text: 'Java' },{ id: 12, text: 'C++' }] }]); 
     	// $('#cc').combotree('loadData', ${treeData});
-    </script>
-    <script type="text/javascript">
-  //   	$('#chakan').click(function(){
-		// 	alert('code:' + row.tr1);  
-		// });
-
-		function chakan(){
-			// alert('copyText');  
-			$('#dlgSpareView').dialog('open');
-		}
-		function createOrModify()
-		{
-			$('#dlgCreate').dialog('open');
-		}
-		function shenpi(){
-			// alert('copyText');  
-			$('#newApprovalDialog').dialog('open');
-		}		
-
-    </script>
-    <script>
-		$(function(){
-			var lastIndex;
-			$('#tf').datagrid({			
-				onBeforeLoad:function(){
-					$(this).datagrid('rejectChanges');
-				}
-			});
-		});
-
-		function getSpareData()
-		{
-		    var rows = [];
-
-			rows.push({
-		        x1: 'A0200101001',
-		        x2: '继电器',
-		        x3: 'LEV100-24V',
-		        x4: '3',
-		        x5: '个'                 
-		    });	
-		    rows.push({
-		        x1: 'A0200508002',
-		        x2: '硅胶垫2',
-		        x3: 'GN-AK8.1EV-2107517',
-		        x4: '1',
-		        x5: '件'                 
-		    });
-		    rows.push({
-		        x1: 'A0200101011',
-		        x2: '继电器',
-		        x3: 'AEV19024',
-		        x4: '6',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200306006',
-		        x2: '弹垫',
-		        x3: 'M10  镀锌',
-		        x4: '100',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200302046',
-		        x2: '外六角螺栓',
-		        x3: 'M6*12  不锈钢',
-		        x4: '30',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200404006',
-		        x2: '护套',
-		        x3: 'DJ33541',
-		        x4: '18',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200406008',
-		        x2: '绝缘支柱',
-		        x3: 'SM7110',
-		        x4: '50',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200407204',
-		        x2: '扎带',
-		        x3: '3*100',
-		        x4: '1',
-		        x5: '包'                 
-		    });
-		    rows.push({
-		        x1: 'A0200507183',
-		        x2: '2并绝缘板',
-		        x3: 'GN-LZ-2107500',
-		        x4: '15',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200102007',
-		        x2: '熔断器',
-		        x3: 'A70QS400-4',
-		        x4: '3',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200302011',
-		        x2: '六角螺栓',
-		        x3: 'M6*16   镀锌',
-		        x4: '5',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200202010',
-		        x2: '高压单芯负插座',
-		        x3: 'HV2-RFK4S-1YNB-H15',
-		        x4: '3',
-		        x5: '个'                 
-		    });
-		    return rows;
-		}
-
-
-        $(function(){
-            $('#tf').datagrid({data:getSpareData()}).datagrid('clientPaging');
-        });
-
-	</script>
-
-	  <script type="text/javascript">
-    	$(function()
-    	{
-			var lastIndex;
-			$('#te').datagrid({
-				toolbar:[{
-					text:'添加',
-					iconCls:'icon-add',
-					handler:function(){
-						$('#dlgNew').dialog('open');
-					}
-				},'-',{
-					text:'删除',
-					iconCls:'icon-remove',
-					handler:function(){
-						var row = $('#te').datagrid('getSelected');
-						if (row){
-							var index = $('#te').datagrid('getRowIndex', row);
-							$('#te').datagrid('deleteRow', index);
-						}
-					}
-				}],
-				onBeforeLoad:function(){
-					$(this).datagrid('rejectChanges');
-				},
-				onClickRow:function(rowIndex){
-					if (lastIndex != rowIndex){
-						$('#te').datagrid('endEdit', lastIndex);
-						$('#te').datagrid('beginEdit', rowIndex);
-					}
-					lastIndex = rowIndex;
-				}
-			});
-		});
-
-		function getSpareData()
-		{
-		    var rows = [];
-
-			rows.push({
-		        x1: 'A0200101001',
-		        x2: '继电器',
-		        x3: 'LEV100-24V',
-		        x4: '3',
-		        x5: '个'                 
-		    });	
-		    rows.push({
-		        x1: 'A0200508002',
-		        x2: '硅胶垫2',
-		        x3: 'GN-AK8.1EV-2107517',
-		        x4: '1',
-		        x5: '件'                 
-		    });
-		    rows.push({
-		        x1: 'A0200101011',
-		        x2: '继电器',
-		        x3: 'AEV19024',
-		        x4: '6',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200306006',
-		        x2: '弹垫',
-		        x3: 'M10  镀锌',
-		        x4: '100',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200302046',
-		        x2: '外六角螺栓',
-		        x3: 'M6*12  不锈钢',
-		        x4: '30',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200404006',
-		        x2: '护套',
-		        x3: 'DJ33541',
-		        x4: '18',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200406008',
-		        x2: '绝缘支柱',
-		        x3: 'SM7110',
-		        x4: '50',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200407204',
-		        x2: '扎带',
-		        x3: '3*100',
-		        x4: '1',
-		        x5: '包'                 
-		    });
-		    rows.push({
-		        x1: 'A0200507183',
-		        x2: '2并绝缘板',
-		        x3: 'GN-LZ-2107500',
-		        x4: '15',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200102007',
-		        x2: '熔断器',
-		        x3: 'A70QS400-4',
-		        x4: '3',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200302011',
-		        x2: '六角螺栓',
-		        x3: 'M6*16   镀锌',
-		        x4: '5',
-		        x5: '个'                 
-		    });
-		    rows.push({
-		        x1: 'A0200202010',
-		        x2: '高压单芯负插座',
-		        x3: 'HV2-RFK4S-1YNB-H15',
-		        x4: '3',
-		        x5: '个'                 
-		    });
-		    return rows;
-		}
-
-
-        $(function(){
-            $('#te').datagrid({data:getSpareData()}).datagrid('clientPaging');
-        });
-
-
     </script>

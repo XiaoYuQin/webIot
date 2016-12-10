@@ -30,6 +30,13 @@
                           <span class="pf-nav-title">工作台</span>
                       </a>
                   </li>
+                  <li class="pf-nav-item manger" data-menu="pur-source" onclick="addTabs('版本日志','versionLog.jsp')">
+                      <a href="javascript:;">
+                          <span class="iconfont">&#xe61a;</span>
+                          <span class="pf-nav-title">版本日志</span>
+                      </a>
+                  </li>                  
+
 <!--                   <li class="pf-nav-item home" data-menu="sys-manage">
                       <a href="javascript:;">
                           <span class="iconfont">&#xe63f;</span>
@@ -148,9 +155,9 @@
                           <li ><a href="#" onclick="addTabs('任务指派','<%=basePath%>/pages/module/Maintenance/taskAssign.jsp')">任务指派</a></li>
                           <li ><a href="#" onclick="addTabs('现场勘查','<%=basePath%>/pages/module/Maintenance/sceneExploration.jsp')">现场勘查</a></li>
                           <li ><a href="#" onclick="addTabs('勘查审批','<%=basePath%>/pages/module/Maintenance/explorationApproval.jsp')">勘查审批</a></li>                        
-                          <li ><a href="#" >维修(x)</a></li>
-                          <li ><a href="#" >维修审批(x)</a></li>
-                          <li ><a href="#" >维修单(x)</a></li>                        
+                          <li ><a href="#" onclick="addTabs('维修','<%=basePath%>/pages/module/Maintenance/maintenance.jsp')">维修</a></li>
+                          <li ><a href="#" onclick="addTabs('维修审批','<%=basePath%>/pages/module/Maintenance/maintenanceApproval.jsp')">维修审批</a></li>
+                          <li ><a href="#" onclick="addTabs('维修单','<%=basePath%>/pages/module/Maintenance/maintenanceOrderList.jsp')">维修单</a></li>                        
                         </ul>                        
                     </li>                    
                     <li>

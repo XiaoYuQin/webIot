@@ -16,6 +16,10 @@
 <link rel="stylesheet" href="css/workbench.css">
 <!-- <link rel="stylesheet" href="css/basic_info.css" > -->
 
+<!-- <style type="text/css">
+    #banbenrizhi-headerCls{font-weight: bold}}
+</style> -->
+
 </head> 
 <body>
     <div class="container">
@@ -234,9 +238,19 @@
                     </div>
                     <div class="center-items chart1">
                         <div class="chart1-inner">
-                            <div class="item-hd">个人工作统计</div>
+                            <div class="item-hd" >版本日志</div>
                             <div class="chart1-chart" id="chart3"></div>
-                            <!-- <div class="column"><span class="current">注册信息</span></div> -->
+<!--                                 <div id="banbenrizhi" class="easyui-panel" title="版本日志" style="width: 100%;height: 100%;">
+                                    <div style="font-size: 20px;font-weight: bold">v4.4</div> 
+                                    <div style="font-size: 17px;">- 新增期货(保证金)监控中心实盘交易记录自动下载功能，并支持对下载记录进行复盘分析；</div>
+                                    <div style="font-size: 17px;">- 新增交易数据文件导入功能，支持导入文华、快期、通达信等主流交易软件的导出记录；</div>
+                                    <div style="font-size: 17px;">- 增强的交易统计分析功能，支持按年、月及品种进行交易统计；</div>
+                                    <div style="font-size: 17px;">- 新增醒目大箭头用于图表交易指示，且用户可根据偏好设置显示大/小交易箭头；</div>
+                                    <div style="font-size: 17px;">- 新增只读属性账户，用户可新建仅用于导入并分析交易记录的账户；</div>
+                                    <div style="font-size: 17px;">- 期间选择窗口起始时间新增夜盘开盘时间选项；</div>
+                                    <div style="font-size: 17px;">- 修正了上一版本个别bug。</div>
+                                    <br />
+                                </div>       -->                                                                      
                         </div>
                     </div>
                 </div>

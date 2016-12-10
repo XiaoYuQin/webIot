@@ -41,19 +41,22 @@
                 selectOnCheck:false,
                 collapsible:true,
                 toolbar:'#tb',
-                pageSize:10">
+                pageSize:20">
             <thead>
                 <tr href="#">
-                    <th field="code" width="5%">日期</th>
-                    <th field="name" width="5%">客户名称</th>
-                    <th field="level" width="5%">项目名称</th>
-                    <th field="provide" width="5%">报修人</th>
-                    <th field="full" width="10%">电话</th>
-                    <th field="issubmit" width="10%">产品编号</th>
-                    <th field="status" width="25%">故障描述</th>
-                    <th field="dealDate" width="5%">处理时间</th>
-                    <th field="dealPeople" width="5%">受理人</th>
-                    <th field="note" width="24%">备注</th>
+                    <th field="t1" width="10%" data-options="align:'center',editor:'text'">维修单号</th>
+                    <th field="t2" width="6%" data-options="align:'center',editor:'text'">客户名称</th>
+                    <th field="t3" width="12%" data-options="align:'center',editor:'text'">项目名称</th>
+                    <th field="t4" width="4%" data-options="align:'center',editor:'text'">报修人</th>
+                    <th field="t5" width="9%" data-options="align:'center',editor:'text'">产品编号</th>
+                    <th field="t6" width="20%" data-options="align:'center',editor:'text'">故障描述</th>
+                    <th field="t7" width="20%" data-options="align:'center',editor:'text'">故障原因</th>
+                    <th field="t8" width="20%" data-options="align:'center',editor:'text'">维修结果</th>
+                    <th field="t9" width="4%" data-options="align:'center',editor:'text'">维修人员</th>
+                    <th field="t10" width="18%" data-options="align:'center',editor:'text'">备注</th>
+                    <th field="t11" width="4%" data-options="align:'center',editor:'text'">审批结果</th>          
+                    <th field="t12" width="4%" data-options="align:'center',editor:'text'">维修单</th>
+                    <th field="t12" width="4%" data-options="align:'center',editor:'text'">日志</th>
                 </tr>
             </thead>
         </table>
@@ -75,17 +78,13 @@
             <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
             <span class="con-span">合同状态: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
         </div> -->
-        <div class="opt-buttons">
+<!--         <div class="opt-buttons">
             <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
-            <!-- <a href="#" class="easyui-linkbutton">发布</a>
-            <a href="#" class="easyui-linkbutton">取消发布</a>
-            <a href="#" class="easyui-linkbutton">标记为执行完毕</a> -->
             <a href="#" class="easyui-linkbutton">导出</a>
 			<a href="#" class="easyui-linkbutton" onclick="printPreView()">打印预览</a>
 			<a href="#" class="easyui-linkbutton" onclick="printIt()">打印</a>
 			<a href="#" class="easyui-linkbutton" onclick="printSetup()">打印设置</a>
-
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -197,19 +196,25 @@
             })
         })(jQuery);
 
-        function getData(){
+        function getData()
+        {
             var rows = [];
-            for(var i=1; i<=800; i++){
+            for(var i=0; i<50; i++){
                 rows.push({
-                    code: '10695',
-                    name: '充电试验台',
-                    level: '检测设备',
-                    provide: '研发部',
-                    full: '北京',
-                    issubmit: '正常使用',
-                    status:'张一',
-                    note: '-'
-                });
+                    t1: 'GN-WXD-20160314-001',
+                    t2: '北京公交公司',
+                    t3: '金龙9',
+                    t4: '李德生',
+                    t5: '1256487532',
+                    t6: '无法充电',
+                    t7: '电池损耗',
+                    t8:'已维修',    
+                    t9:'郭淑琴',
+                    t10:'-',
+                    t11: '2016/12/6',
+                    t12: "<a href='#' onclick='viewMaintenanceOrder()'>查看</a>",
+                    t13: "<a href='#' onclick='viewLog()'>查看</a>"
+                });             
             }
             return rows;
         }
@@ -243,6 +248,16 @@
 		    window.open('','_self');   
 		    window.close();  
 		};  
+
+        function viewMaintenanceOrder()
+        {
+                window.open ('<%=basePath%>/pages/module/Maintenance/maintenanceOrder.jsp', 'newwindow', 'height=768px, width=1024px, scrollbars=yes, resizable=yes');    
+        }
+        function viewLog()
+        {
+
+
+        }
     </script>
 </body> 
 </html>
