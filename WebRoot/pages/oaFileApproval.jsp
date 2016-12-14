@@ -9,7 +9,7 @@
 <head> 
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>文件审批</title> 
+    <title>设备维修表</title> 
     <link href="css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="../custom/uimaker/easyui.css">
     <link href="css/process.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 	        <a href="#" class="easyui-linkbutton" iconCls="icon-reload">取消</a>       		
         </div>  					
 	</div>
-	<div id="dlg" class="easyui-dialog" title="审批日志查看" data-options="closed:true" style="width:720px;height:490px;padding:10px;">
+	<div id="dlg" class="easyui-dialog" title="审批文件日志查看" data-options="closed:true" style="width:720px;height:490px;padding:10px;">
 		<div class="time-line">
 			<div class="time-item date">
 				<div class="content-left first">
@@ -145,9 +145,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- <div id="tt">
-		<a href="javascript:void(0)" class="icon-add" ></a>
-	</div>		 -->
+
+
 	<div class="easyui-panel" style="width: 100%;height:100%">
 		<table id="dg" style="width:100%;height:100%" title="全体供应商列表" data-options="
 		        rownumbers:true,
@@ -169,9 +168,6 @@
 		            <th field="leader" width="112">审批人</th>
 		            <th field="status" width="170">审批状态</th>
 		            <th field="date" width="130">时间</th>
-<!-- 		            <th field="status" width="120">审核状态</th>		     -->        
-		            <!-- <th field="operate" width="136">操作</th> -->
-<!-- 		            <th field="note" width="105">备注</th> -->
 		        </tr>
 		    </thead>
 		</table>

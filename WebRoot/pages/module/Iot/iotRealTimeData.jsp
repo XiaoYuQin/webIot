@@ -22,6 +22,17 @@
 <script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers1.css">
+
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
 <style type="text/css">
     html, body{ margin:0; height:100%;width: 100%}
 </style>

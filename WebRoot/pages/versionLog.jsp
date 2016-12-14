@@ -46,23 +46,45 @@
 <body style="overflow: hidden;">
     <div class="container" style="width: 100%;height: 100%">
 		<div class="easyui-panel" title="" style="width: 100%;height: 100%">
-			
+
 			<div class="jianjie">
 		        <div class="scr_tit01">
-		        	<img style="height: 20px;width: 10px" src="<%=basePath%>/pages/images/biaoqian02.jpg"/>
-		        	<h4 style="font-size: 20px;font-weight: bold">V0.0.1</h4>
+		        	<img style="height: 30px;width: 10px" src="<%=basePath%>/pages/images/biaoqian02.jpg"/>
+		        	<h4 style="font-size: 23px;font-weight: bold">V0.0.3</h4><br/>
 		        </div>
 		        <div class="scr_con01">
-			        <div style="font-size: 17px;">- 新增期货(保证金)监控中心实盘交易记录自动下载功能，并支持对下载记录进行复盘分析；</div>
-	                <div style="font-size: 17px;">- 新增交易数据文件导入功能，支持导入文华、快期、通达信等主流交易软件的导出记录；</div>
-	                <div style="font-size: 17px;">- 增强的交易统计分析功能，支持按年、月及品种进行交易统计；</div>
-	                <div style="font-size: 17px;">- 新增醒目大箭头用于图表交易指示，且用户可根据偏好设置显示大/小交易箭头；</div>
-	                <div style="font-size: 17px;">- 新增只读属性账户，用户可新建仅用于导入并分析交易记录的账户；</div>
-	                <div style="font-size: 17px;">- 期间选择窗口起始时间新增夜盘开盘时间选项；</div>
-	                <div style="font-size: 17px;">- 修正了上一版本个别bug。</div>
-	                <br />
+		        	<h4 style="font-size: 20px;margin-left: 20px;">2016/12/15 00:54</h4><br/>		        
+			        <div style="font-size: 17px;">- 增加即时通讯页面；</div><br/>
+                    <div style="font-size: 17px;">- 修改设备地图界面，增加电池包各组温度及电压的详情情况，增加数据曲线查看窗口；</div><br/>
 		        </div> 
-		    </div>
+		    </div>	
+
+
+			<div class="jianjie">
+		        <div class="scr_tit01">
+		        	<img style="height: 30px;width: 10px" src="<%=basePath%>/pages/images/biaoqian02.jpg"/>
+		        	<h4 style="font-size: 23px;font-weight: bold">V0.0.2</h4><br/>
+		        </div>
+		        <div class="scr_con01">
+		        	<h4 style="font-size: 20px;margin-left: 20px;">2016/12/11 12:13</h4><br/>		        
+			        <div style="font-size: 17px;">- 修正报修界面下新增按钮无效的bug；</div><br/>
+		        </div> 
+		    </div>		    
+
+			<div class="jianjie">
+		        <div class="scr_tit01">
+		        	<img style="height: 30px;width: 10px" src="<%=basePath%>/pages/images/biaoqian02.jpg"/>
+		        	<h4 style="font-size: 23px;font-weight: bold">V0.0.1</h4><br/>
+		        </div>
+		        <div class="scr_con01">
+		        	<h4 style="font-size: 20px;margin-left: 20px;">2016/12/10 17:35</h4><br/>		        
+			        <div style="font-size: 17px;">- 增加版本日志界面；</div><br/>
+	                <div style="font-size: 17px;">- 增加维修单表格界面，可以通过维修单页面查看；</div><br/>
+	                <div style="font-size: 17px;">- 增加维修审批界面；</div><br/>
+	                <div style="font-size: 17px;">- 增加维修界面；</div><br/>
+	                <div style="font-size: 17px;">- 增加维修单界面，用来查看所有维修单</div><br/>
+		        </div> 
+		    </div>		
 		</div>
     </div>
   

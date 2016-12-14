@@ -10,9 +10,19 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>信息管理系统</title> 
-<link href="css/base.css" rel="stylesheet">
-<link href="css/platform.css" rel="stylesheet">
-<link rel="stylesheet" href="../custom/uimaker/easyui.css">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/platform.css" rel="stylesheet">
+    <link rel="stylesheet" href="../custom/uimaker/easyui.css">
+    <link href="../pages/js/layim/css/layim.css" type="text/css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="../custom/jquery.min.js"></script>
+    <script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+
+    <script src="../pages/js/layim/lay/layer/layer.min.js"></script>
+    <script src="../pages/js/layim/lay/lib.js"></script>
+    <script src="../pages/js/layim/lay/layim.js"></script>
 
 </head> 
 <body style="overflow: hidden;">
@@ -32,30 +42,18 @@
                   </li>
                   <li class="pf-nav-item manger" data-menu="pur-source" onclick="addTabs('版本日志','versionLog.jsp')">
                       <a href="javascript:;">
-                          <span class="iconfont">&#xe61a;</span>
-                          <span class="pf-nav-title">版本日志</span>
+                        <span class="iconfont">&#xe61a;</span>
+                        <span class="pf-nav-title">版本日志</span>
                       </a>
                   </li>                  
-
-<!--                   <li class="pf-nav-item home" data-menu="sys-manage">
+                  <li class="pf-nav-item manger" data-menu="pur-source" onclick="addTabs('即时通讯','../pages/js/layim/demo.html')">
                       <a href="javascript:;">
-                          <span class="iconfont">&#xe63f;</span>
-                          <span class="pf-nav-title">系统管理</span>
+                        <span class="iconfont">&#xe608;</span>
+                        <span class="pf-nav-title">即时通讯</span>
                       </a>
-                  </li>                                      
-                  <li class="pf-nav-item manger" data-menu="contract-mange" onclick="addTabs('文件管理','oaFileManage.jsp')">
-                      <a href="javascript:;">
-                          <span class="iconfont">&#xe60c;</span>
-                          <span class="pf-nav-title">文件管理</span>
-                      </a>
-                  </li> -->
-
+                  </li>                                  
                 </ul>
               </div>
-              
-
-<!--               <a href="javascript:;" class="pf-nav-prev disabled iconfont">&#xe606;</a>
-              <a href="javascript:;" class="pf-nav-next iconfont">&#xe607;</a> -->
             </div>
             <div class="pf-user">
                 <div class="pf-user-photo">
@@ -72,19 +70,19 @@
                     <ul class="pf-user-opt">
                         <li>
                             <a href="javascript:;">
-                                <i class="iconfont">&#xe617;</i>
+                                <!--<i class="iconfont">&#xe617;</i>-->
                                 <span class="pf-opt-name">用户信息</span>
                             </a>
                         </li>
                         <li class="pf-modify-pwd">
                             <a href="http://www.uimaker.com">
-                                <i class="iconfont">&#xe636;</i>
+                                <!--<i class="iconfont">&#xe636;</i>-->
                                 <span class="pf-opt-name">修改密码</span>
                             </a>
                         </li>
                         <li class="pf-logout">
                             <a href="login.html">
-                                <i class="iconfont">&#xe601;</i>
+                                <!--<i class="iconfont">&#xe601;</i>-->
                                 <span class="pf-opt-name">退出</span>
                             </a>
                         </li>
@@ -103,19 +101,6 @@
                 </h2>
 
                 <ul class="sider-nav">
-   <!--                   <li>
-                        <a href="javascript:;">
-                            <span class="iconfont sider-nav-icon">&#xe620;</span>
-                            <span class="sider-nav-title">物联网</span>
-                            <i class="iconfont">&#xe619;</i>
-                        </a>
-                        <ul class="sider-nav-s">
-                           <li><a href="#" onclick="addTabs('设备地图','iotMap.jsp')">设备地图</a></li>
-                           <li><a href="#" onclick="addTabs('设备列表','iotThingList.jsp')">设备列表</a></li>
-                           <li><a href="#" onclick="addTabs('实时数据','iotRealTimeData.jsp')">实时数据</a></li>
-                           <li><a href="#" onclick="addTabs('历史数据','iotHistoryData.jsp')">历史数据</a></li>
-                        </ul>
-                     </li> -->
                     <li>
                         <a href="javascript:;">
                             <span class="iconfont sider-nav-icon">&#xe641;</span>
@@ -123,11 +108,11 @@
                             <i class="iconfont">&#xe619;</i>
                         </a>
                         <ul class="sider-nav-s">
-                           <li><a href="#" onclick="addTabs('设备地图','iotMap.jsp')">设备地图</a></li>
-                           <li><a href="#" onclick="addTabs('设备列表','iotThingList.jsp')">设备列表</a></li>
-                           <li><a href="#" onclick="addTabs('实时数据','iotRealTimeData.jsp')">实时数据</a></li>
-                           <li><a href="#" onclick="addTabs('历史数据','iotHistoryData.jsp')">历史数据</a></li>
-                           <li><a href="#" onclick="addTabs('报警设置','iotHistoryData.jsp')">报警设置</a></li>
+                           <li><a href="#" onclick="addTabs('设备地图','<%=basePath%>/pages/module/Iot/iotMap.jsp')">设备地图</a></li>
+                           <li><a href="#" onclick="addTabs('设备列表','<%=basePath%>/pages/module/Iot/iotThingList.jsp')">设备列表</a></li>
+                           <li><a href="#" onclick="addTabs('实时数据','<%=basePath%>/pages/module/Iot/iotRealTimeData.jsp')">实时数据</a></li>
+                           <li><a href="#" onclick="addTabs('历史数据','<%=basePath%>/pages/module/Iot/iotHistoryData.jsp')">历史数据</a></li>
+                           <li><a href="#" onclick="addTabs('报警设置','<%=basePath%>/pages/module/Iot/iotHistoryData.jsp')">报警设置(x)</a></li>
                         </ul>
                      </li>
                     <li>
@@ -172,7 +157,7 @@
                         <li ><a href="#" onclick="addTabs('知识管理','<%=basePath%>/pages/module/Office/knowledgeManage.jsp')">知识管理</a></li>
                         <li ><a href="#" onclick="addTabs('工作日报','<%=basePath%>/pages/module/Office/dailyWorkReport.jsp')">工作日报</a></li>
                         <li ><a href="#" onclick="addTabs('邮箱','oaFileApproval.jsp')">邮箱(x)</a></li>
-                        <li ><a href="#" onclick="addTabs('公告发布','oaFileApproval.jsp')">公告发布(x)</a></li>                        
+                        <li ><a href="#" onclick="addTabs('公告发布','<%=basePath%>/pages/module/Office/noticeManage.jsp')">公告发布</a></li>                        
                       </ul>
                     </li>    
                     <li>
@@ -237,38 +222,7 @@
                         <li ><a href="#" onclick="addTabs('数据字典','<%=basePath%>/pages/module/DatebaseDictionary/databaseDictionary.jsp')">数据字典</a></li>
                         <li ><a href="#" onclick="addTabs('权限管理','<%=basePath%>/pages/module/DatebaseDictionary/databaseDictionary.jsp')">权限管理</a></li>                      
                       </ul>
-                    </li>                                                                          
-                    <!--  <li>
-                        <a href="javascript:;">
-                            <span class="iconfont sider-nav-icon">&#xe611;</span>
-                            <span class="sider-nav-title">办公</span>
-                            <i class="iconfont">&#xe619;</i>
-                        </a>
-                        <ul class="sider-nav-s">
-                           <li ><a href="#" onclick="addTabs('文件审批','oaFileApproval.jsp')">文件审批</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="javascript:;">
-                            <span class="iconfont sider-nav-icon">&#xe6e6;</span>
-                            <span class="sider-nav-title">组织管理</span>
-                            <i class="iconfont">&#xe619;</i>
-                        </a>
-                        <ul class="sider-nav-s">
-                           <li ><a href="#" onclick="addTabs('用户管理','sysUserManage.jsp')">用户管理</a></li>
-                           <li><a href="#" onclick="addTabs('职位管理','iotHistoryData.jsp')">职位管理</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="javascript:;">
-                            <span class="iconfont sider-nav-icon">&#xe6bb;</span>
-                            <span class="sider-nav-title">数据管理</span>
-                            <i class="iconfont">&#xe619;</i>
-                        </a>
-                        <ul class="sider-nav-s">
-                           <li ><a href="#">数据字典</a></li>
-                        </ul>
-                     </li> -->
+                    </li>                                                                                             
                  </ul> 
             </div>
 
@@ -276,25 +230,7 @@
                 <div id="tt" class="easyui-tabs1"  fit="true" border="false" plain="true" style="width:100%;height:100%;">       
                   <div title="工作台" style="padding:10px 5px 5px 10px;">
                     <iframe class="page-iframe" src="workbench.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>
-                 <!--  <div title="设备地图" data-options="closable:false" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="iotMap.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>       
-                  <div title="设备列表" data-options="closable:false" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="iotThingList.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div> 
-                  <div title="实时数据" data-options="closable:false" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="iotRealTimeData.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>  
-                  <div title="历史数据" data-options="closable:false" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="iotHistoryData.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>    
-                  <div title="文件审批" data-options="closable:false" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="oaFileApproval.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>   
-                  <div title="用户管理" data-options="closable:false" style="padding:10px 5px 5px 10px;">
-                    <iframe class="page-iframe" src="sysUserManage.jsp" frameborder="no"   border="no" height="100%" width="100%" scrolling="auto"></iframe>
-                  </div>    -->                                 
+                  </div>                               
                 </div>
             </div>
         </div>
@@ -302,7 +238,7 @@
         <div id="pf-ft">
             <div class="system-name">
               <i class="iconfont">&#xe6fe;</i>
-              <span>信息管理系统&nbsp;v1.0</span>
+              <span>信息管理系统&nbsp;v0.0.1</span>
             </div>
             <div class="copyright-name">
               <span>CopyRight&nbsp;2016&nbsp;&nbsp;shuohe-tech.com&nbsp;版权所有</span>
@@ -326,138 +262,77 @@
 
     
     <script type="text/javascript">
-    $('.easyui-tabs1').tabs({
-      tabHeight: 44,
-      onSelect:function(title,index){
-        var currentTab = $('.easyui-tabs1').tabs("getSelected");
-        if(currentTab.find("iframe") && currentTab.find("iframe").size()){
-            currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
+      $('.easyui-tabs1').tabs({
+        tabHeight: 44,
+        onSelect:function(title,index){
+          var currentTab = $('.easyui-tabs1').tabs("getSelected");
+          if(currentTab.find("iframe") && currentTab.find("iframe").size()){
+              currentTab.find("iframe").attr("src",currentTab.find("iframe").attr("src"));
+          }
         }
+      })
+      $(window).resize(function(){
+            $('.tabs-panels').height($("#pf-page").height()-46);
+            $('.panel-body').height($("#pf-page").height()-76)
+      }).resize();
+
+      var page = 0,
+          pages = ($('.pf-nav').height() / 70) - 1;
+
+      if(pages === 0){
+        $('.pf-nav-prev,.pf-nav-next').hide();
       }
-    })
-    $(window).resize(function(){
-          $('.tabs-panels').height($("#pf-page").height()-46);
-          $('.panel-body').height($("#pf-page").height()-76)
-    }).resize();
-
-    var page = 0,
-        pages = ($('.pf-nav').height() / 70) - 1;
-
-    if(pages === 0){
-      $('.pf-nav-prev,.pf-nav-next').hide();
-    }
-    $(document).on('click', '.pf-nav-prev,.pf-nav-next', function(){
+      $(document).on('click', '.pf-nav-prev,.pf-nav-next', function(){
 
 
-      if($(this).hasClass('disabled')) return;
-      if($(this).hasClass('pf-nav-next')){
-        page++;
-        $('.pf-nav').stop().animate({'margin-top': -70*page}, 200);
-        if(page == pages){
-          $(this).addClass('disabled');
-          $('.pf-nav-prev').removeClass('disabled');
+        if($(this).hasClass('disabled')) return;
+        if($(this).hasClass('pf-nav-next')){
+          page++;
+          $('.pf-nav').stop().animate({'margin-top': -70*page}, 200);
+          if(page == pages){
+            $(this).addClass('disabled');
+            $('.pf-nav-prev').removeClass('disabled');
+          }else{
+            $('.pf-nav-prev').removeClass('disabled');
+          }
+          
         }else{
-          $('.pf-nav-prev').removeClass('disabled');
+          page--;
+          $('.pf-nav').stop().animate({'margin-top': -70*page}, 200);
+          if(page == 0){
+            $(this).addClass('disabled');
+            $('.pf-nav-next').removeClass('disabled');
+          }else{
+            $('.pf-nav-next').removeClass('disabled');
+          }
+          
         }
-        
-      }else{
-        page--;
-        $('.pf-nav').stop().animate({'margin-top': -70*page}, 200);
-        if(page == 0){
-          $(this).addClass('disabled');
-          $('.pf-nav-next').removeClass('disabled');
-        }else{
-          $('.pf-nav-next').removeClass('disabled');
-        }
-        
-      }
-    })
+      })
 
-    // setTimeout(function(){
-    //    $('.tabs-panels').height($("#pf-page").height()-46);
-    //    $('.panel-body').height($("#pf-page").height()-76)
-    // }, 200)
+      // setTimeout(function(){
+      //    $('.tabs-panels').height($("#pf-page").height()-46);
+      //    $('.panel-body').height($("#pf-page").height()-76)
+      // }, 200)
     </script>
 </body> 
 </html>
     <script type="text/javascript">
-      // $(function(){
-      //   $('#tt').tabs({
-      //     onLoad:function(panel){
-      //       var plugin = panel.panel('options').title;
-      //       panel.find('textarea[name="code-'+plugin+'"]').each(function(){
-      //         var data = $(this).val();
-      //         data = data.replace(/(\r\n|\r|\n)/g, '\n');
-      //         if (data.indexOf('\t') == 0){
-      //           data = data.replace(/^\t/, '');
-      //           data = data.replace(/\n\t/g, '\n');
-      //         }
-      //         data = data.replace(/\t/g, '    ');
-      //         var pre = $('<pre name="code" class="prettyprint linenums"></pre>').insertAfter(this);
-      //         pre.text(data);
-      //         $(this).remove();
-      //       });
-      //       prettyPrint();
-      //     }
-      //   });
-      //   var sw = $(window).width();
-      //   if (sw < 767){
-      //     $('body').layout('collapse', 'west');
-      //   }
-      //   $('.navigation-toggle span').bind('click', function(){
-      //     $('#head-menu').toggle();
-      //   });
-      // });
-      function open1(plugin){
-        if ($('#tt').tabs('exists',plugin)){
-          $('#tt').tabs('select', plugin);
-        } else {
-          $('#tt').tabs('add',{
-            title:plugin,
-            href:plugin+'.jsp',
-            closable:true,
-            bodyCls:'content-doc'//,
-            // extractor:function(data){
-              // data = $.fn.panel.defaults.extractor(data);
-              // var tmp = $('<div></div>').jsp(data);
-              // data = tmp.find('#content').jsp();
-              // tmp.remove();
-              // return data;
-            // }
-          });
-        }
-      }
+   
 
-
-    function addTabs(title,href)
-    {
-      // $('#tt').tabs('add',{
-      //     title:'New Tab',
-      //     // content:'Tab Body',
-      //     href:"iotThingList.jsp",
-      //     closable:true,
-      //     tools:[{
-      //         iconCls:'icon-mini-refresh',
-      //         handler:function(){
-      //             alert('refresh');
-      //         }
-      //     }]
-      // });     
-
+      function addTabs(title,href)
+      {
+          var jq = top.jQuery;    
       
-        var jq = top.jQuery;    
-    
-        if (jq("#tt").tabs('exists', title)){    
-            jq("#tt").tabs('select', title);    
-        } else {  
-              var content = '<iframe scrolling="auto" frameborder="0"  src="'+href+'" style="width:100%;height:100%;"></iframe>';     
-               jq("#tt").tabs('add',{    
-                                  title:title,    
-                                  content:content,    
-                                  closable:true    
-                                });    
-         }    
-
-    }
+          if (jq("#tt").tabs('exists', title)){    
+              jq("#tt").tabs('select', title);    
+          } else {  
+                var content = '<iframe scrolling="auto" frameborder="0"  src="'+href+'" style="width:100%;height:100%;"></iframe>';     
+                 jq("#tt").tabs('add',{    
+                                    title:title,    
+                                    content:content,    
+                                    closable:true    
+                                  });    
+           }    
+      }
 </script>
 

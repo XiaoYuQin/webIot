@@ -15,10 +15,14 @@
 <link rel="stylesheet" href="<%=basePath%>/custom/uimaker/easyui.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
 <link rel="stylesheet" href="<%=basePath%>/pages/css/providers1.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/process.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/js/umeditor/themes/default/css/umeditor.css">
 
 <script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="<%=basePath%>/pages/js/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/pages/js/umeditor/umeditor.config.js"></script>
 
 <style type="text/css">
     html, body{ margin:0; height:100%; }
@@ -30,7 +34,7 @@
 </head> 
 <body>
     <div class="container" style="width: 100%;height: 100%">
-       <table id="dg" style="width:100%;height:100%" title="全体设备列表" data-options="
+       <table id="dg" style="width:100%;height:100%" title="" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,
@@ -56,7 +60,7 @@
                     <th field="t10" width="18%" data-options="align:'center',editor:'text'">备注</th>
                     <th field="t11" width="4%" data-options="align:'center',editor:'text'">审批结果</th>          
                     <th field="t12" width="4%" data-options="align:'center',editor:'text'">维修单</th>
-                    <th field="t12" width="4%" data-options="align:'center',editor:'text'">日志</th>
+                    <th field="t13" width="4%" data-options="align:'center',editor:'text'">日志</th>
                 </tr>
             </thead>
         </table>
@@ -72,22 +76,108 @@
             <span class="con-span">客户名称: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
             <span class="con-span">项目名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
         </div>
-<!--         <div class="conditions hide">
-            <span class="con-span">公司代码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-            <span class="con-span">公司名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>公司名称</option></select>
-            <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
-            <span class="con-span">合同状态: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-        </div> -->
-<!--         <div class="opt-buttons">
-            <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
-            <a href="#" class="easyui-linkbutton">导出</a>
-			<a href="#" class="easyui-linkbutton" onclick="printPreView()">打印预览</a>
-			<a href="#" class="easyui-linkbutton" onclick="printIt()">打印</a>
-			<a href="#" class="easyui-linkbutton" onclick="printSetup()">打印设置</a>
-        </div> -->
       </div>
     </div>
-
+    <div id="dlg" class="easyui-dialog" title="维修单日志查看" data-options="closed:true" style="width:720px;height:490px;padding:10px;">
+            <div class="time-line">
+                <div class="time-item date">
+                    <div class="content-left first">
+                        <span>2016-04-25</span>
+                        <label><span class="dot"></span><i class="line"></i></label>
+                    </div>
+                </div>
+                <div class="time-item time">
+                    <div class="content-left">
+                        <span>15:58:34</span>
+                        <label><i class="line"></i><span class="dot"></span></label>
+                    </div>
+                    <div class="content-right">
+                        <span class="left-arrow"></span>
+                        <div class="detail-outer">
+                            <div class="detail">
+                                <div>
+                                    <span class="name">申请</span>
+                                    <label></label>
+                                    <span class="status"></span>
+                                </div>
+                                <div>
+                                    <span class="name"></span>
+                                    <label>申请人:</label>
+                                    <span class="status">李默</span>
+                                </div>
+                                <div>
+                                    <span class="name"></span>
+                                    <label>审批人:</label>
+                                    <span class="status">夏明</span>
+                                </div>
+                                <div>
+                                    <span class="name"></span>
+                                    <label>文件名:</label>
+                                    <span class="status">《GWN0202016122114维修》</span>
+                                </div>                                                                                      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-item time important">
+                    <div class="content-left">
+                        <span>17:00:21</span>
+                        <label><i class="line"></i><span class="dot"></span></label>
+                    </div>
+                    <div class="content-right">
+                        <span class="left-arrow"></span>
+                        <div class="detail-outer">
+                            <div class="detail">
+                                <div>
+                                    <span class="name">驳回</span>
+                                    <label></label>
+                                    <span class="status"></span>
+                                </div>
+                                <div>
+                                    <span class="name"></span>
+                                    <label>驳回意见：</label>
+                                    <span class="status">描述不够清晰</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-item date">
+                    <div class="content-left">
+                        <span>2016-04-26</span>
+                        <label><span class="dot"></span><i class="line"></i></label>
+                    </div>
+                </div>
+                <div class="time-item time">
+                    <div class="content-left">
+                        <span>09:21:14</span>
+                        <label><i class="line"></i><span class="dot"></span></label>
+                    </div>
+                    <div class="content-right">
+                        <span class="left-arrow"></span>
+                        <div class="detail-outer">
+                            <div class="detail">
+                                <div>
+                                    <span class="name">申请</span>
+                                    <label></label>
+                                    <span class="status"></span>
+                                </div>
+                                <div>
+                                    <span class="name"></span>
+                                    <label>申请描述：</label>
+                                    <span class="status">重新更改了实施的详细方法。</span>
+                                </div>                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-item last">
+                    <div class="content-left">
+                        <label><i class="line"></i><span class="dot"></span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     
@@ -211,7 +301,7 @@
                     t8:'已维修',    
                     t9:'郭淑琴',
                     t10:'-',
-                    t11: '2016/12/6',
+                    t11: '未通过',
                     t12: "<a href='#' onclick='viewMaintenanceOrder()'>查看</a>",
                     t13: "<a href='#' onclick='viewLog()'>查看</a>"
                 });             
@@ -251,12 +341,15 @@
 
         function viewMaintenanceOrder()
         {
-                window.open ('<%=basePath%>/pages/module/Maintenance/maintenanceOrder.jsp', 'newwindow', 'height=768px, width=1024px, scrollbars=yes, resizable=yes');    
+            console.info("viewMaintenanceOrder");
+            var rows = $('#dg').datagrid('getSelected');
+            console.info("rows.t1="+rows.t1);            
+            window.open('<%=basePath%>/pages/module/Maintenance/maintenanceOrder.jsp', 'newwindow', 'height=768px, width=1024px, scrollbars=yes, resizable=yes');    
         }
         function viewLog()
         {
-
-
+            console.info("viewLog");
+            $('#dlg').dialog('open');
         }
     </script>
 </body> 

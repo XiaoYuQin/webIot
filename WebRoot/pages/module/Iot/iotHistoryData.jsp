@@ -2,7 +2,7 @@
 <%@ page language="java" import="java.util.*"%>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 %>
 <!DOCTYPE html> 
 <html lang="en"> 
@@ -11,19 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>实时数据</title> 
 
-<link href="css/base.css" rel="stylesheet">
-<link rel="stylesheet" href="../custom/uimaker/easyui.css">
-<link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
-<link rel="stylesheet" href="css/providers1.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers1.css">
+
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
 
 <style type="text/css">
     html, body{ margin:0; height:100%;width: 100%}
 </style>
 
-<script type="text/javascript" src="../custom/jquery.min.js"></script>
-<script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
 
 </head> 
 <body>
