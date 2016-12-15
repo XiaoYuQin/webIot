@@ -11,15 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>实时数据</title> 
 
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers1.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers.css">
 
-<script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 
 
 <style type="text/css">
@@ -45,38 +45,39 @@
                 selectOnCheck:false,
                 collapsible:true,
                 toolbar:'#tb',
-                pageSize:10">
+                pageSize:20">
             <thead>
                 <tr href="#">
-                    <th field="code" width="110">设备编码</th>
-                    <th field="name" width="226">设备名称</th>
-                    <th field="level" width="112">设备类型</th>
-                    <th field="provide" width="170">所属部门</th>
-                    <th field="full" width="130">所在地区</th>
-                    <th field="issubmit" width="136">使用状况</th>
-                    <th field="status" width="120">责任人</th>
-                    <th field="note" width="105">备注</th>
+                    <th field="t1" width="12%">客户名称</th>
+                    <th field="t2" width="12%">项目名称</th>
+                    <th field="t3" width="12%">车型</th>
+                    <th field="t4" width="18%">使用单位</th>
+                    <th field="t5" width="8%">牌照号</th>
+                    <th field="t6" width="13%">VIN码</th>
+                    <th field="t7" width="18%">产品编号</th>
+                    <th field="t8" width="4%">设备状态</th>
                 </tr>
             </thead>
         </table>
       <div id="tb" style="padding:0 30px;">
         <div class="conditions">
-            <span class="con-span">设备编码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-            <span class="con-span">设备名称: </span><input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">VIN码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:28px;line-height:28px;"></input>
+            <span class="con-span">项目名称: </span><input class="easyui-textbox" type="text" name="name" style="width:166px;height:28px;line-height:28px;"></input>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
-            <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
+            <a href="#" class="easyui-linkbutton">导出</a>
+            <!-- <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a> -->
+            <!-- <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a> -->
         </div>
-        <div class="conditions hide">
+<!--         <div class="conditions hide">
             <span class="con-span">责任人: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
             <span class="con-span">所在地区: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
             <span class="con-span">使用状况: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>正常</option><option>维护</option><option>维修</option></select>
             <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
-        </div>
-        <div class="opt-buttons">
+        </div> -->
+<!--         <div class="opt-buttons">
             <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
             <a href="#" class="easyui-linkbutton">导出</a>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -187,14 +188,14 @@
             var rows = [];
             for(var i=1; i<=800; i++){
                 rows.push({
-                    code: '10695',
-                    name: '探针试验台',
-                    level: '检测设备',
-                    provide: '研发部',
-                    full: '北京',
-                    issubmit: '正常使用',
-                    status:'张一',
-                    note: '-'
+                    t1: '河南少林客车股份有限公司',
+                    t2: '少林9米',
+                    t3: '少林纯电动客车',
+                    t4: '林州市天安公共交通有限责任公司',
+                    t5: '豫EGJ983',
+                    t6: 'LS8GDEB44F1003261',
+                    t7: '-',
+                    t8: '-'
                 });
             }
             return rows;
@@ -203,7 +204,7 @@
 		    // url: 'Handler.ashx',  
 		    method:'get',  
 		    striped: true,  
-		    title: "员工列表",  
+		    title: "",  
 		    onClickRow: function (rowIndex)  
 		    {  
 		        var row = $('#dg').datagrid('getSelected');  
@@ -244,14 +245,14 @@
             
             option = {
                 title : {
-                    text: '探针检测仪3月份使用时间统计',
+                    text: '每日最高最低电压',
                     subtext: ''
                 },
                 tooltip : {
                     trigger: 'axis'
                 },
                 toolbox: {
-                    show : true,
+                    show : false,
                     feature : {
                         dataZoom : {show: true},
                         mark : {show: false},
@@ -285,18 +286,29 @@
                     {
                         type : 'value',
                         axisLabel : {
-                            formatter: '{value} 分钟'
+                            formatter: '{value} 伏特'
                         }
                     }
                 ],
                 series : [
                     {
-                        name:'时长',
+                        name:'最高电压',
                         type:'line',
                         data:function (){
                             var list = [];
                             for (var i = 1; i <= 30; i++) {
-                                list.push(Math.round(Math.random()* 30));
+                                list.push(Math.round(Math.random()* 30)+500);
+                            }
+                            return list;
+                        }()
+                    },
+                     {
+                        name:'最低电压',
+                        type:'line',
+                        data:function (){
+                            var list = [];
+                            for (var i = 1; i <= 30; i++) {
+                                list.push(Math.round(Math.random()* 20)+480);
                             }
                             return list;
                         }()

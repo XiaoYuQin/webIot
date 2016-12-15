@@ -181,11 +181,14 @@
 					">
 				<thead>
 					<tr>  
-						<th data-options="field:'x1',align:'center',editor:'text'" style="width: 200px">物料编码</th>
+						<th data-options="field:'x1',align:'center',editor:'text'" style="width: 100px">物料编码</th>
 						<th data-options="field:'x2',align:'center',editor:'text'" style="width: 170px">物料名称</th>		
 						<th data-options="field:'x3',align:'center',editor:'text'" style="width: 200px">规格</th>	
-						<th data-options="field:'x4',align:'center',editor:'text'" style="width: 80px">数量</th>			
-						<th data-options="field:'x5',align:'center',editor:'text'" style="width: 80px">单位</th>							
+						<th data-options="field:'x4',align:'center',editor:'text'" style="width: 50px">数量</th>			
+						<th data-options="field:'x5',align:'center',editor:'text'" style="width: 50px">单位</th>	
+						<th data-options="field:'x6',align:'center',editor:'text'" style="width: 50px">单价</th>			
+						<th data-options="field:'x7',align:'center',editor:'text'" style="width: 50px">合价</th>	
+						<th data-options="field:'x8',align:'center',editor:'text'" style="width: 50px">总价</th>						
 					</tr>
 				</thead>
 			</table>			
@@ -219,15 +222,19 @@
 		                selectOnCheck:true,
 						idField:'itemid',
 						url:'datagrid_data2.json',
-						rownumbers:true">
+						rownumbers:true,
+						pageSize:1000">
 					<thead>
 						<tr>
 							<th field="ck" data-options="checkbox:true"></th>      
-							<th data-options="field:'x1',align:'center',editor:'text'">物料编码</th>
-							<th data-options="field:'x2',align:'center',editor:'text'">物料名称</th>		
-							<th data-options="field:'x3',align:'center',editor:'text'">规格</th>	
-							<th data-options="field:'x4',align:'center',editor:'text'">数量</th>			
-							<th data-options="field:'x5',align:'center',editor:'text'">单位</th>								
+							<th data-options="field:'x1',align:'center',editor:'text'" style="width: 100px">物料编码</th>
+							<th data-options="field:'x2',align:'center',editor:'text'" style="width: 170px">物料名称</th>		
+							<th data-options="field:'x3',align:'center',editor:'text'" style="width: 200px">规格</th>	
+							<th data-options="field:'x4',align:'center',editor:'text'" style="width: 50px">数量</th>			
+							<th data-options="field:'x5',align:'center',editor:'text'" style="width: 50px">单位</th>	
+							<th data-options="field:'x6',align:'center',editor:'text'" style="width: 50px">单价</th>			
+							<th data-options="field:'x7',align:'center',editor:'text'" style="width: 50px">合价</th>	
+							<th data-options="field:'x8',align:'center',editor:'text'" style="width: 50px">总价</th>						
 						</tr>
 					</thead>
 				</table>
@@ -546,85 +553,112 @@
 		        x2: '继电器',
 		        x3: 'LEV100-24V',
 		        x4: '3',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '15',
+		        x7: '45'                 
 		    });	
 		    rows.push({
 		        x1: 'A0200508002',
 		        x2: '硅胶垫2',
 		        x3: 'GN-AK8.1EV-2107517',
 		        x4: '1',
-		        x5: '件'                 
+		        x5: '件',
+		        x6: '1',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200101011',
 		        x2: '继电器',
 		        x3: 'AEV19024',
 		        x4: '6',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '20',
+		        x7: '120'                   
 		    });
 		    rows.push({
 		        x1: 'A0200306006',
 		        x2: '弹垫',
 		        x3: 'M10  镀锌',
 		        x4: '100',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200302046',
 		        x2: '外六角螺栓',
 		        x3: 'M6*12  不锈钢',
 		        x4: '30',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200404006',
 		        x2: '护套',
 		        x3: 'DJ33541',
 		        x4: '18',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '18'                   
 		    });
 		    rows.push({
 		        x1: 'A0200406008',
 		        x2: '绝缘支柱',
 		        x3: 'SM7110',
 		        x4: '50',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '50'                   
 		    });
 		    rows.push({
 		        x1: 'A0200407204',
 		        x2: '扎带',
 		        x3: '3*100',
 		        x4: '1',
-		        x5: '包'                 
+		        x5: '包',
+		        x6: '10',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200507183',
 		        x2: '2并绝缘板',
 		        x3: 'GN-LZ-2107500',
 		        x4: '15',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '15'                   
 		    });
 		    rows.push({
 		        x1: 'A0200102007',
 		        x2: '熔断器',
 		        x3: 'A70QS400-4',
 		        x4: '3',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '3'                   
 		    });
 		    rows.push({
 		        x1: 'A0200302011',
 		        x2: '六角螺栓',
 		        x3: 'M6*16   镀锌',
 		        x4: '5',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '5'                  
 		    });
 		    rows.push({
 		        x1: 'A0200202010',
 		        x2: '高压单芯负插座',
 		        x3: 'HV2-RFK4S-1YNB-H15',
 		        x4: '3',
-		        x5: '个'                 
-		    });
+		        x5: '个',
+		        x6: '30',
+		        x7: '90'                   
+		    });   
+		    rows.push({
+		        x8: '357'                   
+		    });			    
 		    return rows;
 		}
 
@@ -679,85 +713,121 @@
 		        x2: '继电器',
 		        x3: 'LEV100-24V',
 		        x4: '3',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '15',
+		        x7: '45'                 
 		    });	
 		    rows.push({
 		        x1: 'A0200508002',
 		        x2: '硅胶垫2',
 		        x3: 'GN-AK8.1EV-2107517',
 		        x4: '1',
-		        x5: '件'                 
+		        x5: '件',
+		        x6: '1',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200101011',
 		        x2: '继电器',
 		        x3: 'AEV19024',
 		        x4: '6',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '20',
+		        x7: '120'                   
 		    });
 		    rows.push({
 		        x1: 'A0200306006',
 		        x2: '弹垫',
 		        x3: 'M10  镀锌',
 		        x4: '100',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200302046',
 		        x2: '外六角螺栓',
 		        x3: 'M6*12  不锈钢',
 		        x4: '30',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200404006',
 		        x2: '护套',
 		        x3: 'DJ33541',
 		        x4: '18',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '18'                   
 		    });
 		    rows.push({
 		        x1: 'A0200406008',
 		        x2: '绝缘支柱',
 		        x3: 'SM7110',
 		        x4: '50',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '50'                   
 		    });
 		    rows.push({
 		        x1: 'A0200407204',
 		        x2: '扎带',
 		        x3: '3*100',
 		        x4: '1',
-		        x5: '包'                 
+		        x5: '包',
+		        x6: '10',
+		        x7: '1'                   
 		    });
 		    rows.push({
 		        x1: 'A0200507183',
 		        x2: '2并绝缘板',
 		        x3: 'GN-LZ-2107500',
 		        x4: '15',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '15'                   
 		    });
 		    rows.push({
 		        x1: 'A0200102007',
 		        x2: '熔断器',
 		        x3: 'A70QS400-4',
 		        x4: '3',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '3'                   
 		    });
 		    rows.push({
 		        x1: 'A0200302011',
 		        x2: '六角螺栓',
 		        x3: 'M6*16   镀锌',
 		        x4: '5',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '1',
+		        x7: '5'                  
 		    });
+		    rows.push({
+		        x1: 'A0200302011',
+		        x2: '六角螺栓',
+		        x3: 'M4*16   镀锌',
+		        x4: '5',
+		        x5: '个',
+		        x6: '1',
+		        x7: '5'                  
+		    });		    
 		    rows.push({
 		        x1: 'A0200202010',
 		        x2: '高压单芯负插座',
 		        x3: 'HV2-RFK4S-1YNB-H15',
 		        x4: '3',
-		        x5: '个'                 
+		        x5: '个',
+		        x6: '30',
+		        x7: '90'                   
 		    });
+		    rows.push({
+		        x8: '357'                   
+		    });		   
 		    return rows;
 		}
 

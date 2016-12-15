@@ -11,40 +11,391 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>实时数据</title> 
 
-<link href="css/base.css" rel="stylesheet">
-<link rel="stylesheet" href="../custom/uimaker/easyui.css">
-<link rel="stylesheet" type="text/css" href="../custom/uimaker/icon.css">
-<link rel="stylesheet" href="css/providers1.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers.css">
 
+    <script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
 
-<script type="text/javascript" src="../custom/jquery.min.js"></script>
-<script type="text/javascript" src="../custom/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="../custom/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <style type="text/css">
+        html, body{ margin:0; height:100%;width: 100% }
+        .con-span{font-size: 15px}
+        .kv-content{border:1px #cacaca solid;}
+        /*新增/修改用户时，是否管理员样式保持与easyui一致*/
+        .radioSpan {
+          position: relative;
+          /*border: 1px solid #95B8E7;*/
+          background-color: #fff;
+          vertical-align: middle;
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          margin: 0;
+          padding: 0;
+          -moz-border-radius: 5px 5px 5px 5px;
+          -webkit-border-radius: 5px 5px 5px 5px;
+          /*border-radius: 5px 5px 5px 5px;*/
+          display:block;
+        }
 
-
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/base.css" >
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/easyui.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/custom/uimaker/icon.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/pages/css/providers1.css">
-
-<script type="text/javascript" src="<%=basePath%>/custom/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/custom/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/custom/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
-
-<style type="text/css">
-    html, body{ margin:0; height:100%;width: 100%}
-</style>
+        .easyui-combobox .combobox-item{font-size:4px}
+        .easyui-combobox .combo .combo-text{font-size:4px}
+    </style>
 
 
 </head> 
 <body>
-	<div id="dlg" class="easyui-dialog" title="设备数据" data-options="" closed="true" style="width:850px;height:380px;padding:10px;">		
-		<div id="echarttest" style="width:800px;height:300px"></div>
-	</div>
+	<div id="dlg" class="easyui-dialog" title="电池电量" data-options="closed:true,closed:true" 
+            style="width:700px;height:490px;padding:10px;overflow: hidden;" >
+            <div class="conditions">
+                <span class="con-span" style="font-size: 17px;">总电压:</span>
+                <span class="con-span" style="font-size: 17px;color: red">527.2(V)</span>
+                <span class="con-span" style="font-size: 17px;margin-left: 150px">总电流:</span>
+                <span class="con-span" style="font-size: 17px;color: red">0.5(A)</span>
+                <span class="con-span" style="font-size: 17px;margin-left: 150px">SOC容量:</span>
+                <span class="con-span" style="font-size: 17px;color: red">58%(A)</span>
+            </div>
+            <div class="conditions" style="margin-top: 10px">
+                <span class="con-span" style="font-size: 17px;">单体最高电压:</span>
+                <span class="con-span" style="font-size: 17px;color: red">第一箱第11节3.18(V)</span>
+<!--             </div>
+            <div class="conditions" style="margin-top: 10px"> -->
+                <span class="con-span" style="font-size: 17px;margin-left: 135px">单体最低电压:</span>
+                <span class="con-span" style="font-size: 17px;color: red">第一箱第1节3.16(V)</span>
+            </div>
+             <div class="conditions" style="margin-top: 10px">
+                <span class="con-span" style="font-size: 17px;">单体最高温度:</span>
+                <span class="con-span" style="font-size: 17px;color: red">12(℃)</span>        
+<!--              </div>
+             <div class="conditions" style="margin-top: 10px"> -->
+                <span class="con-span" style="font-size: 17px;margin-left: 363px">单体最低温度:</span>
+                <span class="con-span" style="font-size: 17px;color: red">0(℃)</span>             
+             </div>     
+            <div class="conditions" style="margin-top: 10px">
+                <div class="easyui-panel" style="width: 680px;height: 350px">
+                    <table id="showSettlementTable" class="kv-table">
+                        <tbody>
+                            <tr>
+                                <td colspan="12" class="kv-label">第1箱 箱体最高电压：3.45V 箱体最低电压3.43V 温度 15 15 15 13</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-label">1</td>
+                                <td class="kv-label">2</td>
+                                <td class="kv-label">3</td>
+                                <td class="kv-label">4</td>
+                                <td class="kv-label">5</td>
+                                <td class="kv-label">6</td>
+                                <td class="kv-label">7</td>
+                                <td class="kv-label">8</td>
+                                <td class="kv-label">9</td>
+                                <td class="kv-label">10</td>
+                                <td class="kv-label">11</td>
+                                <td class="kv-label">12</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                            </tr> 
+                            <tr>
+                                <td class="kv-label">13</td>
+                                <td class="kv-label">14</td>
+                                <td class="kv-label">15</td>
+                                <td class="kv-label">16</td>
+                                <td class="kv-label">17</td>
+                                <td class="kv-label">18</td>
+                                <td class="kv-label">19</td>
+                                <td class="kv-label">20</td>
+                                <td class="kv-label">21</td>
+                                <td class="kv-label">22</td>
+                                <td class="kv-label">23</td>
+                                <td class="kv-label">24</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td> 
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                            </tr>                                                 
+                        </tbody>
+                    </table>     
+                    <table id="showSettlementTable" class="kv-table">
+                        <tbody>
+                            <tr>
+                                <td colspan="12" class="kv-label">第2箱 箱体最高电压：3.45V 箱体最低电压3.43V 温度 15 15 15 13</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-label">1</td>
+                                <td class="kv-label">2</td>
+                                <td class="kv-label">3</td>
+                                <td class="kv-label">4</td>
+                                <td class="kv-label">5</td>
+                                <td class="kv-label">6</td>
+                                <td class="kv-label">7</td>
+                                <td class="kv-label">8</td>
+                                <td class="kv-label">9</td>
+                                <td class="kv-label">10</td>
+                                <td class="kv-label">11</td>
+                                <td class="kv-label">12</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                            </tr> 
+                            <tr>
+                                <td class="kv-label">13</td>
+                                <td class="kv-label">14</td>
+                                <td class="kv-label">15</td>
+                                <td class="kv-label">16</td>
+                                <td class="kv-label">17</td>
+                                <td class="kv-label">18</td>
+                                <td class="kv-label">19</td>
+                                <td class="kv-label">20</td>
+                                <td class="kv-label">21</td>
+                                <td class="kv-label">22</td>
+                                <td class="kv-label">23</td>
+                                <td class="kv-label">24</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td> 
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                            </tr>                                                 
+                        </tbody>
+                    </table>    
+                    <table id="showSettlementTable" class="kv-table">
+                        <tbody>
+                            <tr>
+                                <td colspan="12" class="kv-label">第3箱 箱体最高电压：3.45V 箱体最低电压3.43V 温度 15 15 15 13</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-label">1</td>
+                                <td class="kv-label">2</td>
+                                <td class="kv-label">3</td>
+                                <td class="kv-label">4</td>
+                                <td class="kv-label">5</td>
+                                <td class="kv-label">6</td>
+                                <td class="kv-label">7</td>
+                                <td class="kv-label">8</td>
+                                <td class="kv-label">9</td>
+                                <td class="kv-label">10</td>
+                                <td class="kv-label">11</td>
+                                <td class="kv-label">12</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                            </tr> 
+                            <tr>
+                                <td class="kv-label">13</td>
+                                <td class="kv-label">14</td>
+                                <td class="kv-label">15</td>
+                                <td class="kv-label">16</td>
+                                <td class="kv-label">17</td>
+                                <td class="kv-label">18</td>
+                                <td class="kv-label">19</td>
+                                <td class="kv-label">20</td>
+                                <td class="kv-label">21</td>
+                                <td class="kv-label">22</td>
+                                <td class="kv-label">23</td>
+                                <td class="kv-label">24</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td> 
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                            </tr>                                                 
+                        </tbody>
+                    </table>      
+                    <table id="showSettlementTable" class="kv-table">
+                        <tbody>
+                            <tr>
+                                <td colspan="12" class="kv-label">第4箱 箱体最高电压：3.45V 箱体最低电压3.43V 温度 15 15 15 13</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-label">1</td>
+                                <td class="kv-label">2</td>
+                                <td class="kv-label">3</td>
+                                <td class="kv-label">4</td>
+                                <td class="kv-label">5</td>
+                                <td class="kv-label">6</td>
+                                <td class="kv-label">7</td>
+                                <td class="kv-label">8</td>
+                                <td class="kv-label">9</td>
+                                <td class="kv-label">10</td>
+                                <td class="kv-label">11</td>
+                                <td class="kv-label">12</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                            </tr> 
+                            <tr>
+                                <td class="kv-label">13</td>
+                                <td class="kv-label">14</td>
+                                <td class="kv-label">15</td>
+                                <td class="kv-label">16</td>
+                                <td class="kv-label">17</td>
+                                <td class="kv-label">18</td>
+                                <td class="kv-label">19</td>
+                                <td class="kv-label">20</td>
+                                <td class="kv-label">21</td>
+                                <td class="kv-label">22</td>
+                                <td class="kv-label">23</td>
+                                <td class="kv-label">24</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td> 
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                            </tr>                                                 
+                        </tbody>
+                    </table>  
+                    <table id="showSettlementTable" class="kv-table">
+                        <tbody>
+                            <tr>
+                                <td colspan="12" class="kv-label">第5箱 箱体最高电压：3.45V 箱体最低电压3.43V 温度 15 15 15 13</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-label">1</td>
+                                <td class="kv-label">2</td>
+                                <td class="kv-label">3</td>
+                                <td class="kv-label">4</td>
+                                <td class="kv-label">5</td>
+                                <td class="kv-label">6</td>
+                                <td class="kv-label">7</td>
+                                <td class="kv-label">8</td>
+                                <td class="kv-label">9</td>
+                                <td class="kv-label">10</td>
+                                <td class="kv-label">11</td>
+                                <td class="kv-label">12</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                            </tr> 
+                            <tr>
+                                <td class="kv-label">13</td>
+                                <td class="kv-label">14</td>
+                                <td class="kv-label">15</td>
+                                <td class="kv-label">16</td>
+                                <td class="kv-label">17</td>
+                                <td class="kv-label">18</td>
+                                <td class="kv-label">19</td>
+                                <td class="kv-label">20</td>
+                                <td class="kv-label">21</td>
+                                <td class="kv-label">22</td>
+                                <td class="kv-label">23</td>
+                                <td class="kv-label">24</td>
+                            </tr>
+                            <tr>
+                                <td class="kv-content" style="background:#FFC0CB">3.45</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td>
+                                <td class="kv-content" style="background:#FFC0CB">3.4</td> 
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                                <td class="kv-content" style="background:#E6E6FA"></td>
+                            </tr>                                                 
+                        </tbody>
+                    </table>                                                          
+                </div>                          
+            </div>           
+        </div>
     <div class="container" style="width: 100%;height: 100%">
-       <table id="dg" style="width:100%;height:100%" title="全体设备列表" data-options="
+       <table id="dg" style="width:100%;height:100%" title="" data-options="
                 rownumbers:true,
                 singleSelect:false,
                 autoRowHeight:false,
@@ -58,35 +409,36 @@
                 pageSize:10">
             <thead>
                 <tr href="#">
-                    <th field="code" width="110">设备编码</th>
-                    <th field="name" width="226">设备名称</th>
-                    <th field="level" width="112">设备类型</th>
-                    <th field="provide" width="170">所属部门</th>
-                    <th field="full" width="130">所在地区</th>
-                    <th field="issubmit" width="136">使用状况</th>
-                    <th field="status" width="120">责任人</th>
-                    <th field="note" width="105">备注</th>
+                    <th field="t1" width="13%">VIN码</th>
+                    <th field="t2" width="6%">总电压</th>
+                    <th field="t3" width="6%">总电流</th>
+                    <th field="t4" width="6%">SOC容量</th>
+                    <th field="t5" width="13%">单体最高电压</th>
+                    <th field="t6" width="13%">单体最低电压</th>
+                    <th field="t7" width="13%">单体最高温度</th>
+                    <th field="t8" width="13%">单体最低温度</th>
                 </tr>
             </thead>
         </table>
       <div id="tb" style="padding:0 30px;">
         <div class="conditions">
-            <span class="con-span">设备编码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-            <span class="con-span">设备名称: </span><input class="easyui-textbox" type="text" name="name" style="width:166px;height:35px;line-height:35px;"></input>
+            <span class="con-span">VIN码: </span>
+            <input class="easyui-textbox" type="text" name="code" style="width:166px;height:28px;line-height:35px;"></input>
+            <!-- <span class="con-span">设备名称: </span>
+            <input class="easyui-textbox" type="text" name="name" style="width:166px;height:28px;line-height:35px;"></input> -->
             <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
-            <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
+            <!-- <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a> -->
+            <!-- <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a> -->
+            <!-- <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a> -->
+            <a href="#" class="easyui-linkbutton">导出</a>            
         </div>
-        <div class="conditions hide">
+<!--         <div class="conditions hide">
             <span class="con-span">责任人: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
             <span class="con-span">所在地区: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
             <span class="con-span">使用状况: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>正常</option><option>维护</option><option>维修</option></select>
             <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
-        </div>
-        <div class="opt-buttons">
-            <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
-            <a href="#" class="easyui-linkbutton">导出</a>
-        </div>
+        </div> -->
+
       </div>
     </div>
 
@@ -193,18 +545,19 @@
 	        })
     	})(jQuery);
 
+
         function getData(){
             var rows = [];
-            for(var i=1; i<=800; i++){
+            for(var i=1; i<=200; i++){
                 rows.push({
-                    code: '10695',
-                    name: '探针试验台',
-                    level: '检测设备',
-                    provide: '研发部',
-                    full: '北京',
-                    issubmit: '正常使用',
-                    status:'张一',
-                    note: '-'
+                    t1: 'LS8GDEB44F1003261',
+                    t2: '527.2(V)',
+                    t3: '0.5(A)',
+                    t4: '58%',
+                    t5: '第一箱第11节3.18(V)',
+                    t6: '第一箱第1节3.16(V)',
+                    t7:' 12(℃) ',
+                    t8: '0(℃)'
                 });
             }
             return rows;
@@ -213,7 +566,7 @@
 		    // url: 'Handler.ashx',  
 		    method:'get',  
 		    striped: true,  
-		    title: "员工列表",  
+		    title: "",  
 		    onClickRow: function (rowIndex)  
 		    {  
 		        var row = $('#dg').datagrid('getSelected');  
@@ -234,152 +587,3 @@
     </script>
 </body> 
 </html>
-<script type="text/javascript">
-
-  	// 路径配置
-    require.config({
-        paths: {
-            echarts: 'http://echarts.baidu.com/build/dist'
-        }
-    });
-    // 使用
-    require(
-        [
-            'echarts',
-            'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
-            'echarts/chart/gauge' // 使用柱状图就加载bar模块，按需加载
-        ],
-        function (ec) {
-            // 基于准备好的dom，初始化echarts图表
-            var myChart = ec.init(document.getElementById('echarttest')); 
-            
-            option = 
-            {
-                title : {
-                    text: '探针实时高度',
-                    subtext: ''
-                },
-                tooltip : {
-                    trigger: 'axis'
-                },
-                toolbox: {
-                    show : false,
-                    feature : {
-                        mark : {show: true},
-                        dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
-                        saveAsImage : {show: true}
-                    }
-                },
-                calculable : true,
-                xAxis : [
-                    {
-                        type : 'category',
-                        boundaryGap : false,
-                        data : ['0','100','200','300','400','500','600','700','800','900','1000']
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value',
-                        axisLabel : {
-                            formatter: '{value} mm'
-                        }
-                    }
-                ],
-                series : [
-                    {
-                        name:'探针高度',
-                        type:'line',
-                        data:[100, 150, 300, 450, 500, 650, 700,800, 850, 860, 870],
-                        markPoint : {
-                            data : [
-                                {name : '每秒最低', value : 100, xAxis: 0, yAxis: 100+50}
-                            ]
-                        },
-                        markLine : {
-                            data : [
-                                {type : 'average', name : '临界值'}
-                            ]
-                        }
-                    }
-                ]
-            };
-            // 为echarts对象加载数据 
-            myChart.setOption(option); 
-
-            var gauge = ec.init(document.getElementById('echartgauge')); 
-            gaugeOption = {
-                tooltip : {
-                    formatter: "{a} <br/>{b} : {c}%"
-                },
-                toolbox: {
-                    show : false,
-                    feature : {
-                        mark : {show: true},
-                        restore : {show: true},
-                        saveAsImage : {show: true}
-                    }
-                },
-                series : [
-                    {
-                        name:'',
-                        type:'gauge',
-                        splitNumber: 10,       // 分割段数，默认为5
-                        axisLine: {            // 坐标轴线
-                            lineStyle: {       // 属性lineStyle控制线条样式
-                                color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
-                                width: 8
-                            }
-                        },
-                        axisTick: {            // 坐标轴小标记
-                            splitNumber: 10,   // 每份split细分多少段
-                            length :12,        // 属性length控制线长
-                            lineStyle: {       // 属性lineStyle控制线条样式
-                                color: 'auto'
-                            }
-                        },
-                        axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
-                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                color: 'auto'
-                            }
-                        },
-                        splitLine: {           // 分隔线
-                            show: true,        // 默认显示，属性show控制显示与否
-                            length :30,         // 属性length控制线长
-                            lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                                color: 'auto'
-                            }
-                        },
-                        pointer : {
-                            width : 5
-                        },
-                        title : {
-                            show : true,
-                            offsetCenter: [0, '-40%'],       // x, y，单位px
-                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                fontWeight: 'bolder'
-                            }
-                        },
-                        detail : {
-                            formatter:'{value}%',
-                            textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                color: 'auto',
-                                fontWeight: 'bolder'
-                            }
-                        },
-                        data:[{value: 50, name: '完成率'}]
-                    }
-                ]
-            };
-            var timeTicket;
-            clearInterval(timeTicket);
-            timeTicket = setInterval(function (){
-                option.series[0].data[0].value = (Math.random()*100).toFixed(2) - 0;
-                gauge.setOption(gaugeOption,true);
-            },2000)                                
-        }
-    );
-
-</script>

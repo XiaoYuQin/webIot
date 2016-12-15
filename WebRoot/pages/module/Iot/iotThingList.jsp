@@ -28,7 +28,7 @@
     </head> 
     <body>
         <div class="container" style="width: 100%;height: 100%">
-           <table id="dg" style="width:100%;height:100%" title="全体设备列表" data-options="
+           <table id="dg" style="width:100%;height:100%" title="" data-options="
                     rownumbers:true,
                     singleSelect:false,
                     autoRowHeight:false,
@@ -39,17 +39,17 @@
                     selectOnCheck:false,
                     collapsible:true,
                     toolbar:'#tb',
-                    pageSize:10">
+                    pageSize:20">
                 <thead>
                     <tr href="#">
-                        <th field="code" width="110">设备编码</th>
-                        <th field="name" width="226">设备名称</th>
-                        <th field="level" width="112">设备类型</th>
-                        <th field="provide" width="170">所属部门</th>
-                        <th field="full" width="130">所在地区</th>
-                        <th field="issubmit" width="136">使用状况</th>
-                        <th field="status" width="120">责任人</th>
-                        <th field="note" width="105">备注</th>
+                        <th field="t1" width="12%">客户名称</th>
+                        <th field="t2" width="12%">项目名称</th>
+                        <th field="t3" width="12%">车型</th>
+                        <th field="t4" width="18%">使用单位</th>
+                        <th field="t5" width="8%">牌照号</th>
+                        <th field="t6" width="13%">VIN码</th>
+                        <th field="t7" width="18%">产品编号</th>
+                        <th field="t8" width="4%">设备状态</th>
                     </tr>
                 </thead>
             </table>
@@ -60,25 +60,14 @@
                 <a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true">查询</a>
                 <a href="#" class="easyui-linkbutton" iconCls="icon-reload">重置</a>
                 <a href="#" class="easyui-linkbutton more" iconCls="icon-more">更多</a>
+                <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
+                <a href="#" class="easyui-linkbutton">导出</a>                
             </div>
             <div class="conditions hide">
                 <span class="con-span">责任人: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
                 <span class="con-span">所在地区: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>北京</option><option>武汉</option><option>西安</option></select>
                 <span class="con-span">使用状况: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>正常</option><option>维护</option><option>维修</option></select>
                 <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
-            </div>
-    <!--         <div class="conditions hide">
-                <span class="con-span">公司代码: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-                <span class="con-span">公司名称: </span><select class="easyui-combobox" name="language" style="height:35px;width:166px;"><option>公司名称</option></select>
-                <span class="con-span">发布时间: </span><input class="easyui-datetimebox" style="width:166px;height:35px;line-height:35px;">
-                <span class="con-span">合同状态: </span><input class="easyui-textbox" type="text" name="code" style="width:166px;height:35px;line-height:35px;"></input>
-            </div> -->
-            <div class="opt-buttons">
-                <a href="#" class="easyui-linkbutton" data-options="selected:true">新增</a>
-                <!-- <a href="#" class="easyui-linkbutton">发布</a>
-                <a href="#" class="easyui-linkbutton">取消发布</a>
-                <a href="#" class="easyui-linkbutton">标记为执行完毕</a> -->
-                <a href="#" class="easyui-linkbutton">导出</a>
             </div>
           </div>
         </div>
@@ -193,16 +182,16 @@
 
             function getData(){
                 var rows = [];
-                for(var i=1; i<=800; i++){
+                for(var i=1; i<=200; i++){
                     rows.push({
-                        code: '10695',
-                        name: '充电试验台',
-                        level: '检测设备',
-                        provide: '研发部',
-                        full: '北京',
-                        issubmit: '正常使用',
-                        status:'张一',
-                        note: '-'
+                        t1: '河南少林客车股份有限公司',
+                        t2: '少林9米',
+                        t3: '少林纯电动客车',
+                        t4: '林州市天安公共交通有限责任公司',
+                        t5: '豫EGJ983',
+                        t6: 'LS8GDEB44F1003261',
+                        t7: '-',
+                        t8: '-'
                     });
                 }
                 return rows;

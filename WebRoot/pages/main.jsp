@@ -175,7 +175,7 @@
                         <li ><a href="#" onclick="addTabs('计划发货','oaFileApproval.jsp')">计划发货(x)</a></li>
                         <li ><a href="#" onclick="addTabs('投运通知单','oaFileApproval.jsp')">投运通知单(x)</a></li>                        
                         <li ><a href="#" onclick="addTabs('备件盘点','<%=basePath%>/pages/module/Inventory/spareInventory.jsp')">备件盘点</a></li>
-                        <li ><a href="#" onclick="addTabs('备件差异申报','oaFileApproval.jsp')">备件差异申报(x)</a></li>
+                        <li ><a href="#" onclick="addTabs('备件差异申报','<%=basePath%>/pages/module/Inventory/spareDifferenceDeclare.jsp')">备件差异申报</a></li>
                       </ul>
                     </li>    
                     <li>
@@ -194,7 +194,7 @@
                       <ul class="sider-nav-s">
                         <li ><a href="#" onclick="addTabs('工具仓库','<%=basePath%>/pages/module/Inventory/toolMange.jsp')">工具仓库</a></li>                      
                         <li ><a href="#" onclick="addTabs('工具盘点','<%=basePath%>/pages/module/Inventory/toolInventory.jsp')">工具盘点</a></li>
-                        <li ><a href="#" onclick="addTabs('工具差异申报','oaFileApproval.jsp')">工具差异申报(x)</a></li>
+                        <li ><a href="#" onclick="addTabs('工具差异申报','<%=basePath%>/pages/module/Inventory/toolDifferenceDeclare.jsp')">工具差异申报</a></li>
                       </ul>
                     </li>                        
                     <li>
